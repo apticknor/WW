@@ -1,0 +1,32 @@
+# Caches, Modules, etc #
+############################
+.sass-cache/
+node_modules/
+
+# Config Files #
+####################
+.idea/*
+env.js
+build-env.js
+/.htaccess
+wp-config.php
+Vagrantfile
+.vagrant/*
+
+# Logs #
+####################
+*.log
+
+# Other #
+######################
+.DS_Store
+.DS_Store?
+._.DS_Store
+._*
+.Trashes
+ehthumbs.db
+Thumbs.db
+.*.swp
+.tmp/
+docs/
+web/

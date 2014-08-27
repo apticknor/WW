@@ -1,0 +1,21 @@
+{
+  "name": "Wilson-And-Willys",
+  "author": {
+    "name": "Anthony Ticknor",
+    "email": "tony.ticknor@gmail.com",
+    "url": "anthonyticknor.com"
+  },
+  "version": "0.1.0",
+  "description": " ",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.7",
+    "gulp-scsslint": "0.0.5",
+    "gulp-notify": "^1.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apticknor/WW"
+  }
+}

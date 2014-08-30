@@ -73,7 +73,7 @@ linters:
     enabled: false # nerdery - don't use extend so not enabled
 
   PropertySortOrder:
-    enabled: true # nerdery - group by similar type
+    enabled: false # nerdery - group by similar type
     order: concentric # nerdery - needs config
     ignore_unspecified: true # nerdery - ignore any properties not specified in the order
 

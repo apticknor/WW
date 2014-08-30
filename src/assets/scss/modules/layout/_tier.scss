@@ -1,0 +1,11 @@
+// ----------------------------------------------------------------------------
+// Tier
+// ----------------------------------------------------------------------------
+.tier {
+    @include clearfix(); // always clear a tier in case other generated content has floats
+    background-color: $WHITE;
+}
+
+.tier_inverse {
+    background-color: $GREY;
+}

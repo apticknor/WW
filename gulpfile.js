@@ -9,6 +9,7 @@ var gulp        = require('gulp'),
     sass        = require('gulp-ruby-sass'),
     cssmin      = require('gulp-cssmin'),
     fileinclude = require('gulp-file-include'),
+    imagemin    = require('gulp-imagemin'),
 
     // ----------------------------------------------------------------------------
     // Paths
@@ -24,6 +25,8 @@ var gulp        = require('gulp'),
         sassSource: source + 'assets/scss/**/*.scss',
         sassFile:   source + 'assets/scss/modern.scss',
         sassTarget: build + 'assets/styles/',
+        imagesSource: source + 'assets/images/*',
+        imagesTarget: build + 'assets/images/'
     };
 
 // ----------------------------------------------------------------------------
@@ -37,7 +40,7 @@ gulp.task('scsslint', function () {
         .pipe(scsslint.reporter())
         .pipe(notify({
             onLast: true,
-            message: 'SCSS Lint Complete'
+            message: 'SCSS lint complete'
         }));
 });
 
@@ -45,7 +48,7 @@ gulp.task('clean-css', function () {
     return gulp.src(paths.sassTarget, { read: false })
         .pipe(clean())
         .pipe(notify({
-            message: 'CSS Clean Complete'
+            message: 'CSS clean complete'
         }));
 });
 
@@ -71,7 +74,15 @@ gulp.task('css', ['scsslint', 'clean-css'], function () {
 // ----------------------------------------------------------------------------
 // Markup Tasks
 // ----------------------------------------------------------------------------
-gulp.task('fileinclude', function() {
+gulp.task('clean-files', function() {
+    return gulp.src(paths.templatesTarget + '*.html', { read: false })
+        .pipe(clean())
+        .pipe(notify({
+            message: 'Template clean complete'
+        }));
+});
+
+gulp.task('fileinclude', ['clean-files'], function() {
     gulp.src(paths.templatesSource)
         .pipe(fileinclude({
             prefix: '@@',
@@ -84,11 +95,34 @@ gulp.task('fileinclude', function() {
         }));
 });
 
+// ----------------------------------------------------------------------------
+// Image Tasks
+// ----------------------------------------------------------------------------
+gulp.task('clean-images', function () {
+    return gulp.src(paths.imagesTarget, { read: false })
+        .pipe(clean())
+        .pipe(notify({
+            message: 'Image clean complete'
+        }));
+});
+
+gulp.task('imagemin', ['clean-images'], function () {
+    return gulp.src(paths.imagesSource)
+        .pipe(imagemin({
+            progressive: true,
+        }))
+        .pipe(gulp.dest(paths.imagesTarget))
+        .pipe(notify({
+            onLast: true,
+            message: 'Image minification task complete'
+        }));
+});
 
 // ----------------------------------------------------------------------------
 // Default Tasks
 // ----------------------------------------------------------------------------
 gulp.task('default', [
     'fileinclude',
-    'css'
+    'css',
+    'imagemin'
 ]);

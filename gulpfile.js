@@ -8,6 +8,7 @@ var gulp        = require('gulp'),
     scsslint    = require('gulp-scsslint'),
     sass        = require('gulp-ruby-sass'),
     cssmin      = require('gulp-cssmin'),
+    fileinclude = require('gulp-file-include'),
 
     // ----------------------------------------------------------------------------
     // Paths
@@ -18,6 +19,8 @@ var gulp        = require('gulp'),
     build = base + 'web/',
 
     paths = {
+        templatesSource: source + 'templates/*.html',
+        templatesTarget: build,
         sassSource: source + 'assets/scss/**/*.scss',
         sassFile:   source + 'assets/scss/modern.scss',
         sassTarget: build + 'assets/styles/',
@@ -66,8 +69,26 @@ gulp.task('css', ['scsslint', 'clean-css'], function () {
 });
 
 // ----------------------------------------------------------------------------
+// Markup Tasks
+// ----------------------------------------------------------------------------
+gulp.task('fileinclude', function() {
+    gulp.src(paths.templatesSource)
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+        .pipe(gulp.dest(paths.templatesTarget))
+        .pipe(notify({
+            onLast: true,
+            message: 'Template build task complete'
+        }));
+});
+
+
+// ----------------------------------------------------------------------------
 // Default Tasks
 // ----------------------------------------------------------------------------
 gulp.task('default', [
+    'fileinclude',
     'css'
 ]);

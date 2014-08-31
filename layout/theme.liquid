@@ -26,8 +26,12 @@
     <!-- Shopify content_for_header -->
     {{ content_for_header }}
 
+    <!-- Styles -->
+    {{ 'global.scss.css' | asset_url | stylesheet_tag }}
+
     <!-- Scripts -->
     {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' | script_tag }}
+    {{ 'global.js' | asset_url | script_tag }}
 </head>
 <body>
 

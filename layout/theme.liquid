@@ -38,7 +38,9 @@
     <div class="tier">
         <div class="wrapper">
             <div class="toolbar">
+                {% unless settings.promo_text == blank %}
                 <div class="toolbar-promo">{{ settings.promo_text }}</div>
+                {% endunless %}
                 <div class="toolbar-util">Cart ({{ cart.item_count }})</div>
             </div>
         </div>

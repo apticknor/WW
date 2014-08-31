@@ -5,3 +5,4 @@
 :theme_id:
 :ignore_files:
 - _static/
+- config/settings_data.json

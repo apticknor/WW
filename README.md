@@ -1,3 +1,3 @@
-# Wilson and Willy's Customized Shopify Theme
+# Wilson and Willy's Shopify Theme
 
 

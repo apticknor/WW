@@ -8,9 +8,9 @@
     <!-- SEO -->
     <title>
         {{ page_title }}
-        {% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}
-        {% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}
-        {% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+        {% if current_tags %} | tagged "{{ current_tags | join: ', ' }}"{% endif %}
+        {% if current_page != 1 %} | Page {{ current_page }}{% endif %}
+        {% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}
     </title>
 
     {% if page_description %}
@@ -38,8 +38,8 @@
     <div class="tier">
         <div class="wrapper">
             <div class="toolbar">
-                Free Shipping on orders over $50
-                Cart (0)
+                <div class="toolbar-promo">Free Shipping on orders over $50</div>
+                <div class="toolbar-util">Cart ({{ cart.item_count }})</div>
             </div>
         </div>
     </div>
@@ -50,7 +50,8 @@
                 <div class="masthead-brand">
                     <div class="logo">
                         <a href="{{ shop.url }}">
-                            <img src="logo.png" alt="Back to the {{ shop.name }} home page" />
+                            <img src="{{ 'logo-dark.png' | asset_url }}" alt="Back to the {{ shop.name }} home page" />
+                            <!-- <img src="{{ 'logo-white.png' | asset_url }}" alt="Back to the {{ shop.name }} home page" /> -->
                         </a>
                     </div>
                 </div>

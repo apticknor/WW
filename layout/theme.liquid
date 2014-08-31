@@ -33,15 +33,17 @@
     {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' | script_tag }}
     {{ 'global.js' | asset_url | script_tag }}
 </head>
-<body>
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
 
-    <div class="tier">
+    <div class="tier tier_accent2">
         <div class="wrapper">
             <div class="toolbar">
                 {% unless settings.promo_text == blank %}
                 <div class="toolbar-promo">{{ settings.promo_text }}</div>
                 {% endunless %}
-                <div class="toolbar-util">Cart ({{ cart.item_count }})</div>
+                <div class="toolbar-util">
+                    <a href="/cart">Cart ({{ cart.item_count }})</a>
+                </div>
             </div>
         </div>
     </div>

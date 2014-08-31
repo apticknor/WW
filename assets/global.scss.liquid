@@ -23,10 +23,11 @@ $ACCENT_2: {{ settings.accent_color_2 }};
 /* ---------------------------------------------------------------------
  Variables - Font Size
 ------------------------------------------------------------------------ */
-$FONT_SIZE_SM: 12px;
-$FONT_SIZE_MD: 16px;
-$FONT_SIZE_LG: 20px;
-$FONT_SIZE_XL: 24px;
+$FONT_SIZE_XS: {{ settings.font_size_xs }};
+$FONT_SIZE_SM: {{ settings.font_size_sm }};
+$FONT_SIZE_MD: {{ settings.font_size_md }};
+$FONT_SIZE_LG: {{ settings.font_size_lg }};
+$FONT_SIZE_XL: {{ settings.font_size_xl }};
 
 /* ---------------------------------------------------------------------
  Variables - Font Family
@@ -186,6 +187,13 @@ input[type="reset"]::-moz-focus-inner {
 }
 
 /* ---------------------------------------------------------------------
+ Reset - Shopify
+------------------------------------------------------------------------ */
+#admin_bar_iframe {
+    display: none !important; // hide the shopify admin bar always
+}
+
+/* ---------------------------------------------------------------------
  Base - Elements
 ------------------------------------------------------------------------ */
 body {
@@ -223,7 +231,17 @@ img, audio, canvas, video, picture {
  Landmark - Toolbar
 ------------------------------------------------------------------------ */
 .toolbar {
+    padding: $FONT_SIZE_SM 0;
     text-align: right;
+    font-size: $FONT_SIZE_SM;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: $WHITE;
+}
+
+.toolbar a {
+    color: $WHITE;
+    text-decoration: none;
 }
 
 /* ---------------------------------------------------------------------
@@ -244,8 +262,12 @@ img, audio, canvas, video, picture {
     background-color: $WHITE;
 }
 
-.tier_inverse {
+.tier_accent1 {
     background-color: $ACCENT_1;
+}
+
+.tier_accent2 {
+    background-color: $ACCENT_2;
 }
 
 /* ---------------------------------------------------------------------
@@ -254,6 +276,7 @@ img, audio, canvas, video, picture {
 .wrapper {
     max-width: $SITE_MAX_WIDTH;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 

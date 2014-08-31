@@ -35,54 +35,18 @@
 </head>
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
 
-    <div class="tier tier_accent2">
-        <div class="wrapper">
-            <div class="toolbar">
-                {% unless settings.promo_text == blank %}
-                <div class="toolbar-promo">{{ settings.promo_text }}</div>
-                {% endunless %}
-                <div class="toolbar-util">
-                    <a href="/cart">Cart ({{ cart.item_count }})</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include 'global-toolbar' %}
+    {% include 'global-masthead' %}
 
     <div class="tier">
         <div class="wrapper">
-            <div class="masthead" role="banner">
-                <div class="masthead-brand">
-                    <div class="logo">
-                        <a href="{{ shop.url }}">
-                            <img src="{{ 'logo-dark.png' | asset_url }}" alt="Back to the {{ shop.name }} home page" />
-                            <!-- <img src="{{ 'logo-white.png' | asset_url }}" alt="Back to the {{ shop.name }} home page" /> -->
-                        </a>
-                    </div>
-                </div>
-                <div class="masthead-nav">
-                    <div class="nav" role="navigation">
-                        <ul class="nav-list">
-                        {% for link in linklists.main-menu.links %}
-                            <li {% if link.active %}class="current"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
-                        {% endfor %}
-                        </ul>
-                    </div>
-                </div>
+            <div role="main">
+                {{ content_for_layout }}
             </div>
         </div>
     </div>
 
-    <div role="main">
-        {{ content_for_layout }}
-    </div>
-
-    <div role="contentinfo">
-        <ul>
-        {% for link in linklists.footer.links %}
-            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
+    {% include 'global-footer' %}
 
 </body>
 </html>

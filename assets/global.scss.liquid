@@ -2,8 +2,9 @@
  Variables - Colors
 ------------------------------------------------------------------------ */
 $WHITE: #ffffff;
-$GREY:  #bebebe;
-$DARK:  #474342;
+$BLACK: #000000;
+$ACCENT_1: {{ settings.accent_color_1 }};
+$ACCENT_2: {{ settings.accent_color_2 }};
 
 /* ---------------------------------------------------------------------
  Variables - Font Size
@@ -175,7 +176,7 @@ input[type="reset"]::-moz-focus-inner {
 ------------------------------------------------------------------------ */
 body {
     background-color: $WHITE;
-    color: $DARK;
+    color: $ACCENT_2;
     font-family: $SERIF;
     font-size: $FONT_SIZE_LG;
     line-height: 1.4;
@@ -230,7 +231,7 @@ img, audio, canvas, video, picture {
 }
 
 .tier_inverse {
-    background-color: $GREY;
+    background-color: $ACCENT_1;
 }
 
 /* ---------------------------------------------------------------------

@@ -1,5 +1,11 @@
 {
   "current": {
-    "customer_layout": "theme"
+    "customer_layout": "theme",
+    "accent_color_1": "#bebebe",
+    "accent_color_2": "#474342",
+    "promo_text": "Free Shipping on orders over $50",
+    "light_color": "#ffffff",
+    "grey_color": "bebebe",
+    "dark_color": "#474342"
   }
 }

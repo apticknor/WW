@@ -1,0 +1,44 @@
+// ----------------------------------------------------------------------------
+// Masthead
+// ----------------------------------------------------------------------------
+$masthead-INFOBAR_HEIGHT: 42px;
+$masthead-ZINDEX_OVER_STAGE: $ZINDEX_100;
+
+.masthead {
+    position: relative;
+}
+
+.masthead-brand {
+    position: absolute;
+    top: $masthead-INFOBAR_HEIGHT;
+    left: 0;
+    z-index: $masthead-ZINDEX_OVER_STAGE;
+}
+
+.masthead-nav {
+    position: absolute;
+    top: $masthead-INFOBAR_HEIGHT;
+    right: 0;
+    z-index: $masthead-ZINDEX_OVER_STAGE;
+}
+
+.masthead-infobar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $masthead-INFOBAR_HEIGHT;
+    z-index: $masthead-ZINDEX_OVER_STAGE;
+}
+
+.masthead-stage {
+    position: absolute;
+    top: $masthead-INFOBAR_HEIGHT;
+    left: 0;
+    right: 0;
+    background-position: center top; // background iamge supplied inline
+}
+
+.masthead-stage-cta {
+    display: none; // hide for now
+}

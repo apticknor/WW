@@ -17,7 +17,8 @@
     "gulp-clean": "^0.3.1",
     "gulp-cssmin": "^0.1.6",
     "gulp-rename": "^1.2.0",
-    "gulp-file-include": "^0.4.2"
+    "gulp-file-include": "^0.4.2",
+    "gulp-imagemin": "^1.0.1"
   },
   "repository": {
     "type": "git",

@@ -35,18 +35,36 @@
 </head>
 <body>
 
-    <div role="banner">
-        <h1>
-            <a href="{{ shop.url }}">{{ shop.name }}</a>
-        </h1>
+    <div class="tier">
+        <div class="wrapper">
+            <div class="toolbar">
+                Free Shipping on orders over $50
+                Cart (0)
+            </div>
+        </div>
     </div>
 
-    <div role="navigation">
-        <ul>
-        {% for link in linklists.main-menu.links %}
-            <li {% if link.active %}class="current"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
-        {% endfor %}
-        </ul>
+    <div class="tier">
+        <div class="wrapper">
+            <div class="masthead" role="banner">
+                <div class="masthead-brand">
+                    <div class="logo">
+                        <a href="{{ shop.url }}">
+                            <img src="logo.png" alt="Back to the {{ shop.name }} home page" />
+                        </a>
+                    </div>
+                </div>
+                <div class="masthead-nav">
+                    <div class="nav" role="navigation">
+                        <ul class="nav-list">
+                        {% for link in linklists.main-menu.links %}
+                            <li {% if link.active %}class="current"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div role="main">

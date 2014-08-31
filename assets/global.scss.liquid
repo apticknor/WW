@@ -39,6 +39,16 @@ $SERIF: Georgia, Times, "Times New Roman", serif;
  Variables - Site
 ------------------------------------------------------------------------ */
 $SITE_MAX_WIDTH: 1386px;
+$SITE_STD_UNIT: 20px;
+
+/* ---------------------------------------------------------------------
+ Variables - Breakpoints
+------------------------------------------------------------------------ */
+$BREAKPOINT_XS: 30em; // 480px
+$BREAKPOINT_SM: 37em; // 592px
+$BREAKPOINT_MD: 48em; // 768px
+$BREAKPOINT_LG: 60em; // 960px
+$BREAKPOINT_XL: 75em; // 1200px
 
 /* ---------------------------------------------------------------------
  Mixin - Visually Hidden
@@ -231,7 +241,7 @@ img, audio, canvas, video, picture {
  Landmark - Toolbar
 ------------------------------------------------------------------------ */
 .toolbar {
-    padding: $FONT_SIZE_SM 0;
+    padding: 14px 0 12px 0;
     text-align: right;
     font-size: $FONT_SIZE_SM;
     text-transform: uppercase;
@@ -242,6 +252,18 @@ img, audio, canvas, video, picture {
 .toolbar a {
     color: $WHITE;
     text-decoration: none;
+}
+
+.toolbar-promo {
+    display: none;
+    @media (min-width: $BREAKPOINT_MD) {
+        display: inline-block;
+        padding-right: $SITE_STD_UNIT;
+    }
+}
+
+.toolbar-util {
+    display: inline-block;
 }
 
 /* ---------------------------------------------------------------------
@@ -276,7 +298,7 @@ img, audio, canvas, video, picture {
 .wrapper {
     max-width: $SITE_MAX_WIDTH;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 $SITE_STD_UNIT;
 }
 
 

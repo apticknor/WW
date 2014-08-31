@@ -35,7 +35,31 @@
 </head>
 <body>
 
-{{ content_for_layout }}
+    <div role="banner">
+        <h1>
+            <a href="{{ shop.url }}">{{ shop.name }}</a>
+        </h1>
+    </div>
+
+    <div role="navigation">
+        <ul>
+        {% for link in linklists.main-menu.links %}
+            <li {% if link.active %}class="current"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <div role="main">
+        {{ content_for_layout }}
+    </div>
+
+    <div role="contentinfo">
+        <ul>
+        {% for link in linklists.footer.links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
 
 </body>
 </html>

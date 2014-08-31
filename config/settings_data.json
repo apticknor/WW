@@ -1,0 +1,8 @@
+{
+  "current": "WW",
+  "presets": {
+    "WW": {
+      "customer_layout": "theme"
+    }
+  }
+}

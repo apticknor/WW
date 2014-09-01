@@ -1,12 +1,33 @@
 
-    <div class="tier tier_accent1">
+    <div class="tier tier_transparent">
         <div class="wrapper">
-            <div role="contentinfo">
-                <ul>
-                {% for link in linklists.footer.links %}
-                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                {% endfor %}
-                </ul>
+            <div class="footer" role="contentinfo">
+                <div class="grid">
+                    <div class="grid-col grid-col_size1of4">
+                        211 Washington Ave S
+                        Minneapolis, Minn. 55408
+
+                        M-F 10am - 9pm
+                        Sat 11am - 10pm
+                        Sun 10am - 7pm
+                    </div>
+                    <div class="grid-col grid-col_size2of4">
+                        Join our newsletter for new releases and updates.
+                        <form action="#">
+                            <label class="isVisuallyHidden" for="emailAddress">E-mail Address</label>
+                            <input type="email" name="emailAddress" id="emailAddress" placeholder="Enter E-mail Address" />
+                            <button type="submit">Submit</button>
+                        </form>
+                        Expect quality over quantity.
+                    </div>
+                    <div class="grid-col grid-col_size1of4">
+                        <ul>
+                        {% for link in linklists.footer.links %}
+                            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -58,7 +58,7 @@ $FONT_SIZE_XL: {{ settings.font_size_xl }};
  Variables - Font Family
 ------------------------------------------------------------------------ */
 $SANS_SERIF: 'MisoLight', Helvetica, Arial, sans-serif;
-$SERIF: Georgia, Times, "Times New Roman", serif;
+$SERIF: Baskerville, "Baskerville Old Face", "Hoefler Text", Georgia, Times, "Times New Roman", serif;
 
 /* ---------------------------------------------------------------------
  Variables - Site
@@ -282,7 +282,7 @@ img, audio, canvas, video, picture {
 .toolbar {
     padding: 14px 0 12px 0;
     text-align: right;
-    font-size: $FONT_SIZE_SM;
+    font-size: $FONT_SIZE_MD;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: $WHITE;
@@ -316,6 +316,7 @@ img, audio, canvas, video, picture {
 .footer {
     padding: $SITE_STD_UNIT 0;
     color: $WHITE;
+    font-family: $SERIF;
     @media (min-width: $BREAKPOINT_MD) {
         padding-top: $SITE_STD_UNIT * 2;
         padding-bottom: $SITE_STD_UNIT * 2;
@@ -328,6 +329,13 @@ img, audio, canvas, video, picture {
 
 .footer a {
     color: $WHITE;
+}
+
+/* ---------------------------------------------------------------------
+ Module - Logo
+------------------------------------------------------------------------ */
+.logo {
+    width: 140px; // width set for inline svg
 }
 
 /* ---------------------------------------------------------------------

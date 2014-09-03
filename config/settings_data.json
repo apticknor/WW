@@ -3,6 +3,8 @@
     "customer_layout": "theme",
     "accent_color_1": "#bebebe",
     "accent_color_2": "#49515a",
+    "text_color": "#494949",
+    "link_color": "#494949",
     "font_size_xs": "12px",
     "font_size_sm": "14px",
     "font_size_md": "16px",

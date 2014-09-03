@@ -44,6 +44,8 @@ $WHITE: #ffffff;
 $BLACK: #000000;
 $ACCENT_1: {{ settings.accent_color_1 }};
 $ACCENT_2: {{ settings.accent_color_2 }};
+$TEXT_COLOR: {{ settings.text_color }};
+$LINK_COLOR: {{ settings.link_color }};
 
 /* ---------------------------------------------------------------------
  Variables - Font Size
@@ -233,20 +235,20 @@ input[type="reset"]::-moz-focus-inner {
 ------------------------------------------------------------------------ */
 body {
     background-color: $ACCENT_1; // this is the color of the footer only
-    color: $ACCENT_2;
+    color: $TEXT_COLOR;
     font-family: $SANS_SERIF;
     font-size: $FONT_SIZE_LG;
     line-height: 1.4;
 }
 
 a {
-    color: $ACCENT_2;
+    color: $LINK_COLOR;
     text-decoration: none;
 }
 
 a:hover,
 a:focus {
-    color: $ACCENT_2;
+    color: $LINK_COLOR;
 }
 
 /* ---------------------------------------------------------------------

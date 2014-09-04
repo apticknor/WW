@@ -382,24 +382,39 @@ img, audio, canvas, video, picture {
 }
 
 /* ---------------------------------------------------------------------
- Module - Grid
+ Module - footerGrid
 ------------------------------------------------------------------------ */
-.grid {
-    @include clearfix();
+.footerGrid {
+    display: table;
+    width: 100%;
 }
 
-.grid-col {
-    float: left;
-    @include box-sizing(border-box);
+.footerGrid-col {
+    display: table-cell;
+    width: 50%;
+    text-align: center;
+    vertical-align: middle;
 }
 
-.grid-col_size1of5 { width: 20%; }
-.grid-col_size1of4 { width: 25%; }
-.grid-col_size1of3 { width: 33%; }
-.grid-col_size2of5 { width: 40%; }
-.grid-col_size1of2,
-.grid-col_size2of4 { width: 50%; }
-.grid-col_size3of5 { width: 60%; }
-.grid-col_size2of3 { width: 66%; }
-.grid-col_size3of4 { width: 75%; }
-.grid-col_size4of5 { width: 80%; }
+.footerGrid-col:first-child {
+    width: 25%;
+    padding-right: $SITE_STD_UNIT*2;
+    border-right: 1px solid $WHITE;
+    text-align: left;
+
+}
+
+.footerGrid-col:last-child {
+    width: 25%;
+    padding-left: $SITE_STD_UNIT*2;
+    border-left: 1px solid $WHITE;
+    text-align: left;
+}
+
+
+
+
+
+
+
+

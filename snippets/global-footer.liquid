@@ -2,16 +2,16 @@
     <div class="tier tier_transparent">
         <div class="wrapper">
             <div class="footer" role="contentinfo">
-                <div class="grid">
-                    <div class="grid-col grid-col_size1of4">
-                        211 Washington Ave S
-                        Minneapolis, Minn. 55408
-
-                        M-F 10am - 9pm
-                        Sat 11am - 10pm
-                        Sun 10am - 7pm
+                <div class="footerGrid">
+                    <div class="footerGrid-col">
+                        211 Washington Ave N<br/>
+                        Minneapolis, Minn. 55408<br/>
+                        <br/>
+                        M-F 10am - 9pm<br/>
+                        Sat 11am - 10pm<br/>
+                        Sun 10am - 7pm<br/>
                     </div>
-                    <div class="grid-col grid-col_size2of4">
+                    <div class="footerGrid-col">
                         Join our newsletter for new releases and updates.
                         <form action="#">
                             <label class="isVisuallyHidden" for="emailAddress">E-mail Address</label>
@@ -20,7 +20,7 @@
                         </form>
                         Expect quality over quantity.
                     </div>
-                    <div class="grid-col grid-col_size1of4">
+                    <div class="footerGrid-col">
                         <ul>
                         {% for link in linklists.footer.links %}
                             <li><a href="{{ link.url }}">{{ link.title }}</a></li>

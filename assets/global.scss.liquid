@@ -180,10 +180,6 @@ table {
 }
 
 html {
-    overflow-y: scroll; // Always show a vertical scrollbar, even when there is no scrolling
-}
-
-html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
@@ -391,6 +387,57 @@ img, audio, canvas, video, picture {
 .nav-list a {
     font-size: $FONT_SIZE_LG;
     text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------------
+ Masthead Module - MobileNav
+------------------------------------------------------------------------ */
+.mobileNav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    background-color: rgba($BLACK,0.5);
+    overflow: auto;
+}
+
+.mobileNav-isVisible {
+    display: block;
+    @media(min-width: $BREAKPOINT_XS) {
+        display: none !important;
+    }
+}
+
+.mobileNav-panel {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    bottom: 0;
+    left: 0;
+    background-color: $ACCENT_2;
+    color: $WHITE;
+}
+
+.mobileNav-panel a {
+    color: $WHITE;
+}
+
+.mobileNav-panel-inner {
+    padding: $SITE_STD_UNIT;
+    background-color: $ACCENT_2;
+}
+
+.mobileNav-pannel-inner-close {
+    position: absolute;
+    top: 0;
+    right: $SITE_STD_UNIT;
+    font-size: 32px;
+}
+
+body.isNotScrollable {
+    overflow: hidden; // hides and disablest he main scroll when mobileNav is visible
 }
 
 /* ---------------------------------------------------------------------

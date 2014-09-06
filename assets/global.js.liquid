@@ -14,6 +14,7 @@ var WW = WW || {};
         APP.$window = $(window);
 
         APP.HasJS.init();
+        APP.ShowPanel.init();
     });
 
     /* ---------------------------------------------------------------------
@@ -28,6 +29,67 @@ var WW = WW || {};
                 .addClass('js')
                 .removeClass('no-js');
         }
+    };
+
+    /* ---------------------------------------------------------------------
+    ShowPanel
+
+    Toggle the class on the matching target for the mobile nav panel
+    ------------------------------------------------------------------------ */
+    APP.ShowPanel = {
+        $slidePanelTrigger: null,
+        $slidePanelTarget: null,
+        $slidePanelClose: null,
+        toggleClass: 'mobileNav-isVisible',
+        bodyClass: 'isNotScrollable',
+
+        init: function() {
+
+            $slidePanelTrigger = $('#js-slidePanelTrigger');
+            $slidePanelTarget = $('#js-slidePanelTarget');
+            $slidePanelClose = $('#js-slidePanelClose');
+
+            if (!$slidePanelTrigger.length || !$slidePanelTarget.length) {
+                return false;
+            }
+
+            this.$slidePanelTrigger = $slidePanelTrigger;
+            this.$slidePanelTarget = $slidePanelTarget;
+            this.$slidePanelClose = $slidePanelClose;
+
+            this.createEvents();
+        },
+
+        createEvents: function() {
+            var self = this;
+
+            this.$slidePanelTrigger.on('click', function(e) {
+                self.revealPanel();
+                e.preventDefault();
+            });
+
+            this.$slidePanelClose.on('click', function(e) {
+                self.hidePanel();
+                e.preventDefault();
+            });
+
+            $(document).on('keyup', function(e) {
+                if (e.keyCode === 27) {
+                    self.hidePanel();
+                }
+            });
+        },
+
+        revealPanel: function() {
+            this.$slidePanelTarget.addClass(this.toggleClass);
+            APP.$body.addClass(this.bodyClass);
+        },
+
+        hidePanel: function() {
+            this.$slidePanelTarget.removeClass(this.toggleClass);
+            APP.$body.removeClass(this.bodyClass);
+        }
+
     };
 
 }(jQuery, window, WW));

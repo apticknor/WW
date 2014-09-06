@@ -85,6 +85,7 @@ $SITE_STD_UNIT: 20px;
 ------------------------------------------------------------------------ */
 $BREAKPOINT_XS: 30em; // 480px
 $BREAKPOINT_SM: 37em; // 592px
+$BREAKPOINT_XM: 40em; // 640px
 $BREAKPOINT_MD: 48em; // 768px
 $BREAKPOINT_LG: 60em; // 960px
 $BREAKPOINT_XL: 75em; // 1200px
@@ -271,19 +272,6 @@ img, audio, canvas, video, picture {
 }
 
 /* ---------------------------------------------------------------------
- Base - Sticky Footer
------------------------------------------------------------------------- */
-.site {
-    display: flex;
-    min-height: 100%;
-    flex-direction: column;
-}
-
-.site-content {
-    flex: 1;
-}
-
-/* ---------------------------------------------------------------------
  Utility - Content Hiding
 ------------------------------------------------------------------------ */
 .isVisuallyHidden {
@@ -309,7 +297,7 @@ img, audio, canvas, video, picture {
 
 .toolbar-promo {
     display: none;
-    @media (min-width: $BREAKPOINT_MD) {
+    @media (min-width: $BREAKPOINT_SM) {
         display: inline-block;
         padding-right: $SITE_STD_UNIT;
     }
@@ -322,7 +310,73 @@ img, audio, canvas, video, picture {
 /* ---------------------------------------------------------------------
  Landmark - Masthead
 ------------------------------------------------------------------------ */
+.masthead {
+    @include clearfix();
+    padding: $SITE_STD_UNIT 0;
+}
 
+.masthead-brand {
+    @media (min-width: $BREAKPOINT_XS) {
+        float: left;
+        width: calc(40% - #{$SITE_STD_UNIT});
+        padding-right: $SITE_STD_UNIT;
+    }
+    @media (min-width: $BREAKPOINT_XM) {
+        width: 140px;
+    }
+}
+
+.masthead-nav {
+    display: none;
+    @media (min-width: $BREAKPOINT_XS) {
+        display: block;
+        float: left;
+        width: 60%;
+    }
+    @media (min-width: $BREAKPOINT_XM) {
+        float: none;
+        width: 100%;
+    }
+}
+
+/* ---------------------------------------------------------------------
+ Masthead Module - Logo
+------------------------------------------------------------------------ */
+.logo {
+    width: 120px; // width set for inline svg
+    margin: 0 auto; // center on small screens
+    @media (min-width: $BREAKPOINT_XM) {
+        width: 140px;
+        margin: 0;
+    }
+
+}
+
+/* ---------------------------------------------------------------------
+ Masthead Module - Nav
+------------------------------------------------------------------------ */
+.nav-list {
+    margin-top: $SITE_STD_UNIT;
+    font-size: 0;
+    @media(min-width: $BREAKPOINT_XM) {
+        text-align: right;
+    }
+}
+
+.nav-list > * {
+    display: inline-block;
+    @include box-sizing(border-box);
+    width: 50%;
+    padding-left: $SITE_STD_UNIT;
+    @media(min-width: $BREAKPOINT_XM) {
+        width: auto;
+    }
+}
+
+.nav-list a {
+    font-size: $FONT_SIZE_LG;
+    text-transform: uppercase;
+}
 
 /* ---------------------------------------------------------------------
  Landmark - Footer
@@ -346,11 +400,35 @@ img, audio, canvas, video, picture {
 }
 
 /* ---------------------------------------------------------------------
- Module - Logo
+ Footer Module - footerGrid
 ------------------------------------------------------------------------ */
-.logo {
-    width: 140px; // width set for inline svg
+.footerGrid {
+    display: table;
+    width: 100%;
 }
+
+.footerGrid-col {
+    display: table-cell;
+    width: 50%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.footerGrid-col:first-child {
+    width: 25%;
+    padding-right: $SITE_STD_UNIT*2;
+    border-right: 1px solid $WHITE;
+    text-align: left;
+
+}
+
+.footerGrid-col:last-child {
+    width: 25%;
+    padding-left: $SITE_STD_UNIT*2;
+    border-left: 1px solid $WHITE;
+    text-align: left;
+}
+
 
 /* ---------------------------------------------------------------------
  Module - Tier
@@ -381,35 +459,6 @@ img, audio, canvas, video, picture {
     padding: 0 $SITE_STD_UNIT;
 }
 
-/* ---------------------------------------------------------------------
- Module - footerGrid
------------------------------------------------------------------------- */
-.footerGrid {
-    display: table;
-    width: 100%;
-}
-
-.footerGrid-col {
-    display: table-cell;
-    width: 50%;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.footerGrid-col:first-child {
-    width: 25%;
-    padding-right: $SITE_STD_UNIT*2;
-    border-right: 1px solid $WHITE;
-    text-align: left;
-
-}
-
-.footerGrid-col:last-child {
-    width: 25%;
-    padding-left: $SITE_STD_UNIT*2;
-    border-left: 1px solid $WHITE;
-    text-align: left;
-}
 
 
 

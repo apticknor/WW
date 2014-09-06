@@ -85,7 +85,7 @@ $SITE_STD_UNIT: 20px;
 ------------------------------------------------------------------------ */
 $BREAKPOINT_XS: 30em; // 480px
 $BREAKPOINT_SM: 37em; // 592px
-$BREAKPOINT_XM: 42em; // 640px
+$BREAKPOINT_XM: 44em; // 704px
 $BREAKPOINT_MD: 48em; // 768px
 $BREAKPOINT_LG: 60em; // 960px
 $BREAKPOINT_XL: 75em; // 1200px
@@ -285,7 +285,7 @@ img, audio, canvas, video, picture {
     text-transform: uppercase;
     letter-spacing: 2px;
     color: $WHITE;
-    @media (min-width: $BREAKPOINT_XS) {
+    @media (min-width: $BREAKPOINT_MD) {
         font-size: $FONT_SIZE_MD;
     }
 }
@@ -367,7 +367,7 @@ img, audio, canvas, video, picture {
  Masthead Module - Nav
 ------------------------------------------------------------------------ */
 .nav-list {
-    margin-top: $SITE_STD_UNIT;
+    margin-top: $SITE_STD_UNIT*0.5;
     font-size: 0;
     @media(min-width: $BREAKPOINT_XM) {
         text-align: right;
@@ -388,8 +388,11 @@ img, audio, canvas, video, picture {
 }
 
 .nav-list a {
-    font-size: $FONT_SIZE_LG;
+    font-size: $FONT_SIZE_XL;
     text-transform: uppercase;
+    @media (min-width: $BREAKPOINT_MD) {
+        font-size: $FONT_SIZE_LG;
+    }
 }
 
 /* ---------------------------------------------------------------------

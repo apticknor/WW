@@ -1,17 +1,10 @@
 
     <div class="mobileNav" id="js-slidePanelTarget">
-        <div class="mobileNav-panel">
-            <div class="mobileNav-panel-inner">
-                <div class="mobileNav-pannel-inner-close">
-                    <a href="#" id="js-slidePanelClose">&#10799;</a>
-                </div>
-                <ul class="mobileNav-panel-inner-list">
-                {% for link in linklists.main-menu.links %}
-                    <li {% if link.active %}class="current"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
-                {% endfor %}
-                </ul>
-            </div>
-        </div>
+        <ul class="mobileNav-list">
+        {% for link in linklists.main-menu.links %}
+            <li {% if link.active %}class="current"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+        </ul>
     </div>
 
     <div class="tier">

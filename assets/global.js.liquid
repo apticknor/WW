@@ -39,7 +39,6 @@ var WW = WW || {};
     APP.ShowPanel = {
         $slidePanelTrigger: null,
         $slidePanelTarget: null,
-        $slidePanelClose: null,
         toggleClass: 'mobileNav-isVisible',
         bodyClass: 'isNotScrollable',
 
@@ -47,7 +46,6 @@ var WW = WW || {};
 
             $slidePanelTrigger = $('#js-slidePanelTrigger');
             $slidePanelTarget = $('#js-slidePanelTarget');
-            $slidePanelClose = $('#js-slidePanelClose');
 
             if (!$slidePanelTrigger.length || !$slidePanelTarget.length) {
                 return false;
@@ -55,7 +53,6 @@ var WW = WW || {};
 
             this.$slidePanelTrigger = $slidePanelTrigger;
             this.$slidePanelTarget = $slidePanelTarget;
-            this.$slidePanelClose = $slidePanelClose;
 
             this.createEvents();
         },
@@ -64,12 +61,7 @@ var WW = WW || {};
             var self = this;
 
             this.$slidePanelTrigger.on('click', function(e) {
-                self.revealPanel();
-                e.preventDefault();
-            });
-
-            this.$slidePanelClose.on('click', function(e) {
-                self.hidePanel();
+                self.togglePanel();
                 e.preventDefault();
             });
 
@@ -80,14 +72,20 @@ var WW = WW || {};
             });
         },
 
+        togglePanel: function() {
+            if (this.$slidePanelTarget.hasClass(this.toggleClass)) {
+                this.hidePanel();
+            } else {
+                this.revealPanel();
+            }
+        },
+
         revealPanel: function() {
             this.$slidePanelTarget.addClass(this.toggleClass);
-            APP.$body.addClass(this.bodyClass);
         },
 
         hidePanel: function() {
             this.$slidePanelTarget.removeClass(this.toggleClass);
-            APP.$body.removeClass(this.bodyClass);
         }
 
     };

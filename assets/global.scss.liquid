@@ -281,10 +281,13 @@ img, audio, canvas, video, picture {
 .toolbar {
     padding: 14px 0 12px 0;
     text-align: right;
-    font-size: $FONT_SIZE_MD;
+    font-size: $FONT_SIZE_LG;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: $WHITE;
+    @media (min-width: $BREAKPOINT_XS) {
+        font-size: $FONT_SIZE_MD;
+    }
 }
 
 .toolbar a {
@@ -393,51 +396,31 @@ img, audio, canvas, video, picture {
  Masthead Module - MobileNav
 ------------------------------------------------------------------------ */
 .mobileNav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: none;
-    background-color: rgba($BLACK,0.5);
-    overflow: auto;
-}
-
-.mobileNav-isVisible {
-    display: block;
+    height: 0;
+    overflow: hidden;
+    background-color: darken($ACCENT_2, 5%);
+    color: $WHITE;
     @media(min-width: $BREAKPOINT_XS) {
-        display: none !important;
+        height: 0 !important;
     }
 }
 
-.mobileNav-panel {
-    position: absolute;
-    top: 0;
-    right: 20px;
-    bottom: 0;
-    left: 0;
-    background-color: $ACCENT_2;
+.mobileNav-isVisible {
+    height: auto;
+}
+
+.mobileNav-list > li a {
+    display: block;
+    padding: #{$SITE_STD_UNIT*0.35} $SITE_STD_UNIT;
+    border-top: 1px solid $ACCENT_2;
     color: $WHITE;
+    font-size: $FONT_SIZE_LG;
+    text-transform: uppercase;
 }
 
-.mobileNav-panel a {
-    color: $WHITE;
-}
-
-.mobileNav-panel-inner {
-    padding: $SITE_STD_UNIT;
-    background-color: $ACCENT_2;
-}
-
-.mobileNav-pannel-inner-close {
-    position: absolute;
-    top: 0;
-    right: $SITE_STD_UNIT;
-    font-size: 32px;
-}
-
-body.isNotScrollable {
-    overflow: hidden; // hides and disablest he main scroll when mobileNav is visible
+.mobileNav-list > li a:hover,
+.mobileNav-list > li a:focus {
+    background-color: darken($ACCENT_2, 8%);
 }
 
 /* ---------------------------------------------------------------------

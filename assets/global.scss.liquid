@@ -257,6 +257,7 @@ body {
 a {
     color: $LINK_COLOR;
     text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 a:hover,
@@ -293,6 +294,13 @@ img, audio, canvas, video, picture {
 .toolbar a {
     color: $WHITE;
     text-decoration: none;
+}
+
+.toolbar-hamburger {
+    float: left;
+    @media (min-width: $BREAKPOINT_XS) {
+        display: none;
+    }
 }
 
 .toolbar-promo {

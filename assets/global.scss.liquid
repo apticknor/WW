@@ -85,7 +85,7 @@ $SITE_STD_UNIT: 20px;
 ------------------------------------------------------------------------ */
 $BREAKPOINT_XS: 30em; // 480px
 $BREAKPOINT_SM: 37em; // 592px
-$BREAKPOINT_XM: 40em; // 640px
+$BREAKPOINT_XM: 42em; // 640px
 $BREAKPOINT_MD: 48em; // 768px
 $BREAKPOINT_LG: 60em; // 960px
 $BREAKPOINT_XL: 75em; // 1200px
@@ -313,6 +313,10 @@ img, audio, canvas, video, picture {
 .masthead {
     @include clearfix();
     padding: $SITE_STD_UNIT 0;
+    @media(min-width: $BREAKPOINT_XM) {
+        border-bottom: 1px solid $TEXT_COLOR;
+        margin-bottom: $SITE_STD_UNIT*2;
+    }
 }
 
 .masthead-brand {
@@ -370,6 +374,9 @@ img, audio, canvas, video, picture {
     padding-left: $SITE_STD_UNIT;
     @media(min-width: $BREAKPOINT_XM) {
         width: auto;
+    }
+    @media(min-width: $BREAKPOINT_MD) {
+        padding-left: $SITE_STD_UNIT*1.5;
     }
 }
 

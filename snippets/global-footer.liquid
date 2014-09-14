@@ -28,18 +28,22 @@
                     </div>
                     <div class="footerGrid-col footerGrid-col_info">
 
-                        <a href="https://www.google.com/maps/place/211+Washington+Ave+N,+Minneapolis,+MN+55401/">
-                            <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                                <span class="isVisuallyHidden" itemprop="name">Wilson &amp; Willy's</span><br/>
-                                <span itemprop="streetAddress">211 Washington Ave N</span><br/>
-                                <span itemprop="addressLocality">Minneapolis</span>, <span itemprop="addressRegion">MN</span> <span itemprop="postalCode">55401</span>
-                            </span>
-                        </a>
+                        <div class="footerGrid-col_info-address">
+                            {% unless settings.maplink == blank %}<a href="{{ settings.maplink }}">{% endunless %}
+                                <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                    <span class="isVisuallyHidden" itemprop="name">{{ shop.name }}<br/></span>
+                                    <span itemprop="streetAddress">{{ settings.addressStreet }}</span><br/>
+                                    <span itemprop="addressLocality">{{ settings.addressCity }}</span>, <span itemprop="addressRegion">{{ settings.addressState }}</span> <span itemprop="postalCode">{{ settings.addressZip }}</span>
+                                </span>
+                            {% unless settings.maplink == blank %}</a>{% endunless %}
+                        </div>
 
-                        <br/><br/>
-                        <span itemprop="openingHours">M-F 10am - 9pm</span><br/>
-                        <span itemprop="openingHours">Sat 11am - 10pm</span><br/>
-                        <span itemprop="openingHours">Sun 10am - 7pm</span><br/>
+                        <div class="footerGrid-col_info-hours">
+                            {% unless settings.hoursline1 == blank %}<div itemprop="openingHours">{{ settings.hoursline1 }}</div>{% endunless %}
+                            {% unless settings.hoursline2 == blank %}<div itemprop="openingHours">{{ settings.hoursline2 }}</div>{% endunless %}
+                            {% unless settings.hoursline3 == blank %}<div itemprop="openingHours">{{ settings.hoursline3 }}</div>{% endunless %}
+                        </div>
+
                     </div>
                     <div class="footerGrid-col footerGrid-col_nav">
                         <ul>

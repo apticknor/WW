@@ -1,7 +1,6 @@
 {
   "current": {
-    "customer_layout": "theme",
-    "accent_color_1": "#bebebe",
+    "accent_color_1": "#b7b7b7",
     "accent_color_2": "#49515a",
     "text_color": "#494949",
     "link_color": "#494949",
@@ -11,6 +10,7 @@
     "font_size_lg": "20px",
     "font_size_xl": "24px",
     "promo_text": "Free Shipping on orders over $50",
+    "customer_layout": "theme",
     "light_color": "#ffffff",
     "grey_color": "bebebe",
     "dark_color": "#474342"

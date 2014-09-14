@@ -122,12 +122,23 @@ $BREAKPOINT_XL: 75em; // 1200px
 /* ---------------------------------------------------------------------
  Mixin - Box Sizing
 ------------------------------------------------------------------------ */
-@mixin box-sizing($box-model) {
-    -webkit-box-sizing: $box-model;
-    -moz-box-sizing: $box-model;
-    -ms-box-sizing: $box-model;
-    -o-box-sizing: $box-model;
-    box-sizing: $box-model;
+@mixin box-sizing($BOX_MODEL) {
+    -webkit-box-sizing: $BOX_MODEL;
+       -moz-box-sizing: $BOX_MODEL;
+            box-sizing: $BOX_MODEL;
+}
+
+/* ---------------------------------------------------------------------
+ Mixin - Border Radius
+------------------------------------------------------------------------ */
+@mixin border-radius($RADIUS...) {
+    -webkit-background-clip: padding-box;
+       -moz-background-clip: padding-box;
+         -o-background-clip: padding-box;
+            background-clip: padding-box; // stops color from going past the edge of the rounded element
+    -webkit-border-radius: $RADIUS;
+       -moz-border-radius: $RADIUS;
+            border-radius: $RADIUS;
 }
 
 /* ---------------------------------------------------------------------
@@ -273,6 +284,18 @@ img, audio, canvas, video, picture {
 ------------------------------------------------------------------------ */
 .isVisuallyHidden {
     @include is-visually-hidden();
+}
+
+.isMidScreen {
+    @media (max-width: $BREAKPOINT_SM) {
+        display: none;
+    }
+}
+
+.isWideScreen {
+    @media (max-width: $BREAKPOINT_MD) {
+        display: none;
+    }
 }
 
 /* ---------------------------------------------------------------------
@@ -433,13 +456,11 @@ img, audio, canvas, video, picture {
     padding: $SITE_STD_UNIT 0;
     color: $WHITE;
     font-family: $SERIF;
+    font-size: $FONT_SIZE_MD;
     @media (min-width: $BREAKPOINT_MD) {
         padding-top: $SITE_STD_UNIT * 2;
         padding-bottom: $SITE_STD_UNIT * 2;
-    }
-    @media (min-width: $BREAKPOINT_LG) {
-        padding-top: $SITE_STD_UNIT * 4;
-        padding-bottom: $SITE_STD_UNIT * 4;
+        font-size: $FONT_SIZE_LG;
     }
 }
 
@@ -450,33 +471,51 @@ img, audio, canvas, video, picture {
 /* ---------------------------------------------------------------------
  Footer Module - footerGrid
 ------------------------------------------------------------------------ */
+$footer-BORDER: 1px solid $WHITE;
+
 .footerGrid {
-    display: table;
-    width: 100%;
+
 }
 
 .footerGrid-col {
-    display: table-cell;
-    width: 50%;
+
+}
+
+.footerGrid-col_cta {
+    padding-bottom: $SITE_STD_UNIT*1.5; // slight larger than the rest because there isn't line-height causing extra space here.
+    margin-bottom: $SITE_STD_UNIT*1.5;
+    border-bottom: $footer-BORDER;
+    font-size: $FONT_SIZE_LG;
+}
+
+.footerGrid-col_info {
+    padding-bottom: $SITE_STD_UNIT*1.5;
+    margin-bottom: $SITE_STD_UNIT*1.5;
+    border-bottom: $footer-BORDER;
     text-align: center;
-    vertical-align: middle;
 }
 
-.footerGrid-col:first-child {
-    width: 25%;
-    padding-right: $SITE_STD_UNIT*2;
-    border-right: 1px solid $WHITE;
-    text-align: left;
-
+.footerGrid-col_nav {
+    text-align: center;
 }
 
-.footerGrid-col:last-child {
-    width: 25%;
-    padding-left: $SITE_STD_UNIT*2;
-    border-left: 1px solid $WHITE;
-    text-align: left;
+/* ---------------------------------------------------------------------
+ Footer Module - signupForm
+------------------------------------------------------------------------ */
+.signupForm {
+    position: relative;
+    max-width: 320px;
+    margin: 0 auto;
+    @media (min-width: $BREAKPOINT_SM) {
+        max-width: 420px;
+    }
 }
 
+.signupForm-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 
 /* ---------------------------------------------------------------------
  Module - Tier
@@ -507,11 +546,86 @@ img, audio, canvas, video, picture {
     padding: 0 $SITE_STD_UNIT;
 }
 
+/* ---------------------------------------------------------------------
+ Module - Field
+------------------------------------------------------------------------ */
+$field-btn-PADDING_TIGHT: 7px 10px;
+$field-btn-PADDING_LOOSE: 14px 20px;
+$field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
+$field-btn-FONT_SIZE_LG: $FONT_SIZE_LG;
 
+.field {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    @include box-sizing(border-box);
+    font-family: $SERIF;
+    line-height: normal;
+}
 
+.field_txt {
+    width: 100%;
+    padding: $field-btn-PADDING_TIGHT;
+    border: none;
+    background-color: $WHITE;
+    font-size: $field-btn-FONT_SIZE_SM;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    @include border-radius(0);
+    @media (min-width: $BREAKPOINT_MD) {
+        padding: $field-btn-PADDING_LOOSE;
+        font-size: $field-btn-FONT_SIZE_LG;
+    }
+}
 
+.field_txt_overlap {
+    padding-right: 74px;
+    @media (min-width: $BREAKPOINT_MD) {
+        padding-right: 120px;
+    }
+}
 
+/* ---------------------------------------------------------------------
+ Module - Button
+------------------------------------------------------------------------ */
+.btn {
+    margin: 0;
+    padding: $field-btn-PADDING_TIGHT;
+    border: none;
+    background-color: $ACCENT_2;
+    color: $WHITE;
+    font-size: $field-btn-FONT_SIZE_SM;
+    font-family: $SERIF;
+    line-height: normal;
+    cursor: pointer;
+    @media (min-width: $BREAKPOINT_MD) {
+        padding: $field-btn-PADDING_LOOSE;
+        font-size: $field-btn-FONT_SIZE_LG;
+    }
+}
 
+.btn_transparent {
+    background-color: transparent;
+    border-left: 1px solid $ACCENT_1;
+    color: $ACCENT_1;
+}
 
+/* ---------------------------------------------------------------------
+ Module - Section
+------------------------------------------------------------------------ */
+.section {
+    text-align: center;
+    @media (min-width: $BREAKPOINT_MD) {
+        text-align: left;
+    }
+}
 
+.section-hd {
+    margin-bottom: $SITE_STD_UNIT;
+}
+
+.section-bd_offset {
+    margin-bottom: 2px; // offset for when the body doesn't end with text
+}
 

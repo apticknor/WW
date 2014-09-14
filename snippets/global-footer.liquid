@@ -3,24 +3,38 @@
         <div class="wrapper">
             <div class="footer" role="contentinfo">
                 <div class="footerGrid">
-                    <div class="footerGrid-col">
+                    <div class="footerGrid-col footerGrid-col_cta">
+                        <div class="section">
+                            <div class="section-hd">
+                                Join our newsletter <span class="isMidScreen">for new releases and updates.</span>
+                            </div>
+                            <div class="section-bd section-bd_offset">
+                                <form method="post" action="#" novalidate>
+                                    <div class="signupForm">
+                                        <div class="signupForm-field">
+                                            <label class="isVisuallyHidden" for="emailAddress">E-mail Address</label>
+                                            <input class="field field_txt field_txt_overlap" type="email" name="emailAddress" id="emailAddress" placeholder="Enter E-mail Address" />
+                                        </div>
+                                        <div class="signupForm-btn">
+                                            <button class="btn btn_transparent" type="submit">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="section-ft">
+                                <span class="isWideScreen">Expect quality over quantity.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footerGrid-col footerGrid-col_info">
                         211 Washington Ave N<br/>
-                        Minneapolis, Minn. 55408<br/>
+                        Minneapolis, Minn. 55401<br/>
                         <br/>
                         M-F 10am - 9pm<br/>
                         Sat 11am - 10pm<br/>
                         Sun 10am - 7pm<br/>
                     </div>
-                    <div class="footerGrid-col">
-                        Join our newsletter for new releases and updates.
-                        <form action="#">
-                            <label class="isVisuallyHidden" for="emailAddress">E-mail Address</label>
-                            <input type="email" name="emailAddress" id="emailAddress" placeholder="Enter E-mail Address" />
-                            <button type="submit">Submit</button>
-                        </form>
-                        Expect quality over quantity.
-                    </div>
-                    <div class="footerGrid-col">
+                    <div class="footerGrid-col footerGrid-col_nav">
                         <ul>
                         {% for link in linklists.footer.links %}
                             <li><a href="{{ link.url }}">{{ link.title }}</a></li>

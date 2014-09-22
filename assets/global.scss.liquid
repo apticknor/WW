@@ -328,6 +328,21 @@ img, audio, canvas, video, picture {
     display: inline-block;
 }
 
+.toolbar-util-list > li {
+    display: inline-block;
+}
+
+.toolbar-util-list > li + li {
+    padding-left: $SITE_STD_UNIT;
+}
+
+.toolbar-util-list > li.toolbar-util-list-account {
+    display: none;
+    @media (min-width: $BREAKPOINT_XS) {
+        display: inline-block;
+    }
+}
+
 /* ---------------------------------------------------------------------
  Landmark - Masthead
 ------------------------------------------------------------------------ */

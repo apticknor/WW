@@ -5,11 +5,21 @@
                 <div class="toolbar-hamburger">
                     <a href="#" id="js-slidePanelTrigger">&#9776; Menu</a>
                 </div>
-                {% unless settings.promo_text == blank %}
-                <div class="toolbar-promo">{{ settings.promo_text }}</div>
-                {% endunless %}
                 <div class="toolbar-util">
-                    <a href="/cart">Cart ({{ cart.item_count }})</a>
+                    <ul class="toolbar-util-list">
+                    {% if shop.customer_accounts_enabled %}
+                        <li class="toolbar-util-list-account">
+                        {% if customer  %}
+                            <a href="/account">Account</a>
+                        {% else %}
+                            {{ 'Account' | customer_login_link }}
+                        {% endif %}
+                        </li>
+                    {% endif %}
+                        <li>
+                            <a href="/cart">Cart ({{ cart.item_count }})</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

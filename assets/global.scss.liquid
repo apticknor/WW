@@ -86,9 +86,12 @@ $SITE_STD_UNIT: 20px;
 $BREAKPOINT_XS: 30em; // 480px
 $BREAKPOINT_SM: 37em; // 592px
 $BREAKPOINT_XM: 44em; // 704px
-$BREAKPOINT_MD: 48em; // 768px
+$BREAKPOINT_MD: 50em; // 800px
+$BREAKPOINT_MX: 56em; // 896px
 $BREAKPOINT_LG: 60em; // 960px
-$BREAKPOINT_XL: 75em; // 1200px
+$BREAKPOINT_XL: 65em; // 1040px
+$BREAKPOINT_XXL: 75em; // 1200px
+$BREAKPOINT_XXXL: 82em; // 1312px
 
 /* ---------------------------------------------------------------------
  Mixin - Visually Hidden
@@ -286,18 +289,6 @@ img, audio, canvas, video, picture {
     @include is-visually-hidden();
 }
 
-.isMidScreen {
-    @media (max-width: $BREAKPOINT_SM) {
-        display: none;
-    }
-}
-
-.isWideScreen {
-    @media (max-width: $BREAKPOINT_MD) {
-        display: none;
-    }
-}
-
 /* ---------------------------------------------------------------------
  Landmark - Toolbar
 ------------------------------------------------------------------------ */
@@ -453,14 +444,13 @@ img, audio, canvas, video, picture {
  Landmark - Footer
 ------------------------------------------------------------------------ */
 .footer {
-    padding: $SITE_STD_UNIT 0;
+    padding: $SITE_STD_UNIT*1.5 0;
     color: $WHITE;
     font-family: $SERIF;
-    font-size: $FONT_SIZE_MD;
+    font-size: $FONT_SIZE_LG;
     @media (min-width: $BREAKPOINT_MD) {
-        padding-top: $SITE_STD_UNIT * 2;
-        padding-bottom: $SITE_STD_UNIT * 2;
-        font-size: $FONT_SIZE_LG;
+        padding-top: $SITE_STD_UNIT*2;
+        padding-bottom: $SITE_STD_UNIT*2;
     }
 }
 
@@ -474,33 +464,192 @@ img, audio, canvas, video, picture {
 $footer-BORDER: 1px solid $WHITE;
 
 .footerGrid {
-
-}
-
-.footerGrid-col {
-
+    @include clearfix();
 }
 
 .footerGrid-col_cta {
-    padding-bottom: $SITE_STD_UNIT*1.5; // slight larger than the rest because there isn't line-height causing extra space here.
+    padding-bottom: $SITE_STD_UNIT*1.75; // slight larger than the rest because there isn't line-height causing extra space here.
     margin-bottom: $SITE_STD_UNIT*1.5;
     border-bottom: $footer-BORDER;
-    font-size: $FONT_SIZE_LG;
+    @media (min-width: $BREAKPOINT_MD) {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: none;
+        float: left;
+        width: calc(100% - 420px); // 420 - 240 + 180 (column sizes)
+        position: relative;
+        left: 240px; // move into 2nd position
+    }
+    @media (min-width: $BREAKPOINT_XL) {
+        padding-top: 14px; // faux vertical alignment. YAY
+    }
 }
 
 .footerGrid-col_info {
-    padding-bottom: $SITE_STD_UNIT*1.5;
+    padding-bottom: $SITE_STD_UNIT*1.5; // slight larger than the rest because there isn't line-height causing extra space here.
     margin-bottom: $SITE_STD_UNIT*1.5;
     border-bottom: $footer-BORDER;
     text-align: center;
+    @media (min-width: $BREAKPOINT_SM) {
+        font-size: 0; // remove space between inline-block elements
+    }
+    @media (min-width: $BREAKPOINT_MD) {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: none;
+        float: left;
+        width: 240px;
+        position: relative;
+        left: calc(-100% + 420px); // move into 1st col position
+    }
+    @media (min-width: $BREAKPOINT_XL) {
+        text-align: left;
+    }
 }
 
 .footerGrid-col_info-address {
     margin-bottom: $SITE_STD_UNIT;
+    @media (min-width: $BREAKPOINT_SM) {
+        margin-bottom: 0;
+        display: inline-block;
+        width: 50%;
+        vertical-align: middle;
+        font-size: $FONT_SIZE_LG; // return font-size
+    }
+    @media (min-width: $BREAKPOINT_MD) {
+        display: block;
+        margin-bottom: $SITE_STD_UNIT;
+        width: auto;
+        font-size: $FONT_SIZE_MD;
+    }
+    @media (min-width: $BREAKPOINT_XL) {
+        font-size: $FONT_SIZE_LG;
+    }
+}
+
+.footerGrid-col_info-hours {
+    @media (min-width: $BREAKPOINT_SM) {
+        display: inline-block;
+        width: 50%;
+        vertical-align: middle;
+        font-size: $FONT_SIZE_LG; // return font-size
+    }
+    @media (min-width: $BREAKPOINT_MD) {
+        display: block;
+        width: auto;
+        font-size: $FONT_SIZE_MD;
+    }
+    @media (min-width: $BREAKPOINT_XL) {
+        font-size: $FONT_SIZE_LG;
+    }
 }
 
 .footerGrid-col_nav {
     text-align: center;
+    @media (min-width: $BREAKPOINT_MD) {
+        float: left;
+        width: 180px;
+    }
+    @media (min-width: $BREAKPOINT_XL) {
+        text-align: left;
+        width: 160px;
+        padding-left: 20px
+    }
+}
+
+.footerGrid-col_nav-list > li {
+    @media (min-width: $BREAKPOINT_SM) {
+        display: inline-block;
+        font-size: $FONT_SIZE_MD;
+    }
+    @media (min-width: $BREAKPOINT_MD) {
+        display: list-item;
+    }
+    @media (min-width: $BREAKPOINT_XL) {
+        font-size: $FONT_SIZE_LG;
+    }
+}
+
+.footerGrid-col_nav-list > li + li:before {
+    @media (min-width: $BREAKPOINT_SM) {
+        content: "\00a0\00a0\007C\00a0\00a0\00a0";
+    }
+    @media (min-width: $BREAKPOINT_MD) {
+        content: "";
+    }
+}
+
+/* ---------------------------------------------------------------------
+ Footer Grid Outer Module - footerGridOuter
+------------------------------------------------------------------------ */
+.footerGridOuter {
+    @media (min-width: $BREAKPOINT_MD) {
+        position: relative;
+        margin-left: -20px; // undo wrapper padding
+        margin-right: -20px; // undo wrapper padding
+    }
+    @media (min-width: $BREAKPOINT_MX) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.footerGridOuter:before {
+    // horizontal divider
+    @media (min-width: $BREAKPOINT_MD) {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 240px;
+        width: 1px;
+        background-color: $WHITE;
+    }
+    @media (min-width: $BREAKPOINT_MX) {
+        left: 260px;
+    }
+    @media (min-width: $BREAKPOINT_LG) {
+        left: 240px;
+    }
+    @media (min-width: $BREAKPOINT_XL) {
+        left: 260px;
+    }
+    @media (min-width: $BREAKPOINT_XXL) {
+        left: 280px;
+    }
+    @media (min-width: $BREAKPOINT_XXXL) {
+        left: 300px;
+    }
+}
+
+.footerGridOuter:after {
+    // horizontal divider
+    @media (min-width: $BREAKPOINT_MD) {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 180px;
+        width: 1px;
+        background-color: $WHITE;
+    }
+    @media (min-width: $BREAKPOINT_MX) {
+        right: 200px;
+    }
+    @media (min-width: $BREAKPOINT_LG) {
+        right: 180px;
+    }
+    @media (min-width: $BREAKPOINT_XL) {
+        right: 200px;
+    }
+    @media (min-width: $BREAKPOINT_XXL) {
+        right: 220px;
+    }
+    @media (min-width: $BREAKPOINT_XXXL) {
+        right: 240px;
+    }
 }
 
 /* ---------------------------------------------------------------------
@@ -513,12 +662,34 @@ $footer-BORDER: 1px solid $WHITE;
     @media (min-width: $BREAKPOINT_SM) {
         max-width: 420px;
     }
+    @media (min-width: $BREAKPOINT_MD) {
+        max-width: 280px;
+    }
+    @media (min-width: $BREAKPOINT_LG) {
+        max-width: 380px;
+    }
 }
 
 .signupForm-btn {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+/* ---------------------------------------------------------------------
+ Footer Module - newsletterLabel
+------------------------------------------------------------------------ */
+.newsletterLabel {
+    display: none;
+    @media (min-width: $BREAKPOINT_SM) {
+        display: inline;
+    }
+    @media (min-width: $BREAKPOINT_MD) {
+        display: none;
+    }
+    @media (min-width: $BREAKPOINT_LG) {
+        display: inline;
+    }
 }
 
 /* ---------------------------------------------------------------------
@@ -548,6 +719,19 @@ $footer-BORDER: 1px solid $WHITE;
     max-width: $SITE_MAX_WIDTH;
     margin: 0 auto;
     padding: 0 $SITE_STD_UNIT;
+    @media (min-width: $BREAKPOINT_XL) {
+        padding: 0 $SITE_STD_UNIT*2;
+    }
+}
+
+.wrapper_constrained {
+    max-width: 400px;
+    @media (min-width: $BREAKPOINT_SM) {
+        max-width: 500px;
+    }
+    @media (min-width: $BREAKPOINT_MD) {
+        max-width: $SITE_MAX_WIDTH;
+    }
 }
 
 /* ---------------------------------------------------------------------
@@ -577,17 +761,10 @@ $field-btn-FONT_SIZE_LG: $FONT_SIZE_LG;
     -moz-appearance: none;
     appearance: none;
     @include border-radius(0);
-    @media (min-width: $BREAKPOINT_MD) {
-        padding: $field-btn-PADDING_LOOSE;
-        font-size: $field-btn-FONT_SIZE_LG;
-    }
 }
 
 .field_txt_overlap {
     padding-right: 74px;
-    @media (min-width: $BREAKPOINT_MD) {
-        padding-right: 120px;
-    }
 }
 
 /* ---------------------------------------------------------------------
@@ -603,10 +780,6 @@ $field-btn-FONT_SIZE_LG: $FONT_SIZE_LG;
     font-family: $SERIF;
     line-height: normal;
     cursor: pointer;
-    @media (min-width: $BREAKPOINT_MD) {
-        padding: $field-btn-PADDING_LOOSE;
-        font-size: $field-btn-FONT_SIZE_LG;
-    }
 }
 
 .btn_transparent {
@@ -620,16 +793,19 @@ $field-btn-FONT_SIZE_LG: $FONT_SIZE_LG;
 ------------------------------------------------------------------------ */
 .section {
     text-align: center;
-    @media (min-width: $BREAKPOINT_MD) {
-        text-align: left;
-    }
 }
 
 .section-hd {
     margin-bottom: $SITE_STD_UNIT;
 }
 
-.section-bd_offset {
-    margin-bottom: 2px; // offset for when the body doesn't end with text
+.section-bd {
+    margin-bottom: $SITE_STD_UNIT;
 }
 
+.section-ft {
+    font-size: $FONT_SIZE_MD;
+    @media (min-width: $BREAKPOINT_LG) {
+        font-size: $FONT_SIZE_LG;
+    }
+}

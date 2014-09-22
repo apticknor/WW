@@ -1,59 +1,61 @@
 
     <div class="tier tier_transparent">
-        <div class="wrapper">
+        <div class="wrapper wrapper_constrained">
             <div class="footer" role="contentinfo">
-                <div class="footerGrid">
-                    <div class="footerGrid-col footerGrid-col_cta">
-                        <div class="section">
-                            <div class="section-hd">
-                                Join our newsletter <span class="isMidScreen">for new releases and updates.</span>
-                            </div>
-                            <div class="section-bd section-bd_offset">
-<form action="//wilsonandwillys.us9.list-manage.com/subscribe/post?u=7d8847d5ffe4fbbe1cd2ca15e&amp;id=ade0f7e4c5" method="post" target="_blank" novalidate>
-                                    <div style="position: absolute; left: -5000px;">
-                                        <input type="text" name="b_7d8847d5ffe4fbbe1cd2ca15e_ade0f7e4c5" tabindex="-1" value="">
-                                    </div>
-                                    <div class="signupForm">
-                                        <div class="signupForm-field">
-                                            <label class="isVisuallyHidden" for="email">E-mail Address</label>
-                                            <input class="field field_txt field_txt_overlap" type="email" name="EMAIL" id="email" placeholder="Enter E-mail Address" />
+                <div class="footerGridOuter">
+                    <div class="footerGrid">
+                        <div class="footerGrid-col footerGrid-col_cta">
+                            <div class="section">
+                                <div class="section-hd">
+                                    Join our newsletter <span class="newsletterLabel">for new releases and updates.</span>
+                                </div>
+                                <div class="section-bd">
+    <form action="//wilsonandwillys.us9.list-manage.com/subscribe/post?u=7d8847d5ffe4fbbe1cd2ca15e&amp;id=ade0f7e4c5" method="post" target="_blank" novalidate>
+                                        <div style="position: absolute; left: -5000px;">
+                                            <input type="text" name="b_7d8847d5ffe4fbbe1cd2ca15e_ade0f7e4c5" tabindex="-1" value="">
                                         </div>
-                                        <div class="signupForm-btn">
-                                            <button class="btn btn_transparent" type="submit">Submit</button>
+                                        <div class="signupForm">
+                                            <div class="signupForm-field">
+                                                <label class="isVisuallyHidden" for="email">E-mail Address</label>
+                                                <input class="field field_txt field_txt_overlap" type="email" name="EMAIL" id="email" placeholder="Enter E-mail Address" />
+                                            </div>
+                                            <div class="signupForm-btn">
+                                                <button class="btn btn_transparent" type="submit">Submit</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
+                                <div class="section-ft">
+                                    <span class="">Expect quality over quantity.</span>
+                                </div>
                             </div>
-                            <div class="section-ft">
-                                <span class="isWideScreen">Expect quality over quantity.</span>
+                        </div>
+                        <div class="footerGrid-col footerGrid-col_info">
+
+                            <div class="footerGrid-col_info-address">
+                                {% unless settings.maplink == blank %}<a href="{{ settings.maplink }}">{% endunless %}
+                                    <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                        <span class="isVisuallyHidden" itemprop="name">{{ shop.name }}<br/></span>
+                                        <span itemprop="streetAddress">{{ settings.addressStreet }}</span><br/>
+                                        <span itemprop="addressLocality">{{ settings.addressCity }}</span>, <span itemprop="addressRegion">{{ settings.addressState }}</span> <span itemprop="postalCode">{{ settings.addressZip }}</span>
+                                    </span>
+                                {% unless settings.maplink == blank %}</a>{% endunless %}
                             </div>
-                        </div>
-                    </div>
-                    <div class="footerGrid-col footerGrid-col_info">
 
-                        <div class="footerGrid-col_info-address">
-                            {% unless settings.maplink == blank %}<a href="{{ settings.maplink }}">{% endunless %}
-                                <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                                    <span class="isVisuallyHidden" itemprop="name">{{ shop.name }}<br/></span>
-                                    <span itemprop="streetAddress">{{ settings.addressStreet }}</span><br/>
-                                    <span itemprop="addressLocality">{{ settings.addressCity }}</span>, <span itemprop="addressRegion">{{ settings.addressState }}</span> <span itemprop="postalCode">{{ settings.addressZip }}</span>
-                                </span>
-                            {% unless settings.maplink == blank %}</a>{% endunless %}
-                        </div>
+                            <div class="footerGrid-col_info-hours">
+                                {% unless settings.hoursline1 == blank %}<div itemprop="openingHours">{{ settings.hoursline1 }}</div>{% endunless %}
+                                {% unless settings.hoursline2 == blank %}<div itemprop="openingHours">{{ settings.hoursline2 }}</div>{% endunless %}
+                                {% unless settings.hoursline3 == blank %}<div itemprop="openingHours">{{ settings.hoursline3 }}</div>{% endunless %}
+                            </div>
 
-                        <div class="footerGrid-col_info-hours">
-                            {% unless settings.hoursline1 == blank %}<div itemprop="openingHours">{{ settings.hoursline1 }}</div>{% endunless %}
-                            {% unless settings.hoursline2 == blank %}<div itemprop="openingHours">{{ settings.hoursline2 }}</div>{% endunless %}
-                            {% unless settings.hoursline3 == blank %}<div itemprop="openingHours">{{ settings.hoursline3 }}</div>{% endunless %}
                         </div>
-
-                    </div>
-                    <div class="footerGrid-col footerGrid-col_nav">
-                        <ul>
-                        {% for link in linklists.footer.links %}
-                            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                        {% endfor %}
-                        </ul>
+                        <div class="footerGrid-col footerGrid-col_nav">
+                            <ul class="footerGrid-col_nav-list">
+                            {% for link in linklists.footer.links %}
+                                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

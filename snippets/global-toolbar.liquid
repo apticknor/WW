@@ -1,7 +1,7 @@
 
-    <div class="tier tier_accent2">
+    <div class="tier {% unless template == "index" and settings.reverse_txt == true %}tier_accent2{% endunless %}">
         <div class="wrapper">
-            <div class="toolbar">
+            <div class="toolbar {% if template == "index" and settings.reverse_txt == true %}toolbar_fancy{% endif %}">
                 <div class="toolbar-hamburger">
                     <a href="#" id="js-slidePanelTrigger">&#9776; Menu</a>
                 </div>

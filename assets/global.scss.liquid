@@ -309,6 +309,10 @@ img, audio, canvas, video, picture {
     text-decoration: none;
 }
 
+.toolbar_fancy a {
+    color: $TEXT_COLOR;
+}
+
 .toolbar-hamburger {
     float: left;
     @media (min-width: $BREAKPOINT_XS) {
@@ -353,6 +357,11 @@ img, audio, canvas, video, picture {
         border-bottom: 1px solid $TEXT_COLOR;
         margin-bottom: $SITE_STD_UNIT*2;
     }
+}
+
+.masthead_fancy {
+    border-bottom: none;
+    margin-bottom: none;
 }
 
 .masthead-brand {
@@ -424,6 +433,10 @@ img, audio, canvas, video, picture {
     }
 }
 
+.nav-list_light a {
+    color: $WHITE;
+}
+
 /* ---------------------------------------------------------------------
  Masthead Module - MobileNav
 ------------------------------------------------------------------------ */
@@ -454,6 +467,23 @@ img, audio, canvas, video, picture {
 .mobileNav-list > li a:focus {
     background-color: darken($ACCENT_2, 8%);
 }
+
+// fancy style!
+.mobileNav_fancy {
+    background-color: darken($WHITE, 5%);
+    color: $TEXT_COLOR;
+}
+
+.mobileNav-list_fancy > li a {
+    border-top: 1px solid lighten($TEXT_COLOR, 50%);
+    color: $TEXT_COLOR;
+}
+
+.mobileNav-list_fancy > li a:hover,
+.mobileNav-list_fancy > li a:focus {
+    background-color: darken($WHITE, 8%);
+}
+
 
 /* ---------------------------------------------------------------------
  Landmark - Footer
@@ -725,6 +755,21 @@ $footer-BORDER: 1px solid $WHITE;
 
 .tier_transparent {
     background-color: transparent;
+}
+
+// for the home page hero image
+.tier_hero {
+    background-repeat: no-repeat;
+    background-size: cover;
+    @media(min-width: $BREAKPOINT_XM) {
+        height: 400px
+    }
+    @media(min-width: $BREAKPOINT_MD) {
+        height: 500px
+    }
+    @media(min-width: $BREAKPOINT_LG) {
+        height: 600px;
+    }
 }
 
 /* ---------------------------------------------------------------------

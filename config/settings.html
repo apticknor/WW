@@ -1,43 +1,31 @@
 <p>Theme settings allow designers to provide an easy way for any user to customize the look and feel of their shop without having to delve into HTML or CSS code. Please see our <a title="Open Theme Settings documentation in a new window" target="docs" href="http://docs.shopify.com/themes/theme-templates/settings">help page on theme settings</a> to learn more about how you can make your theme customizable.</p>
 
 <fieldset>
-    <legend>Brand Settings</legend>
+    <legend>Homepage Settings</legend>
     <table>
         <tr>
-            <th><label for="accent_color_1">Accent Color 1</label></th>
-            <td><input type="text" name="accent_color_1" class="color" /></td>
+            <th>
+                <label for="enable_hero_image">Enable Hero Image</label>
+            </th>
+            <td>
+                <input type="checkbox" name="enable_hero_image" value="1" />
+            </td>
         </tr>
         <tr>
-            <th><label for="accent_color_2">Accent Color 2</label></th>
-            <td><input type="text" name="accent_color_2" class="color" /></td>
+            <th>
+                <label for="hero_image_home">Hero Image (1600x840 jpg)</label>
+            </th>
+            <td>
+                <input type="file" name="hero_image_home.jpg" data-max-width="1600" data-max-height="840" />
+            </td>
         </tr>
         <tr>
-            <th><label for="text_color">Text Color</label></th>
-            <td><input type="text" name="text_color" class="color" /></td>
-        </tr>
-        <tr>
-            <th><label for="link_color">Link Color</label></th>
-            <td><input type="text" name="link_color" class="color" /></td>
-        </tr>
-        <tr>
-            <th><label for="font_size_xs">Font Size - Extra Small</label></th>
-            <td><input type="text" name="font_size_xs" /></td>
-        </tr>
-        <tr>
-            <th><label for="font_size_sm">Font Size - Small</label></th>
-            <td><input type="text" name="font_size_sm" /></td>
-        </tr>
-        <tr>
-            <th><label for="font_size_md">Font Size - Medium</label></th>
-            <td><input type="text" name="font_size_md" /></td>
-        </tr>
-        <tr>
-            <th><label for="font_size_lg">Font Size - Large</label></th>
-            <td><input type="text" name="font_size_lg" /></td>
-        </tr>
-        <tr>
-            <th><label for="font_size_xl">Font Size - Extra Large</label></th>
-            <td><input type="text" name="font_size_xl" /></td>
+            <th>
+                <label for="reverse_txt">Reverse Text Colors</label>
+            </th>
+            <td>
+                <input type="checkbox" name="reverse_txt" value="1" />
+            </td>
         </tr>
     </table>
 </fieldset>
@@ -81,25 +69,43 @@
 </fieldset>
 
 <fieldset>
-    <legend>Toolbar Settings</legend>
+    <legend>Brand Settings</legend>
     <table>
         <tr>
-            <th><label for="promo_text">Promo Text</label></th>
-            <td><input type="text" name="promo_text" size="50" /></td>
+            <th><label for="accent_color_1">Accent Color 1</label></th>
+            <td><input type="text" name="accent_color_1" class="color" /></td>
         </tr>
-    </table>
-</fieldset>
-
-<fieldset>
-    <legend>Masthead Settings</legend>
-    <table>
-
-    </table>
-</fieldset>
-
-<fieldset>
-    <legend>Footer Settings</legend>
-    <table>
-
+        <tr>
+            <th><label for="accent_color_2">Accent Color 2</label></th>
+            <td><input type="text" name="accent_color_2" class="color" /></td>
+        </tr>
+        <tr>
+            <th><label for="text_color">Text Color</label></th>
+            <td><input type="text" name="text_color" class="color" /></td>
+        </tr>
+        <tr>
+            <th><label for="link_color">Link Color</label></th>
+            <td><input type="text" name="link_color" class="color" /></td>
+        </tr>
+        <tr>
+            <th><label for="font_size_xs">Font Size - Extra Small</label></th>
+            <td><input type="text" name="font_size_xs" /></td>
+        </tr>
+        <tr>
+            <th><label for="font_size_sm">Font Size - Small</label></th>
+            <td><input type="text" name="font_size_sm" /></td>
+        </tr>
+        <tr>
+            <th><label for="font_size_md">Font Size - Medium</label></th>
+            <td><input type="text" name="font_size_md" /></td>
+        </tr>
+        <tr>
+            <th><label for="font_size_lg">Font Size - Large</label></th>
+            <td><input type="text" name="font_size_lg" /></td>
+        </tr>
+        <tr>
+            <th><label for="font_size_xl">Font Size - Extra Large</label></th>
+            <td><input type="text" name="font_size_xl" /></td>
+        </tr>
     </table>
 </fieldset>

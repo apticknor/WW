@@ -1,0 +1,24 @@
+{% paginate collection.products by 12 %}
+
+    {{ collection.title }}
+
+    {% if collection.description.size > 0 %}
+        {{ collection.description }}
+    {% endif %}
+
+    {% for product in collection.products %}
+        <a href="{{ product.url | within: collection }}">
+            <img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" />
+        </a>
+        <a href="{{ product.url | within: collection }}">
+            {{ product.title }}
+        </a>
+        {{ product.price | money }}
+        {{ product.vendor }}
+    {% endfor %}
+
+    {% if paginate.pages > 1 %}
+        {{ paginate | default_pagination }}
+    {% endif %}
+
+{% endpaginate %}

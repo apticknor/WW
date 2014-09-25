@@ -1,0 +1,17 @@
+{% paginate collections by 8 %}
+    {% for collection in collections %}
+        <a href="{{ collection.url }}">
+        {% if collection.image %}
+            <img src="{{ collection.image.src | collection_img_url: 'large' }}" alt="{{ collection.image.alt | escape }}" />
+        {% else %}
+            <img src="{{ collection.products.first.featured_image.src | product_img_url: 'large' }}" alt="{{ collection.title | escape }}" />
+        {% endif %}
+        </a>
+        <a href="{{ collection.url }}">
+        {{ collection.title }}
+        </a>
+    {% endfor %}
+    {% if paginate.pages > 1 %}
+        {{ paginate | default_pagination }}
+    {% endif %}
+{% endpaginate %}

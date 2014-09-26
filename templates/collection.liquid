@@ -1,21 +1,25 @@
 {% paginate collection.products by 12 %}
 
-    {{ collection.title }}
+    <h1 class="sectionTitle">{{ collection.title }}</h1>
 
     {% if collection.description.size > 0 %}
-        {{ collection.description }}
+        <div class="userContent">
+            {{ collection.description }}
+        </div>
     {% endif %}
 
-    {% for product in collection.products %}
-        <a href="{{ product.url | within: collection }}">
-            <img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" />
-        </a>
-        <a href="{{ product.url | within: collection }}">
-            {{ product.title }}
-        </a>
-        {{ product.price | money }}
-        {{ product.vendor }}
-    {% endfor %}
+    <ul class="blocks blocks_std">
+        {% for product in collection.products %}
+        <li>
+            <a href="{{ product.url | within: collection }}">
+                <img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" />
+                {{ product.title }} - {{ product.price | money }}
+            </a>
+            <br/>
+            {{ product.vendor | link_to_vendor }}
+        </li>
+        {% endfor %}
+    </ul>
 
     {% if paginate.pages > 1 %}
         {{ paginate | default_pagination }}

@@ -67,6 +67,7 @@ $FONT_SIZE_SM: {{ settings.font_size_sm }};
 $FONT_SIZE_MD: {{ settings.font_size_md }};
 $FONT_SIZE_LG: {{ settings.font_size_lg }};
 $FONT_SIZE_XL: {{ settings.font_size_xl }};
+$FONT_SIZE_XXL: {{ settings.font_size_xxl }};
 
 /* ---------------------------------------------------------------------
  Variables - Font Family
@@ -353,8 +354,8 @@ img, audio, canvas, video, picture {
 .masthead {
     @include clearfix();
     padding: $SITE_STD_UNIT 0;
+    border-bottom: 1px solid $TEXT_COLOR;
     @media(min-width: $BREAKPOINT_XM) {
-        border-bottom: 1px solid $TEXT_COLOR;
         margin-bottom: $SITE_STD_UNIT*2;
     }
 }
@@ -868,4 +869,61 @@ $field-btn-FONT_SIZE_LG: $FONT_SIZE_LG;
     @media (min-width: $BREAKPOINT_LG) {
         font-size: $FONT_SIZE_LG;
     }
+}
+
+/* ---------------------------------------------------------------------
+ Module - Blocks
+------------------------------------------------------------------------ */
+$blocks-SPACING: 20px;
+$blocks-MIN_BLOCKS: 2;
+$blocks-MAX_BLOCKS: 4;
+
+.blocks {
+    margin: #{-$blocks-SPACING} 0 0 #{-$blocks-SPACING}; // fix padding offset created by first row and first item in each row
+    font-size: 0; // remove the extra space between inline-block elements.
+}
+
+.blocks > * {
+    @include box-sizing(border-box);
+    display: inline-block;
+    vertical-align: top;
+    padding: $blocks-SPACING 0 0 $blocks-SPACING; // space items and rows
+    font-size: $FONT_SIZE_LG; // reset the font-size after removing it to fix inline-block
+}
+
+.blocks_std > * {
+    width: 100%;
+    @media (min-width: $BREAKPOINT_SM) {
+        width: 50%;
+    }
+    @media (min-width: $BREAKPOINT_LG) {
+        width: 25%;
+    }
+}
+
+/* ---------------------------------------------------------------------
+ Module - SectionTitle
+------------------------------------------------------------------------ */
+.sectionTitle {
+    position: relative;
+    display: inline-block;
+    border: 1px solid;
+    padding: 6px 30px;
+    font-size: $FONT_SIZE_XL;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    @media (min-width: $BREAKPOINT_MD) {
+        font-size: $FONT_SIZE_XXL;
+    }
+}
+
+.sectionTitle:after {
+    content: " ";
+    position: absolute;
+    bottom: -9px;
+    left: calc(50% - 15px);
+    width: 26px;
+    height: 16px;
+    background: $WHITE url("arrow-down.svg") center center no-repeat;
+    background-size: 20px
 }

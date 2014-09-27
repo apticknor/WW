@@ -354,16 +354,8 @@ img, audio, canvas, video, picture {
 .masthead {
     @include clearfix();
     padding: $SITE_STD_UNIT 0;
-    border-bottom: 1px solid $TEXT_COLOR;
-    @media(min-width: $BREAKPOINT_XM) {
-        margin-bottom: $SITE_STD_UNIT*2;
-    }
 }
 
-.masthead_fancy {
-    border-bottom: none;
-    margin-bottom: none;
-}
 
 .masthead-brand {
     @media (min-width: $BREAKPOINT_XS) {
@@ -739,6 +731,28 @@ $footer-BORDER: 1px solid $WHITE;
 }
 
 /* ---------------------------------------------------------------------
+ Footer Module - FooterSection
+------------------------------------------------------------------------ */
+.footerSection {
+    text-align: center;
+}
+
+.footerSection-hd {
+    margin-bottom: $SITE_STD_UNIT;
+}
+
+.footerSection-bd {
+    margin-bottom: $SITE_STD_UNIT;
+}
+
+.footerSection-ft {
+    font-size: $FONT_SIZE_MD;
+    @media (min-width: $BREAKPOINT_LG) {
+        font-size: $FONT_SIZE_LG;
+    }
+}
+
+/* ---------------------------------------------------------------------
  Module - Tier
 ------------------------------------------------------------------------ */
 .tier {
@@ -850,31 +864,9 @@ $field-btn-FONT_SIZE_LG: $FONT_SIZE_LG;
 }
 
 /* ---------------------------------------------------------------------
- Module - Section
------------------------------------------------------------------------- */
-.section {
-    text-align: center;
-}
-
-.section-hd {
-    margin-bottom: $SITE_STD_UNIT;
-}
-
-.section-bd {
-    margin-bottom: $SITE_STD_UNIT;
-}
-
-.section-ft {
-    font-size: $FONT_SIZE_MD;
-    @media (min-width: $BREAKPOINT_LG) {
-        font-size: $FONT_SIZE_LG;
-    }
-}
-
-/* ---------------------------------------------------------------------
  Module - Blocks
 ------------------------------------------------------------------------ */
-$blocks-SPACING: 20px;
+$blocks-SPACING: $SITE_STD_UNIT*2;
 $blocks-MIN_BLOCKS: 2;
 $blocks-MAX_BLOCKS: 4;
 
@@ -926,4 +918,47 @@ $blocks-MAX_BLOCKS: 4;
     height: 16px;
     background: $WHITE url("arrow-down.svg") center center no-repeat;
     background-size: 20px
+}
+
+/* ---------------------------------------------------------------------
+ Module - Page
+------------------------------------------------------------------------ */
+.pageWrapper {
+    border-top: 1px solid $TEXT_COLOR;
+    padding: #{$SITE_STD_UNIT*2} 0;
+}
+
+.pageWrapper-hd {
+    text-align: center;
+    margin-bottom: $SITE_STD_UNIT*2
+}
+
+/* ---------------------------------------------------------------------
+ Module - Panel
+------------------------------------------------------------------------ */
+.panel {
+    text-align: center;
+}
+
+/* ---------------------------------------------------------------------
+ Module - Hdg
+------------------------------------------------------------------------ */
+.hdg {
+    text-transform: uppercase;
+}
+
+.hdg_xl {
+    font-size: $FONT_SIZE_XL;
+}
+
+.hdg_lg {
+    font-size: $FONT_SIZE_LG;
+}
+
+.hdg_md {
+    font-size: $FONT_SIZE_MD;
+}
+
+.hdg_sm {
+    font-size: $FONT_SIZE_SM;
 }

@@ -1,0 +1,85 @@
+<div class="pageWrapper">
+    <div class="pageWrapper-hd">
+        {% if current_tags %}
+            <h1 class="sectionTitle">{{ blog.title | link_to: blog.url }} <span class="quiet">&raquo;</span> {{ current_tags.first }}</h1>
+        {% else %}
+            <h1 class="sectionTitle">{{ blog.title }}</h1>
+        {% endif %}
+    </div>
+    <div class="pageWrapper-bd">
+
+        {% paginate blog.articles by 12 %}
+
+            {% for article in blog.articles %}
+
+                {% assign article_has_image = false %}
+                {% assign img_tag = '<' | append: 'img' %}
+
+                {% if article.excerpt_or_content contains img_tag %}
+
+                    {% assign src = article.excerpt_or_content | split: 'src="' %}
+                    {% assign src = src[1] | split: '"' | first %}
+
+                    {% if src %}
+
+                        {% assign article_has_image = true %}
+                        {% assign image_src = src | replace: '_small', '' | replace: '_compact', '' | replace: '_medium', '' | replace: '_large', '' | replace: '_grande', '' %}
+
+                    {% endif %}
+
+                {% endif %}
+
+                <div>
+                    <h2>
+                        <a href="{{ article.url }}">{{ article.title }}</a>
+                    </h2>
+                    <h3>
+                        <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+                            {{ article.published_at | date: '%b %d, %Y' }}
+                        </time>
+                    </h3>
+
+                    {% if article_has_image %}
+                    <a href="{{ article.url }}">
+                        <img src="{{ image_src }}" />
+                    </a>
+                    {% endif %}
+
+                    {% if article.excerpt.size > 0 %}
+                        <div>
+                            {{ article.excerpt }}
+                        </div>
+                    {% else %}
+                        <p>{{ article.content | strip_html | truncatewords: 120 }}</p>
+                    {% endif %}
+                </div>
+
+                <div>
+                    <a class="blog-read-more" href="{{ article.url }}">Read more</a>
+                </div>
+
+                {% if blog.comments_enabled? and article.comments_count > 0 %}
+                    <a href="{{ article.url }}#comments">
+                        {{ article.comments_count }} {{ article.comments_count | pluralize: 'comment','comments' }}
+                    </a>
+                {% endif %}
+
+                {% if article.tags.size > 0 %}
+                    {% for tag in article.tags %}
+                        <a href="{{ blog.url }}/tagged/{{ tag | handle }}">
+                            {{ tag }}
+                        </a>
+                        {% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                {% endif %}
+
+            {% endfor %}
+
+            {% if paginate.pages > 1 %}
+                {{ paginate | default_pagination | replace: 'Previous', 'Newer articles' | replace: 'Next', 'Older articles' }}
+            {% endif %}
+
+        {% endpaginate %}
+
+    </div>
+</div>

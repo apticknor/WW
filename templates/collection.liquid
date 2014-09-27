@@ -1,28 +1,45 @@
-{% paginate collection.products by 12 %}
-
-    <h1 class="sectionTitle">{{ collection.title }}</h1>
-
-    {% if collection.description.size > 0 %}
-        <div class="userContent">
-            {{ collection.description }}
+<div class="pageWrapper">
+    {% paginate collection.products by 12 %}
+        <div class="pageWrapper-hd">
+            <h1 class="sectionTitle">{{ collection.title }}</h1>
         </div>
-    {% endif %}
+        <div class="pageWrapper-bd">
 
-    <ul class="blocks blocks_std">
-        {% for product in collection.products %}
-        <li>
-            <a href="{{ product.url | within: collection }}">
-                <img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" />
-                {{ product.title }} - {{ product.price | money }}
-            </a>
-            <br/>
-            {{ product.vendor | link_to_vendor }}
-        </li>
-        {% endfor %}
-    </ul>
+            {% if collection.description.size > 0 %}
+                <div class="userContent">
+                    {{ collection.description }}
+                </div>
+            {% endif %}
 
-    {% if paginate.pages > 1 %}
-        {{ paginate | default_pagination }}
-    {% endif %}
+            <ul class="blocks blocks_std">
+                {% for product in collection.products %}
+                <li>
+                    <div class="panel">
+                        <div class="panel-media">
+                            <a href="{{ product.url | within: collection }}">
+                                <img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" />
+                            </a>
+                        </div>
+                        <div class="panel-hd">
+                            <h2 class="hdg hdg_xl">
+                                <a href="{{ product.url | within: collection }}">
+                                    {{ product.title }} - {{ product.price | money }}
+                                </a>
+                            </h2>
+                        </div>
+                        {% unless collection.current_vendor %}
+                        <div class="panel-meta">
+                            <h3 class="hdg hdg_lg">{{ product.vendor | link_to_vendor }}</h3>
+                        </div>
+                        {% endunless %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
 
-{% endpaginate %}
+            {% if paginate.pages > 1 %}
+                {{ paginate | default_pagination }}
+            {% endif %}
+        </div>
+    {% endpaginate %}
+</div>

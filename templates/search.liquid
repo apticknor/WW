@@ -1,0 +1,44 @@
+<div class="pageWrapper">
+    <div class="pageWrapper-hd">
+        <h1 class="sectionTitle">Search Results</h1>
+    </div>
+    <div class="pageWrapper-bd">
+
+        <form action="/search" method="get" class="search-form" role="search">
+            <input name="q" type="search" id="search-field" placeholder="Search store..." value="{{ search.terms | escape }}" />
+            <input type="submit" id="search-submit" value="Search" />
+        </form>
+
+        {% if search.performed %}
+
+            {% paginate search.results by 12 %}
+
+                {% if search.results_count == 0 %}
+                    <p>Your search for "{{ search.terms }}" did not yield any results.</p>
+                {% else %}
+                    <ol>
+                        {% for item in search.results %}
+                        <li>
+                            <h2>{{ item.title | link_to: item.url }}</h2>
+                            {% if item.vendor %}
+                                <div>
+                                    <a href="{{ item.url }}" title="{{ item.title | escape }}">
+                                        {{ item | img_url: 'small' | img_tag: item.featured_image.alt }}
+                                    </a>
+                                </div>
+                            {% endif %}
+                            <span>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</span>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+
+                {% if paginate.pages > 1 %}
+                    {{ paginate | default_pagination }}
+                {% endif %}
+
+            {% endpaginate %}
+
+        {% endif %}
+    </div>
+</div>

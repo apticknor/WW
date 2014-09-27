@@ -1,8 +1,16 @@
-<h2>{{ page.title }}</h2>
-{{ page.content }}
+<div class="pageWrapper">
+    <div class="pageWrapper-hd">
+        <h1 class="sectionTitle">{{ page.title }}</h1>
+    </div>
+    <div class="pageWrapper-bd">
 
-<ul>
-    {% for product_vendor in shop.vendors %}
-    <li>{{ product_vendor | link_to_vendor }}</li>
-    {% endfor %}
-</ul>
+        {{ page.content }}
+
+        <ul>
+            {% for product_vendor in shop.vendors %}
+            <li>{{ product_vendor | link_to_vendor }}</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</div>

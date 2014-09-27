@@ -1,0 +1,8 @@
+<h2>{{ page.title }}</h2>
+{{ page.content }}
+
+<ul>
+    {% for product_vendor in shop.vendors %}
+    <li>{{ product_vendor | link_to_vendor }}</li>
+    {% endfor %}
+</ul>

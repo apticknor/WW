@@ -19,6 +19,7 @@
     "font_size_md": "16px",
     "font_size_lg": "20px",
     "font_size_xl": "24px",
+    "font_size_xxl": "32px",
     "customer_layout": "theme",
     "use_light_logo_txt": "true",
     "hero_image_home_light_logo": "true",

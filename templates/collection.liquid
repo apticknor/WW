@@ -27,11 +27,13 @@
                                 </a>
                             </h2>
                         </div>
-                        {% unless collection.current_vendor %}
                         <div class="panel-meta">
-                            <h3 class="hdg hdg_lg">{{ product.vendor | link_to_vendor }}</h3>
+                            <h3 class="hdg hdg_lg">
+                                <a href="/collections/{{ product.vendor | handleize }}">
+                                    {{ collection.title }}
+                                </a>
+                            </h3>
                         </div>
-                        {% endunless %}
                     </div>
                 </li>
                 {% endfor %}

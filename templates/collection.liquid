@@ -4,7 +4,6 @@
             <h1 class="sectionTitle">{{ collection.title }}</h1>
         </div>
         <div class="pageWrapper-bd">
-
             {% if collection.description.size > 0 %}
                 <div class="userContent">
                     {{ collection.description }}
@@ -27,6 +26,8 @@
                                 </a>
                             </h2>
                         </div>
+                        {% comment %}Don't show the vendor name / link on vendor collection page.{% endcomment %}
+                        {% if product.vendor != collection.title %}
                         <div class="panel-meta">
                             <h3 class="hdg hdg_lg">
                                 <a href="/collections/{{ product.vendor | handleize }}">
@@ -34,6 +35,7 @@
                                 </a>
                             </h3>
                         </div>
+                        {% endif %}
                     </div>
                 </li>
                 {% endfor %}

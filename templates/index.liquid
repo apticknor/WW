@@ -1,9 +1,9 @@
 {% assign page = pages.frontpage %}
 <div class="pageWrapper {% if template == "index" and settings.enable_hero_image == true %}pageWrapper_fancy{% endif %}">
-    <div class="pageWrapper-hd">
+    <div class="pageWrapper-section pageWrapper-section_isCentered">
         <h1 class="sectionTitle">Featured Neighbor Goods</h1>
     </div>
-    <div class="pageWrapper-bd">
+    <div class="pageWrapper-section pageWrapper-section_isTight">
 
         {{ page.content }}
 

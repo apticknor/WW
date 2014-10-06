@@ -1,12 +1,12 @@
 <div class="pageWrapper">
-    <div class="pageWrapper-hd">
+    <div class="pageWrapper-section pageWrapper-section_isCentered">
         {% if current_tags %}
             <h1 class="sectionTitle">{{ blog.title | link_to: blog.url }} <span class="quiet">&raquo;</span> {{ current_tags.first }}</h1>
         {% else %}
             <h1 class="sectionTitle">{{ blog.title }}</h1>
         {% endif %}
     </div>
-    <div class="pageWrapper-bd">
+    <div class="pageWrapper-section pageWrapper-section_isTight">
 
         {% paginate blog.articles by 12 %}
 

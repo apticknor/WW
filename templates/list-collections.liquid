@@ -1,9 +1,9 @@
 <div class="pageWrapper">
     {% paginate collections by 12 %}
-        <div class="pageWrapper-hd">
+        <div class="pageWrapper-section pageWrapper-section_isCentered">
             <h1 class="sectionTitle">Collections</h1>
         </div>
-        <div class="pageWrapper-bd">
+        <div class="pageWrapper-section pageWrapper-section_isTight">
 
             <ul class="blocks blocks_std">
                 {% for collection in collections %}

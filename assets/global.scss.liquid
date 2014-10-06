@@ -904,7 +904,7 @@ $blocks-MAX_BLOCKS: 4;
     font-size: $FONT_SIZE_XL;
     text-transform: uppercase;
     letter-spacing: 1px;
-    @media (min-width: $BREAKPOINT_MD) {
+    @media (min-width: $BREAKPOINT_LG) {
         font-size: $FONT_SIZE_XXL;
     }
 }
@@ -926,6 +926,20 @@ $blocks-MAX_BLOCKS: 4;
 .pageWrapper {
     border-top: 1px solid $TEXT_COLOR;
     padding: #{$SITE_STD_UNIT*2} 0;
+}
+
+.pageWrapper_fancy {
+    border-top: none;
+    @media (min-width: $BREAKPOINT_MD) {
+        position: relative;
+        top: -#{$SITE_STD_UNIT*3.5};
+        padding: $SITE_STD_UNIT 0 0 0;
+        background-color: $WHITE;
+    }
+    @media (min-width: $BREAKPOINT_LG) {
+        padding-top: $SITE_STD_UNIT*1.5;
+        top: -#{$SITE_STD_UNIT*5};
+    }
 }
 
 .pageWrapper-hd {

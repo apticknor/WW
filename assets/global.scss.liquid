@@ -54,6 +54,7 @@
 ------------------------------------------------------------------------ */
 $WHITE: #ffffff;
 $BLACK: #000000;
+$LIGHT: rgba($BLACK,0.06);
 $ACCENT_1: {{ settings.accent_color_1 }};
 $ACCENT_2: {{ settings.accent_color_2 }};
 $TEXT_COLOR: {{ settings.text_color }};
@@ -74,12 +75,14 @@ $FONT_SIZE_XXL: {{ settings.font_size_xxl }};
 ------------------------------------------------------------------------ */
 $SANS_SERIF: 'MisoRegular', Helvetica, Arial, sans-serif;
 $SERIF: Baskerville, "Baskerville Old Face", "Hoefler Text", Georgia, Times, "Times New Roman", serif;
+$CONSOLE: "Lucida Console", Monaco, monospace;
 
 /* ---------------------------------------------------------------------
  Variables - Site
 ------------------------------------------------------------------------ */
 $SITE_MAX_WIDTH: 1386px;
 $SITE_STD_UNIT: 20px;
+$SITE_LINE_HEIGHT: 1.4;
 
 /* ---------------------------------------------------------------------
  Variables - Breakpoints
@@ -262,7 +265,7 @@ body {
     color: $TEXT_COLOR;
     font-family: $SANS_SERIF;
     font-size: $FONT_SIZE_LG;
-    line-height: 1.4;
+    line-height: $SITE_LINE_HEIGHT;
 }
 
 a {
@@ -954,8 +957,6 @@ $blocks-MAX_BLOCKS: 4;
     text-align: center;
 }
 
-
-
 /* ---------------------------------------------------------------------
  Module - Panel
 ------------------------------------------------------------------------ */
@@ -984,4 +985,307 @@ $blocks-MAX_BLOCKS: 4;
 
 .hdg_sm {
     font-size: $FONT_SIZE_SM;
+}
+
+/* ---------------------------------------------------------------------
+ Module - User Content
+------------------------------------------------------------------------ */
+.userContent {
+    color: $TEXT_COLOR;
+    font-family: $SANS_SERIF;
+    font-size: $FONT_SIZE_LG;
+    line-height: $SITE_LINE_HEIGHT;
+    font-weight: normal;
+    font-style: normal;
+
+    /* paragraphs */
+    p {
+        margin: 0 0 $SITE_STD_UNIT 0;
+    }
+
+    /* headings */
+    h1 {
+        font-size: $FONT_SIZE_XXL;
+        line-height: 1;
+        font-weight: normal;
+        color: $TEXT_COLOR;
+        margin: 0 0 $SITE_STD_UNIT 0;
+    }
+
+    h2 {
+        font-size: $FONT_SIZE_XL;
+        line-height: 1;
+        font-weight: normal;
+        color: $TEXT_COLOR;
+        margin: 0 0 $SITE_STD_UNIT 0;    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: $FONT_SIZE_LG;
+        line-height: 1;
+        font-weight: normal;
+        color: $TEXT_COLOR;
+        margin: 0 0 $SITE_STD_UNIT 0;
+    }
+
+    /* sections  */
+    blockquote {
+        margin: 0 #{$SITE_STD_UNIT*2} $SITE_STD_UNIT #{$SITE_STD_UNIT*2};
+        padding: $SITE_STD_UNIT #{$SITE_STD_UNIT*1.5};
+        background: $LIGHT;
+        font-style: normal;
+        font-family: $SERIF;
+    }
+
+    blockquote > *:last-child {
+        margin-bottom: 0;
+    }
+
+    blockquote cite {
+        font-style: normal;
+    }
+
+    address {
+        margin: 0 0 $SITE_STD_UNIT 0;
+        font-style: normal;
+    }
+
+    /* anchors */
+    a {
+        color: $LINK_COLOR;
+        text-decoration: none;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+
+    a:focus,
+    a:hover {
+        color: $LINK_COLOR;
+    }
+
+    /* text formatting */
+    strong,
+    b {
+        font-weight: bold;
+    }
+
+    em,
+    i {
+        font-style: italic;
+    }
+
+    del,
+    strike,
+    s {
+        text-decoration: line-through;
+    }
+
+    u,
+    ins {
+        text-decoration: underline;
+    }
+
+    sup {
+        vertical-align: super;
+        font-size: smaller;
+    }
+
+    sub {
+        vertical-align: sub;
+        font-size: smaller;
+    }
+
+    big {
+        font-size: larger;
+    }
+
+    small {
+        font-size: smaller;
+    }
+
+    abbr,
+    acronym {
+        border-bottom: dotted 1px;
+    }
+
+    cite,
+    dfn {
+        font-style: italic;
+    }
+
+    q {
+        font-style: italic;
+    }
+
+    q::before {
+        content: open-quote;
+    }
+
+    q::after  {
+        content: close-quote;
+    }
+
+    q:lang(en) {
+        quotes: "\201C" "\201D" "\2018" "\2019";
+    }
+
+    bdo {
+        direction: rtl;
+    }
+
+    blink {
+        text-decoration: blink;
+    }
+
+    /* computer output */
+    pre {
+        margin: 0 0 $SITE_STD_UNIT 0;
+        font-family: $CONSOLE;
+        font-size: $FONT_SIZE_SM;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    code,
+    samp,
+    tt,
+    kbd {
+        font-family: $CONSOLE;
+        font-size: $FONT_SIZE_SM;
+    }
+
+    var {
+        font-family: $CONSOLE;
+        font-size: $FONT_SIZE_SM;
+        font-style: italic;
+    }
+
+    /* lists */
+    ul,
+    ol,
+    dl {
+        margin-top: 0;
+        margin-bottom: $SITE_STD_UNIT;
+    }
+
+    ul {
+        list-style-type: disc;
+        margin: 0 0 $SITE_STD_UNIT 0;
+    }
+
+    ol {
+        list-style-type: decimal;
+        margin: 0 0 $SITE_STD_UNIT 0;
+    }
+
+    dt {
+        font-weight: bold;
+    }
+
+    li,
+    dd {
+        margin: 0 0 0 #{$SITE_STD_UNIT*1.5};
+    }
+
+    /* nested lists have no top/bottom margins */
+    ul ul,
+    ul ol,
+    ul dl,
+    ol ul,
+    ol ol,
+    ol dl,
+    dl ul,
+    dl ol,
+    dl dl {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    /* 2 deep unordered lists use a circle */
+    ol ul,
+    ul ul {
+        list-style-type: circle;
+    }
+
+    /* 3 deep (or more) unordered lists use a square */
+    ol ol ul,
+    ol ul ul,
+    ul ol ul,
+    ul ul ul {
+        list-style-type: square;
+    }
+
+    /* tables */
+    table {
+        margin: 0 0 #{$SITE_STD_UNIT*1.5} 0;
+        width: 100% !important;
+        border-spacing: 1px;
+        border-collapse: separate;
+    }
+
+    colgroup {
+
+    }
+
+    col {
+
+    }
+
+    caption {
+        font-size: smaller;
+    }
+
+    tr {
+        vertical-align: middle;
+    }
+
+    tbody {
+        vertical-align: middle;
+    }
+
+    thead {
+        vertical-align: middle;
+    }
+
+    tfoot {
+        vertical-align: middle;
+    }
+
+    td {
+        vertical-align: inherit;
+        text-align: inherit;
+        padding: 6px 10px;
+    }
+
+    th {
+        vertical-align: inherit;
+        text-align: inherit;
+        font-weight: bold;
+        padding: 6px 10px;
+        background-color: $ACCENT_1;
+        color: $WHITE;
+    }
+
+    tr:nth-child(even) td {
+        background-color: $LIGHT;
+    }
+
+    /* horizontal rule */
+    hr {
+        margin: 0 0 $SITE_STD_UNIT 0;
+        background: $ACCENT_1;
+        color: $ACCENT_1;
+        height: 1px;
+        border: none;
+        line-height: 1px;
+        font-size: 1px;
+    }
+
+    /* media */
+    img,
+    video,
+    audio {
+        max-width: 100% !important;
+    }
 }

@@ -1,15 +1,20 @@
 <div class="pageWrapper">
     {% paginate collection.products by 12 %}
-        <div class="pageWrapper-hd">
+        <div class="pageWrapper-section pageWrapper-section_isCentered">
             <h1 class="sectionTitle">{{ collection.title }}</h1>
         </div>
-        <div class="pageWrapper-bd">
-            {% if collection.description.size > 0 %}
-                <div class="userContent">
-                    {{ collection.description }}
-                </div>
-            {% endif %}
+        {% if collection.description.size > 0 %}
+        <div class="pageWrapper-section">
+            <div class="userContent">
+                {{ collection.description }}
+            </div>
+        </div>
+        <div class="pageWrapper-section pageWrapper-section_isCentered">
+            <h2 class="sectionTitle">Products</h1>
+        </div>
+        {% endif %}
 
+        <div class="pageWrapper-section">
             <ul class="blocks blocks_std">
                 {% for product in collection.products %}
                 <li>

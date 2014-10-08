@@ -293,6 +293,12 @@ img, audio, canvas, video, picture {
     @include is-visually-hidden();
 }
 
+.isHiddenOnSmallScreens {
+    @media (max-width: $BREAKPOINT_XS) {
+        display: none;
+    }
+}
+
 /* ---------------------------------------------------------------------
  Landmark - Toolbar
 ------------------------------------------------------------------------ */
@@ -849,21 +855,32 @@ $field-btn-FONT_SIZE_LG: $FONT_SIZE_LG;
  Module - Button
 ------------------------------------------------------------------------ */
 .btn {
+    display: inline-block;
+    border: 1px solid;
+    padding: 6px 12px;
+    font-size: $FONT_SIZE_MD;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    @media (min-width: $BREAKPOINT_LG) {
+        padding: 6px 30px;
+        font-size: $FONT_SIZE_LG;
+    }
+}
+
+/* ---------------------------------------------------------------------
+ Module - Overlay Button
+------------------------------------------------------------------------ */
+.overlayBtn {
     margin: 0;
     padding: $field-btn-PADDING_TIGHT;
     border: none;
-    background-color: $ACCENT_2;
-    color: $WHITE;
+    border-left: 1px solid $ACCENT_1;
+    background-color: transparent;
+    color: $ACCENT_1;
     font-size: $field-btn-FONT_SIZE_SM;
     font-family: $SERIF;
     line-height: normal;
     cursor: pointer;
-}
-
-.btn_transparent {
-    background-color: transparent;
-    border-left: 1px solid $ACCENT_1;
-    color: $ACCENT_1;
 }
 
 /* ---------------------------------------------------------------------
@@ -893,6 +910,13 @@ $blocks-MAX_BLOCKS: 4;
     }
     @media (min-width: $BREAKPOINT_LG) {
         width: 25%;
+    }
+}
+
+.blocks_wide > * {
+    width: 100%;
+    @media (min-width: $BREAKPOINT_MD) {
+        width: 50%;
     }
 }
 
@@ -985,6 +1009,29 @@ $blocks-MAX_BLOCKS: 4;
 
 .hdg_sm {
     font-size: $FONT_SIZE_SM;
+}
+
+/* ---------------------------------------------------------------------
+ Module - Split
+------------------------------------------------------------------------ */
+.split {
+    @include clearfix()
+}
+
+.split-left,
+.split-right {
+    width: 50%;
+}
+
+.split-left {
+    float: left;
+    text-align: left;
+}
+
+
+.split-right {
+    float: right;
+    text-align: right;
 }
 
 /* ---------------------------------------------------------------------

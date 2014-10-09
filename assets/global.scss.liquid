@@ -73,7 +73,8 @@ $FONT_SIZE_XXL: {{ settings.font_size_xxl }};
 /* ---------------------------------------------------------------------
  Variables - Font Family
 ------------------------------------------------------------------------ */
-$SANS_SERIF: 'MisoRegular', Helvetica, Arial, sans-serif;
+$SANS_SERIF: 'MisoLight', Helvetica, Arial, sans-serif;
+$SANS_SERIF_BOLD: 'MisoRegular', Helvetica, Arial, sans-serif;
 $SERIF: Baskerville, "Baskerville Old Face", "Hoefler Text", Georgia, Times, "Times New Roman", serif;
 $CONSOLE: "Lucida Console", Monaco, monospace;
 
@@ -305,6 +306,7 @@ img, audio, canvas, video, picture {
 .toolbar {
     padding: 14px 0 12px 0;
     text-align: right;
+    font-family: $SANS_SERIF_BOLD;
     font-size: $FONT_SIZE_LG;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -409,6 +411,7 @@ img, audio, canvas, video, picture {
 .nav-list {
     margin-top: $SITE_STD_UNIT*0.5;
     font-size: 0;
+    font-family: $SANS_SERIF_BOLD;
     @media(min-width: $BREAKPOINT_XM) {
         text-align: right;
     }
@@ -928,6 +931,7 @@ $blocks-MAX_BLOCKS: 4;
     display: inline-block;
     border: 1px solid;
     padding: 6px 30px;
+    font-family: $SANS_SERIF_BOLD;
     font-size: $FONT_SIZE_LG;
     text-transform: uppercase;
     letter-spacing: 1px;

@@ -32,6 +32,22 @@
     <!-- Scripts -->
     {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' | script_tag }}
     {{ 'global.js' | asset_url | script_tag }}
+
+    <script type="text/javascript">
+        var MTUserId='c8670f9b-dfab-4cf5-a732-46e6091fd552';
+        var MTFontIds = new Array();
+
+        MTFontIds.push("710697"); // Sackers™ Gothic W01 Light
+        (function() {
+            var mtTracking = document.createElement('script');
+            mtTracking.type='text/javascript';
+            mtTracking.async='true';
+            mtTracking.src=('https:'==document.location.protocol?'https:':'http:')+'//fast.fonts.net/lt/trackingCode.js';
+
+            (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(mtTracking);
+        })();
+    </script>
+
 </head>
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" itemscope itemtype="http://schema.org/LocalBusiness">
 

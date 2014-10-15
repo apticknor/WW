@@ -3,7 +3,7 @@
         <h1 class="sectionTitle">{{ blog.title }}</h1>
     </div>
     {% paginate blog.articles by 4 %}
-    <div class="pageWrapper-section {% if paginate.pages < 1 %}pageWrapper-section_isTight{% endif %}">
+    <div class="pageWrapper-section">
         <ul class="blocks blocks_wide">
         {% for article in blog.articles %}
             <li>
@@ -40,20 +40,7 @@
     </div>
     {% if paginate.pages > 1 %}
     <div class="pageWrapper-section pageWrapper-section_isTight">
-        <div class="pagination">
-            <ul class="split">
-            {% if paginate.next.is_link %}
-                <li class="split-left">
-                    <a class="btn" href="{{ paginate.next.url }}">&laquo; Older <span class="isHiddenOnSmallScreens">Stories</span></a>
-                </li>
-            {% endif %}
-            {% if paginate.previous.is_link %}
-                <li class="split-right">
-                    <a class="btn" href="{{ paginate.previous.url }}">Newer <span class="isHiddenOnSmallScreens">Stories</span> &raquo;</a>
-                </li>
-            {% endif %}
-            </ul>
-        </div>
+        {% include 'global-pagination' %}
     </div>
     {% endif %}
     {% endpaginate %}

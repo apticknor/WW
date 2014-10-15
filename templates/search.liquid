@@ -34,7 +34,7 @@
                 {% endif %}
 
                 {% if paginate.pages > 1 %}
-                    {{ paginate | default_pagination }}
+                    {% include 'global-pagination' %}
                 {% endif %}
 
             {% endpaginate %}

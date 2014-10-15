@@ -3,7 +3,7 @@
         <div class="pageWrapper-section pageWrapper-section_isCentered">
             <h1 class="sectionTitle">Collections</h1>
         </div>
-        <div class="pageWrapper-section pageWrapper-section_isTight">
+        <div class="pageWrapper-section">
 
             <ul class="blocks blocks_std">
                 {% for collection in collections %}
@@ -29,11 +29,11 @@
                 </li>
                 {% endfor %}
             </ul>
-
-            {% if paginate.pages > 1 %}
-                {{ paginate | default_pagination }}
-            {% endif %}
-
         </div>
+        {% if paginate.pages > 1 %}
+        <div class="pageWrapper-section pageWrapper-section_isTight">
+            {% include 'global-pagination' %}
+        </div>
+        {% endif %}
     {% endpaginate %}
 </div>

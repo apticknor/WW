@@ -1,0 +1,37 @@
+    {% if paginate.pages > 1 %}
+        <div class="pagination">
+            <ul class="split">
+                {% if blog.title %}
+                    {% if paginate.next.is_link %}
+                        <li class="split-left">
+                            <a class="btn" href="{{ paginate.next.url }}">
+                                &laquo; Older <span class="isHiddenOnSmallScreens">Stories</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if paginate.previous.is_link %}
+                        <li class="split-right">
+                            <a class="btn" href="{{ paginate.previous.url }}"/>
+                                Newer <span class="isHiddenOnSmallScreens">Stories</span> &raquo;
+                            </a>
+                        </li>
+                    {% endif %}
+                {% else %}
+                    {% if paginate.previous.is_link %}
+                        <li class="split-left">
+                            <a class="btn" href="{{ paginate.previous.url }}"/>
+                                &laquo; Previous
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if paginate.next.is_link %}
+                        <li class="split-right">
+                            <a class="btn" href="{{ paginate.next.url }}">
+                                Next &raquo;
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}

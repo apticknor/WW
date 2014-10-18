@@ -32,27 +32,14 @@
                 {% endif %}
             </div>
             <div class="product-content">
-                <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
-                <meta itemprop="image" content="{{ product | img_url: '1024x1024' }}" />
-
-                <form action="/cart/add" method="post" enctype="multipart/form-data">
-
-                    <div itemprop="name">
-                        <h2 class="hdg hdg_xl">{{ product.title }} - {{ product.selected_or_first_available_variant.price | money }}</h2>
-                    </div>
-                    <!--
-                    <div itemprop="brand">
-                        <a href="/collections/{{ product.vendor | handleize }}">
-                            {{ product.vendor }}
-                        </a>
-                    </div>
-                    -->
-                    <div itemprop="description">
-                        <div class="userContent">
-                            {{ product.description }}
-                        </div>
-                    </div>
-
+                <div class="product-content-meta">
+                    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+                        {% assign hide_default_title = true %}
+                    {% else %}
+                        {% assign hide_default_title = false %}
+                    {% endif %}
+                    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+                    <meta itemprop="image" content="{{ product | img_url: '1024x1024' }}" />
                     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                         <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
                         {% if product.available %}
@@ -60,32 +47,36 @@
                         {% else %}
                             <link itemprop="availability" href="http://schema.org/OutOfStock" />
                         {% endif %}
-                        <div>
-
+                    </div>
+                </div>
+                <div class="product-content-hd" itemprop="name">
+                    <h2 class="hdg hdg_xl">{{ product.title }} - {{ product.selected_or_first_available_variant.price | money }}</h2>
+                </div>
+                <div class="product-content-subhd" itemprop="brand">
+                    <a href="/collections/{{ product.vendor | handleize }}">
+                        MFG. by {{ product.vendor }}
+                    </a>
+                </div>
+                <div class="product-content-description" itemprop="description">
+                    <div class="userContent">
+                        {{ product.description }}
+                    </div>
+                </div>
+                <div class="product-content-fields">
+                    <form action="/cart/add" method="post" enctype="multipart/form-data">
+                        <div class="{% if hide_default_title %}isHidden{% endif %}">
+                            <select class="field field_dropdown" name="id">
+                                {% for variant in product.variants %}
+                                    <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}">
+                                        {{ variant.title }} - {{ variant.price | money }}
+                                    </option>
+                                {% endfor %}
+                            </select>
                         </div>
-                    </div>
-
-                    {% assign hide_default_title = false %}
-                    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
-                        {% assign hide_default_title = true %}
-                    {% endif %}
-
-                    <div class="{% if hide_default_title %} isHidden{% endif %}">
-                        <select name="id">
-                            {% for variant in product.variants %}
-                                <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}">
-                                    {{ variant.title }} - {{ variant.price | money }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-
-                    <input class="btn" type="submit" name="add" value="Add to Cart">
-
-                </form>
-
+                        <input class="btn" type="submit" name="add" value="Add to Cart">
+                    </form>
+                </div>
             </div>
         </div>
-
     </div>
 </div>

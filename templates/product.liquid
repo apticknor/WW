@@ -4,37 +4,54 @@
         <div class="product">
             <div class="product-media">
                 {% if product.images.size == 0 %}
-                    <img src="{{ '' | img_url: 'grande' }}" alt="" />
-                {% else %}
-                    {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
 
-                    <a href="{{ featured_image | img_url: '1024x1024' }}">
-                        <img src="{{ featured_image | img_url: 'grande' }}" alt="{{ product.title | escape }}" />
-                    </a>
+                    <div class="product-media-large">
+                        <img src="{{ '' | img_url: '1024x1024' }}" alt="" />
+                    </div>
+
+                {% else %}
+
+                    <div class="product-media-large" id="js-largeImageViewport">
+                        {% for image in product.images %}
+                            <img src="{{ image | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}" class="{% if forloop.index != 1 %}isVisuallyHidden{% endif %}" />
+                        {% endfor %}
+                    </div>
 
                     {% if product.images.size > 1 %}
-                    <ul>
-                    {% for image in product.images %}
-                        <li>
-                            <a href="{{ image | img_url: '1024x1024' }}">
-                                <img src="{{ image | img_url: 'large' }}" alt="{{ image.alt | escape }}" />
-                            </a>
-                        </li>
-                    {% endfor %}
-                    </ul>
+                    <div class="product-media-list">
+                        <ul class="blocks blocks_products" id="js-allProductImages">
+                        {% for image in product.images %}
+                            <li>
+                                <img src="{{ image | img_url: 'compact' }}" alt="{{ image.alt | escape }}" />
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
                     {% endif %}
 
                 {% endif %}
             </div>
             <div class="product-content">
                 <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
-                <meta itemprop="image" content="{{ product | img_url: 'grande' }}" />
+                <meta itemprop="image" content="{{ product | img_url: '1024x1024' }}" />
 
                 <form action="/cart/add" method="post" enctype="multipart/form-data">
 
-                    <div itemprop="name">{{ product.title }}</div>
-                    <div itemprop="brand">{{ product.vendor | link_to: vendor_url }}</div>
-                    <div itemprop="description">{{ product.description }}</div>
+                    <div itemprop="name">
+                        <h2 class="hdg hdg_xl">{{ product.title }} - {{ product.selected_or_first_available_variant.price | money }}</h2>
+                    </div>
+                    <!--
+                    <div itemprop="brand">
+                        <a href="/collections/{{ product.vendor | handleize }}">
+                            {{ product.vendor }}
+                        </a>
+                    </div>
+                    -->
+                    <div itemprop="description">
+                        <div class="userContent">
+                            {{ product.description }}
+                        </div>
+                    </div>
 
                     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                         <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
@@ -44,13 +61,7 @@
                             <link itemprop="availability" href="http://schema.org/OutOfStock" />
                         {% endif %}
                         <div>
-                            {% assign variant = product.selected_or_first_available_variant %}
-                            {% if product.compare_at_price > product.price %}
-                                <span itemprop="price">{{ variant.price | money }}</span>
-                                <s>{{ variant.compare_at_price | money }}</s>
-                            {% else %}
-                                <span itemprop="price">{{ variant.price | money }}</span>
-                            {% endif %}
+
                         </div>
                     </div>
 
@@ -69,7 +80,7 @@
                         </select>
                     </div>
 
-                    <input type="submit" name="add" value="Add to Cart">
+                    <input class="btn" type="submit" name="add" value="Add to Cart">
 
                 </form>
 

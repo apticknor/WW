@@ -15,6 +15,7 @@ var WW = WW || {};
 
         APP.HasJS.init();
         APP.ShowPanel.init();
+        APP.ShowProductImage.init();
     });
 
     /* ---------------------------------------------------------------------
@@ -44,8 +45,8 @@ var WW = WW || {};
 
         init: function() {
 
-            $slidePanelTrigger = $('#js-slidePanelTrigger');
-            $slidePanelTarget = $('#js-slidePanelTarget');
+            var $slidePanelTrigger = $('#js-slidePanelTrigger');
+            var $slidePanelTarget = $('#js-slidePanelTarget');
 
             if (!$slidePanelTrigger.length || !$slidePanelTarget.length) {
                 return false;
@@ -86,6 +87,47 @@ var WW = WW || {};
 
         hidePanel: function() {
             this.$slidePanelTarget.removeClass(this.toggleClass);
+        }
+
+    };
+
+    /* ---------------------------------------------------------------------
+    ShowProductImage
+
+    Show the large product image the user has requested.
+    ------------------------------------------------------------------------ */
+    APP.ShowProductImage = {
+        $productThumbnails: null,
+        $largeImageViewport: null,
+        hiddenClass: 'isVisuallyHidden',
+
+        init: function() {
+            var $productThumbnails = $('#js-allProductImages');
+            var $largeImageViewport = $('#js-largeImageViewport');
+
+            if (!$productThumbnails.length || !$largeImageViewport.length) {
+                return false;
+            }
+
+            this.$productThumbnails = $productThumbnails;
+            this.$largeImageViewport = $largeImageViewport;
+
+            this.createEvents();
+        },
+
+        createEvents: function() {
+            var self = this;
+
+            this.$productThumbnails.on('click', 'img', function(e) {
+                var index = $(this).parent().index();
+                self.swapProductImage(index);
+                e.preventDefault();
+            });
+        },
+
+        swapProductImage: function(index) {
+            this.$largeImageViewport.find('img').addClass(this.hiddenClass);
+            this.$largeImageViewport.find('img').eq(index).removeClass(this.hiddenClass);
         }
 
     };

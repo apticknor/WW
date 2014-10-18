@@ -880,11 +880,14 @@ $field-btn-FONT_SIZE_LG: $FONT_SIZE_LG;
 ------------------------------------------------------------------------ */
 .btn {
     display: inline-block;
-    border: 1px solid;
+    border: 1px solid $TEXT_COLOR;
     padding: 6px 12px;
+    font-family: $SANS_SERIF;
     font-size: $FONT_SIZE_MD;
     text-transform: uppercase;
     letter-spacing: 1px;
+    background-color: $WHITE;
+    cursor: pointer;
     @media (min-width: $BREAKPOINT_LG) {
         padding: 6px 30px;
         font-size: $FONT_SIZE_LG;
@@ -942,6 +945,15 @@ $blocks-MAX_BLOCKS: 4;
     @media (min-width: $BREAKPOINT_MD) {
         width: 50%;
     }
+}
+
+.blocks_products {
+    margin: 0 0 0 -10px; // fix padding offset created by first item in each row
+}
+
+.blocks_products > * {
+    width: 25%;
+    padding: 10px 0 0 10px;
 }
 
 /* ---------------------------------------------------------------------
@@ -1057,6 +1069,37 @@ $blocks-MAX_BLOCKS: 4;
 .split-right {
     float: right;
     text-align: right;
+}
+
+/* ---------------------------------------------------------------------
+ Module - Product
+------------------------------------------------------------------------ */
+.product {
+    @include clearfix();
+}
+
+.product-media img {
+    display: block;
+}
+
+.product-media {
+    margin-bottom: $SITE_STD_UNIT;
+    @media (min-width: $BREAKPOINT_XM) {
+        float: left;
+        width: 50%;
+        margin-bottom: 0; // reset small screen
+        padding-right: $SITE_STD_UNIT*2;
+        @include box-sizing(border-box);
+    }
+}
+
+.product-media-list img {
+    cursor: pointer;
+}
+
+.product-content {
+    float: left;
+    width: 50%;
 }
 
 /* ---------------------------------------------------------------------

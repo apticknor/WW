@@ -7,15 +7,6 @@
                 </div>
                 <div class="toolbar-util">
                     <ul class="toolbar-util-list">
-                    {% if shop.customer_accounts_enabled %}
-                        <li class="toolbar-util-list-account">
-                        {% if customer  %}
-                            <a href="/account">Account</a>
-                        {% else %}
-                            {{ 'Account' | customer_login_link }}
-                        {% endif %}
-                        </li>
-                    {% endif %}
                         <li>
                             <a href="/cart">Cart ({{ cart.item_count }})</a>
                         </li>

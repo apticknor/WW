@@ -51,6 +51,15 @@
                         </div>
                         <div class="footerGrid-col footerGrid-col_nav">
                             <ul class="footerGrid-col_nav-list">
+                            {% if shop.customer_accounts_enabled %}
+                                <li class="toolbar-util-list-account">
+                                {% if customer  %}
+                                    <a href="/account">Account</a>
+                                {% else %}
+                                    {{ 'Account' | customer_login_link }}
+                                {% endif %}
+                                </li>
+                            {% endif %}
                             {% for link in linklists.footer.links %}
                                 <li><a href="{{ link.url }}">{{ link.title }}</a></li>
                             {% endfor %}

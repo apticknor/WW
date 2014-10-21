@@ -2,6 +2,7 @@
   "current": {
     "enable_hero_image": true,
     "reverse_txt": true,
+    "my_collection": "featured-neighboor-goods",
     "addressStreet": "211 Washington Ave N",
     "addressCity": "Minneapolis",
     "addressState": "MN",

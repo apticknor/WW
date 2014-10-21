@@ -1,6 +1,6 @@
 <div class="pageWrapper" itemscope itemtype="http://schema.org/Product">
-    <div class="pageWrapper-section">
 
+    <div class="pageWrapper-section pageWrapper-section_isLoose">
         <div class="product">
             <div class="product-media">
                 {% if product.images.size == 0 %}
@@ -52,11 +52,13 @@
                 <div class="product-content-hd" itemprop="name">
                     <h2 class="hdg hdg_xl">{{ product.title }} - {{ product.selected_or_first_available_variant.price | money }}</h2>
                 </div>
+                {% if product.vendor %}
                 <div class="product-content-subhd" itemprop="brand">
                     <a href="/collections/{{ product.vendor | handleize }}">
                         MFG. by {{ product.vendor }}
                     </a>
                 </div>
+                {% endif %}
                 <div class="product-content-description" itemprop="description">
                     <div class="userContent">
                         {{ product.description }}
@@ -79,4 +81,49 @@
             </div>
         </div>
     </div>
+
+    {% for collection in product.collections %}
+        {% if collection.title == product.vendor %}
+            {% if collection.description.size > 0 %}
+                <div class="pageWrapper-section pageWrapper-section_isCentered">
+                    <h2 class="sectionTitle">About the Manufacturer</h1>
+                </div>
+                <div class="pageWrapper-section">
+                    <div class="userContent">
+                        {{ collection.description }}
+                    </div>
+                </div>
+            {% endif %}
+            {% if collection.products_count > 1 %}
+                <div class="pageWrapper-section pageWrapper-section_isCentered">
+                    <h2 class="sectionTitle">Related Neighboor Goods</h2>
+                </div>
+                <div class="pageWrapper-section">
+                    <ul class="blocks blocks_std">
+                        {% for relatedProduct in collection.products %}
+                            {% if relatedProduct.title != product.title %}
+                                <li>
+                                    <div class="panel">
+                                        <div class="panel-media">
+                                            <a href="{{ relatedProduct.url | within: collection }}">
+                                                <img src="{{ relatedProduct.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" />
+                                            </a>
+                                        </div>
+                                        <div class="panel-hd">
+                                            <h2 class="hdg hdg_xl">
+                                                <a href="{{ relatedProduct.url | within: collection }}">
+                                                    {{ relatedProduct.title }} - {{ relatedProduct.price | money }}
+                                                </a>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
 </div>

@@ -1036,11 +1036,18 @@ $blocks-MAX_BLOCKS: 4;
 }
 
 .pageWrapper-section {
-    margin-bottom: $SITE_STD_UNIT*2
+    margin-bottom: $SITE_STD_UNIT*2;
 }
 
 .pageWrapper-section_isTight {
     margin-bottom: 0;
+}
+
+.pageWrapper-section_isLoose {
+    margin-bottom: $SITE_STD_UNIT*3;
+    @media (min-width: $BREAKPOINT_MD) {
+        margin-bottom: $SITE_STD_UNIT*4;
+    }
 }
 
 .pageWrapper-section_isCentered {

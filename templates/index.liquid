@@ -3,6 +3,32 @@
     <div class="pageWrapper-section pageWrapper-section_isCentered">
         <h1 class="sectionTitle">Featured Neighbor Goods</h1>
     </div>
+    <div class="pageWrapper-section">
+        {% for collection in collections %}
+            {% if collection.handle == settings.featured_collection %}
+                <ul class="blocks blocks_std">
+                    {% for featuredProduct in collection.products %}
+                        <li>
+                            <div class="panel">
+                                <div class="panel-media">
+                                    <a href="{{ featuredProduct.url | within: collection }}">
+                                        <img src="{{ featuredProduct.featured_image.src | product_img_url: 'large' }}" alt="{{ featuredProduct.featured_image.alt | escape }}" />
+                                    </a>
+                                </div>
+                                <div class="panel-hd">
+                                    <h2 class="hdg hdg_xl">
+                                        <a href="{{ featuredProduct.url | within: collection }}">
+                                            {{ featuredProduct.title }} - {{ featuredProduct.price | money }}
+                                        </a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+    </div>
     <div class="pageWrapper-section pageWrapper-section_isTight">
 
         <div class="userContent">

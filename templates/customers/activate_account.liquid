@@ -1,19 +1,22 @@
-{% form 'activate_customer_password' %}
+<div class="pageWrapper">
+    <div class="pageWrapper-section pageWrapper-section_isCentered">
+        <h1 class="sectionTitle">Activate Account</h1>
+    </div>
+    <div class="pageWrapper-section">
+        {% form 'activate_customer_password' %}
 
-{{ form.errors | default_errors }}
+            {{ form.errors | default_errors }}
 
-<div class="password">
-    <label for="password">Password</label>
-    <input type="password" name="customer[password]" />
-</div>
-<div class="password_confirm">
-    <label for="password_confirmation">Password Confirmation</label>
-    <input type="password" name="customer[password_confirmation]" />
-</div>
-<div class="action_bottom">
-    <input type="submit" value="Activate Account" />
-    <span>or</span>
-    <input type="submit" name="decline" value="Decline Invitation" />
-</div>
+            <label for="password">Password</label>
+            <input class="field field_txt" type="password" name="customer[password]" />
 
-{% endform %}
+            <label for="password_confirmation">Password Confirmation</label>
+            <input class="field field_txt" type="password" name="customer[password_confirmation]" />
+
+            <input class="btn" type="submit" value="Activate Account" />
+            <span>or</span>
+            <input class="btn" type="submit" name="decline" value="Decline Invitation" />
+
+        {% endform %}
+    </div>
+</div>

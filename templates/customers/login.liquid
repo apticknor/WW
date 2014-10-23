@@ -1,13 +1,47 @@
-{% form 'customer_login' %}
+<div class="pageWrapper">
+    <div class="pageWrapper-section pageWrapper-section_isCentered">
+        <h1 class="sectionTitle">Login</h1>
+    </div>
+    <div class="pageWrapper-section">
 
-{{ form.errors | default_errors }}
+        <div id="js-formLogin">
+            {% form 'customer_login' %}
+                {{ form.errors | default_errors }}
 
-<label for="customer_email">Email Address</label>
-<input type="email" name="customer[email]" />
+                <label for="customer_email">Email Address</label>
+                <input class="field field_txt" type="email" name="customer[email]" placeholder="" />
 
-<label for="customer_password">Password</label>
-<input type="password" name="customer[password]" />
+                {% if form.password_needed %}
+                <label for="customer_password">Password</label>
+                <input class="field field_txt" type="password" name="customer[password]" />
+                {% endif %}
 
-<input type="submit" value="Sign In" />
+                <input class="btn" type="submit" value="Sign In" />
 
-{% endform %}
+            {% endform %}
+            <a href="#">Forgot Your Password?</a>
+            <a href="#">Create Account</a>
+        </div>
+
+        <div id="js-formResetPassword">
+            {% form 'recover_customer_password' %}
+                {{ form.errors | default_errors }}
+
+                <label for="email">Email Address</label>
+                <input class="field field_txt" type="email" name="email" />
+
+                <input class="btn" type="submit" value="Submit" />
+            {% endform %}
+            <a href="#">Back to login</a>
+        </div>
+
+        {% if shop.checkout.guest_login %}
+            <div class="js-formGuestLogin">
+                {% form 'guest_login' %}
+                    <input class="btn" type="submit" value="Continue as Guest" />
+                {% endform %}
+            </div>
+        {% endif %}
+
+    </div>
+</div>

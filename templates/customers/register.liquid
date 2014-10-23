@@ -1,19 +1,26 @@
-{% form 'create_customer' %}
+<div class="pageWrapper">
+    <div class="pageWrapper-section pageWrapper-section_isCentered">
+        <h1 class="sectionTitle">Register</h1>
+    </div>
+    <div class="pageWrapper-section">
+        {% form 'create_customer' %}
 
-{{ form.errors | default_errors }}
+            {{ form.errors | default_errors }}
 
-<label for="first_name">First Name</label>
-<input type="text" value="" name="customer[first_name]" size="30" />
+            <label for="first_name">First Name</label>
+            <input class="field field_txt" type="text" name="customer[first_name]" />
 
-<label for="last_name">Last Name</label>
-<input type="text" value="" name="customer[last_name]" size="30" />
+            <label for="last_name">Last Name</label>
+            <input class="field field_txt" type="text" name="customer[last_name]" />
 
-<label for="email">Email Address</label>
-<input type="email" value="" name="customer[email]" size="30" />
+            <label for="email">Email Address</label>
+            <input class="field field_txt" type="email" name="customer[email]" />
 
-<label for="password">Password</label>
-<input type="password" value="" name="customer[password]" size="30" />
+            <label for="password">Password</label>
+            <input class="field field_txt" type="password" name="customer[password]" />
 
-<input type="submit" value="Create" />
+            <input class="btn" type="submit" value="Create Account" />
 
-{% endform %}
+        {% endform %}
+    </div>
+</div>

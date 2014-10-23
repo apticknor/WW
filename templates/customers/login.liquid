@@ -3,7 +3,6 @@
         <h1 class="sectionTitle">Login</h1>
     </div>
     <div class="pageWrapper-section">
-
         <div class="cta">
 
             <!-- Forgot Password Form -->
@@ -67,14 +66,14 @@
             </div>
         </div>
 
+        {% comment %}
         {% if shop.checkout.guest_login %}
-            {% comment %}
             <!-- Hidden for now because this is never triggered as far as I can tell -->
-                {% form 'guest_login' %}
-                    <input class="btn" type="submit" value="Continue as Guest" />
-                {% endform %}
-            {% endcomment %}
+            {% form 'guest_login' %}
+                <input class="btn" type="submit" value="Continue as Guest" />
+            {% endform %}
         {% endif %}
+        {% endcomment %}
 
     </div>
 </div>

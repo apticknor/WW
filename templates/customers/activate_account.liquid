@@ -3,20 +3,33 @@
         <h1 class="sectionTitle">Activate Account</h1>
     </div>
     <div class="pageWrapper-section">
-        {% form 'activate_customer_password' %}
+        <div class="cta">
 
-            {{ form.errors | default_errors }}
+            <!-- Activate Account Form -->
+            {% form 'activate_customer_password' %}
+                <div class="form">
+                    <div class="form-alert">
+                        {{ form.errors | default_errors }}
+                    </div>
+                    <div class="form-bd">
+                        <ul class="vlist">
+                            <li>
+                                <label class="label" for="password">Password</label>
+                                <input class="field field_txt" type="password" name="customer[password]" />
+                            </li>
+                            <li>
+                                <label class="label" for="password_confirmation">Password Confirmation</label>
+                                <input class="field field_txt" type="password" name="customer[password_confirmation]" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-action">
+                        <input class="btn btn_soft" type="submit" value="Activate Account" />
+                        <!-- <input class="btn btn_soft" type="submit" name="decline" value="Decline Invitation" /> -->
+                    </div>
+                </div>
+            {% endform %}
 
-            <label for="password">Password</label>
-            <input class="field field_txt" type="password" name="customer[password]" />
-
-            <label for="password_confirmation">Password Confirmation</label>
-            <input class="field field_txt" type="password" name="customer[password_confirmation]" />
-
-            <input class="btn" type="submit" value="Activate Account" />
-            <span>or</span>
-            <input class="btn" type="submit" name="decline" value="Decline Invitation" />
-
-        {% endform %}
+        </div>
     </div>
 </div>

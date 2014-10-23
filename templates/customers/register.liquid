@@ -3,24 +3,40 @@
         <h1 class="sectionTitle">Register</h1>
     </div>
     <div class="pageWrapper-section">
-        {% form 'create_customer' %}
+        <div class="cta">
 
-            {{ form.errors | default_errors }}
+            <!-- Register Account Form -->
+            <div class="form">
+                {% form 'create_customer' %}
+                    <div class="form-alert">
+                        {{ form.errors | default_errors }}
+                    </div>
+                    <div class="form-bd">
+                        <ul class="vlist">
+                            <li>
+                                <label class="label" for="first_name">First Name</label>
+                                <input class="field field_txt" type="text" name="customer[first_name]" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" />
+                            </li>
+                            <li>
+                                <label class="label" for="last_name">Last Name</label>
+                                <input class="field field_txt" type="text" name="customer[last_name]" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" />
+                            </li>
+                            <li>
+                                <label class="label" for="email">Email Address</label>
+                                <input class="field field_txt" type="email" name="customer[email]" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" />
+                            </li>
+                            <li>
+                                <label class="label" for="password">Password</label>
+                                <input class="field field_txt" type="password" name="customer[password]" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-action">
+                        <input class="btn btn_soft" type="submit" value="Create Account" />
+                    </div>
+                {% endform %}
+            </div>
 
-            <label for="first_name">First Name</label>
-            <input class="field field_txt" type="text" name="customer[first_name]" />
-
-            <label for="last_name">Last Name</label>
-            <input class="field field_txt" type="text" name="customer[last_name]" />
-
-            <label for="email">Email Address</label>
-            <input class="field field_txt" type="email" name="customer[email]" />
-
-            <label for="password">Password</label>
-            <input class="field field_txt" type="password" name="customer[password]" />
-
-            <input class="btn" type="submit" value="Create Account" />
-
-        {% endform %}
+        </div>
     </div>
 </div>

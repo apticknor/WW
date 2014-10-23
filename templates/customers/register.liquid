@@ -6,8 +6,8 @@
         <div class="cta">
 
             <!-- Register Account Form -->
-            <div class="form">
-                {% form 'create_customer' %}
+            {% form 'create_customer' %}
+                <div class="form">
                     <div class="form-alert">
                         {{ form.errors | default_errors }}
                     </div>
@@ -34,9 +34,8 @@
                     <div class="form-action">
                         <input class="btn btn_soft" type="submit" value="Create Account" />
                     </div>
-                {% endform %}
-            </div>
-
+                </div>
+            {% endform %}
         </div>
     </div>
 </div>

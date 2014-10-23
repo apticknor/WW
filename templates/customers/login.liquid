@@ -18,7 +18,7 @@
                         <ul class="vlist">
                             <li>
                                 <label class="label" for="email">Email Address</label>
-                                <input class="field field_txt" type="email" name="email" />
+                                <input class="field field_txt" type="email" name="email" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" />
                             </li>
                         </ul>
                     </div>
@@ -46,12 +46,12 @@
                     <ul class="vlist">
                         <li>
                             <label class="label" for="customer_email">Email Address</label>
-                            <input class="field field_txt" type="email" name="customer[email]" placeholder="" />
+                            <input class="field field_txt" type="email" name="customer[email]" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" />
                         </li>
                         <li>
                         {% if form.password_needed %}
                             <label class="label" for="customer_password">Password</label>
-                            <input class="field field_txt" type="password" name="customer[password]" />
+                            <input class="field field_txt" type="password" name="customer[password]" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" />
                         {% endif %}
                         </li>
                     </ul>

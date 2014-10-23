@@ -16,6 +16,8 @@ var WW = WW || {};
         APP.HasJS.init();
         APP.ShowPanel.init();
         APP.ShowProductImage.init();
+        APP.Toggle.init();
+        APP.RecoverHash.init();
     });
 
     /* ---------------------------------------------------------------------
@@ -130,6 +132,59 @@ var WW = WW || {};
             this.$largeImageViewport.find('img').eq(index).removeClass(this.hiddenClass);
         }
 
+    };
+
+    /* ---------------------------------------------------------------------
+    Toggle
+
+    When an element with data-toggle-target is clicked, show or hide
+    the specified target ID
+    ------------------------------------------------------------------------ */
+    APP.Toggle = {
+        $toggleTriggers: null,
+        hiddenClass: 'isHidden',
+
+        init: function() {
+            var $toggleTriggers = $('[data-toggle-target-show]');
+
+            if (!$toggleTriggers.length) {
+                return false;
+            }
+
+            this.$toggleTriggers = $toggleTriggers;
+
+            this.createEvents();
+        },
+
+        createEvents: function() {
+            var self = this;
+
+            this.$toggleTriggers.on('click', function(e) {
+                var showTargetId = $(this).attr('data-toggle-target-show');
+                var hideTargetId = $(this).attr('data-toggle-target-hide');
+                self.swapTargets(showTargetId, hideTargetId);
+                e.preventDefault();
+            });
+        },
+
+        swapTargets: function(showTargetId, hideTargetId) {
+            $(document.getElementById(hideTargetId)).hide();
+            $(document.getElementById(showTargetId)).show();
+        }
+    };
+
+    /* ---------------------------------------------------------------------
+    RecoverHash
+
+    When the user interacts with the forgot password form it should show
+    by default when the page loads instead of the regular signin form
+    ------------------------------------------------------------------------ */
+    APP.RecoverHash = {
+        init: function() {
+            if (window.location.hash == '#recover') {
+                APP.Toggle.swapTargets('js-formResetPassword','js-formLogin');
+            }
+        }
     };
 
 }(jQuery, window, WW));

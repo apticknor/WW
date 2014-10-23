@@ -80,6 +80,8 @@ $ACCENT_1: {{ settings.accent_color_1 }};
 $ACCENT_2: {{ settings.accent_color_2 }};
 $TEXT_COLOR: {{ settings.text_color }};
 $LINK_COLOR: {{ settings.link_color }};
+$STATUS_ERROR: #ff0000;
+$STATUS_SUCCESS: #009900;
 
 /* ---------------------------------------------------------------------
  Variables - Font Size
@@ -848,10 +850,17 @@ $footer-BORDER: 1px solid $WHITE;
 }
 
 /* ---------------------------------------------------------------------
+ Module - Label
+------------------------------------------------------------------------ */
+.label {
+    display: block;
+    margin-bottom: $SITE_STD_UNIT*.1;
+}
+
+/* ---------------------------------------------------------------------
  Module - Field
 ------------------------------------------------------------------------ */
 $field-btn-PADDING_TIGHT: 7px 10px;
-$field-btn-PADDING_LOOSE: 14px 20px;
 $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
 
 .field {
@@ -867,7 +876,7 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
 .field_txt {
     width: 100%;
     padding: $field-btn-PADDING_TIGHT;
-    border: 1px solid $TEXT_COLOR;
+    border: 1px solid $ACCENT_1;
     background-color: $WHITE;
     font-family: $SERIF;
     -webkit-appearance: none;
@@ -925,6 +934,10 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
     }
 }
 
+.btn_soft {
+    border-color: $ACCENT_1;
+}
+
 /* ---------------------------------------------------------------------
  Module - Overlay Button
 ------------------------------------------------------------------------ */
@@ -939,6 +952,45 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
     font-family: $SERIF;
     line-height: normal;
     cursor: pointer;
+}
+
+/* ---------------------------------------------------------------------
+ Module - Form
+------------------------------------------------------------------------ */
+.form_isHidden {
+    display: none; // hidden for load because it's toggled with JS
+}
+
+.form-alert .errors {
+    color: $STATUS_ERROR;
+    margin-bottom: $SITE_STD_UNIT;
+}
+
+.form-alert .success {
+    color: $STATUS_SUCCESS;
+    margin-bottom: $SITE_STD_UNIT;
+}
+
+.form-bd {
+    margin-bottom: $SITE_STD_UNIT*1.5;
+}
+
+.form-action {
+    margin-bottom: $SITE_STD_UNIT;
+    border-bottom: 1px solid $ACCENT_1;
+    padding-bottom: $SITE_STD_UNIT;
+    text-align: right;
+}
+
+.form-ft {
+    text-align: center;
+}
+
+/* ---------------------------------------------------------------------
+ Module - Vertical List
+------------------------------------------------------------------------ */
+.vlist > * {
+    margin-bottom: $SITE_STD_UNIT;
 }
 
 /* ---------------------------------------------------------------------
@@ -1170,6 +1222,16 @@ $blocks-MAX_BLOCKS: 4;
 
 .article-meta {
     margin-bottom: $SITE_STD_UNIT*.5;
+}
+
+/* ---------------------------------------------------------------------
+ Module - CTA
+------------------------------------------------------------------------ */
+.cta {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: $SITE_STD_UNIT;
+    background-color: $LIGHT;
 }
 
 /* ---------------------------------------------------------------------

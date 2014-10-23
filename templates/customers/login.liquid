@@ -4,43 +4,76 @@
     </div>
     <div class="pageWrapper-section">
 
-        <div id="js-formLogin">
-            {% form 'customer_login' %}
-                {{ form.errors | default_errors }}
+        <div class="cta">
 
-                <label for="customer_email">Email Address</label>
-                <input class="field field_txt" type="email" name="customer[email]" placeholder="" />
+            <!-- Forgot Password Form -->
+            <div class="form form_isHidden" id="js-formResetPassword">
+                {% form 'recover_customer_password' %}
+                    {% if form.posted_successfully? %}
+                        {% assign reset_success = true %}
+                    {% endif %}
+                    <div class="form-alert">
+                        {{ form.errors | default_errors }}
+                    </div>
+                    <div class="form-bd">
+                        <ul class="vlist">
+                            <li>
+                                <label class="label" for="email">Email Address</label>
+                                <input class="field field_txt" type="email" name="email" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-action">
+                        <input class="btn btn_soft" type="submit" value="Submit" />
+                    </div>
+                {% endform %}
+                <div class="form-ft">
+                    <a href="#" data-toggle-target-show="js-formLogin" data-toggle-target-hide="js-formResetPassword">Back to login</a> or <a href="{{ shop.url }}/account/register">Create Account</a>
+                </div>
+            </div>
 
-                {% if form.password_needed %}
-                <label for="customer_password">Password</label>
-                <input class="field field_txt" type="password" name="customer[password]" />
-                {% endif %}
-
-                <input class="btn" type="submit" value="Sign In" />
-
-            {% endform %}
-            <a href="#">Forgot Your Password?</a>
-            <a href="#">Create Account</a>
-        </div>
-
-        <div id="js-formResetPassword">
-            {% form 'recover_customer_password' %}
-                {{ form.errors | default_errors }}
-
-                <label for="email">Email Address</label>
-                <input class="field field_txt" type="email" name="email" />
-
-                <input class="btn" type="submit" value="Submit" />
-            {% endform %}
-            <a href="#">Back to login</a>
+            <!-- Login Form -->
+            <div class="form" id="js-formLogin">
+                {% form 'customer_login' %}
+                <div class="form-alert">
+                    {{ form.errors | default_errors }}
+                    {% if reset_success %}
+                    <div class="success">
+                        <p>We've sent you an email with a link to update your password.</p>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="form-bd">
+                    <ul class="vlist">
+                        <li>
+                            <label class="label" for="customer_email">Email Address</label>
+                            <input class="field field_txt" type="email" name="customer[email]" placeholder="" />
+                        </li>
+                        <li>
+                        {% if form.password_needed %}
+                            <label class="label" for="customer_password">Password</label>
+                            <input class="field field_txt" type="password" name="customer[password]" />
+                        {% endif %}
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-action">
+                    <input class="btn btn_soft" type="submit" value="Sign In" />
+                </div>
+                {% endform %}
+                <div class="form-ft">
+                    <a href="#" data-toggle-target-show="js-formResetPassword" data-toggle-target-hide="js-formLogin">Reset Password</a> or <a href="{{ shop.url }}/account/register">Create Account</a>
+                </div>
+            </div>
         </div>
 
         {% if shop.checkout.guest_login %}
-            <div class="js-formGuestLogin">
+            {% comment %}
+            <!-- Hidden for now because this is never triggered as far as I can tell -->
                 {% form 'guest_login' %}
                     <input class="btn" type="submit" value="Continue as Guest" />
                 {% endform %}
-            </div>
+            {% endcomment %}
         {% endif %}
 
     </div>

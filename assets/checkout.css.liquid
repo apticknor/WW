@@ -1,0 +1,138 @@
+/* ---------------------------------------------------------------------
+ Ovveride Styles
+------------------------------------------------------------------------ */
+body {
+    padding: 0;
+    border-top: 48px solid {{ settings.accent_color_2 }};
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: {{ settings.font_size_lg }};
+    line-height: 1.4;
+    background-color: #ffffff;
+    color: {{ settings.text_color }};
+}
+
+input[type="text"] {
+    margin: 0;
+    padding: 7px 10px;
+    border: 1px solid {{ settings.accent_color_1 }};
+    width: 100% !important;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: {{ settings.font_size_md }};
+    line-height: normal;
+    background-color: #ffffff;
+    font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Georgia, Times, "Times New Roman", serif;
+}
+
+#container {
+    margin-top: 0;
+}
+
+#header {
+    padding: 20px 0;
+    border: 0;
+    background-image: none;
+}
+
+#header #tagline {
+    display: none;
+}
+
+#header #logo {
+    width: 120px;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image: url({{ 'logo-dark.svg' | asset_url }});
+}
+
+#main {
+    padding: 20px;
+    margin-bottom: 40px;
+    background-color: rgba(0,0,0,.06);
+    background-image: none;
+}
+
+#main #overview {
+    padding: 20px;
+    background-color: #f7f7f7;
+    background-image: none;
+    border: 1px solid #e6e6e6;
+}
+
+#main #overview #products {
+    width: 450px;
+}
+
+#main #overview #wallet {
+    margin-left: 470px;
+}
+
+#main #content {
+    padding: 10px 0;
+}
+
+#main #content #email {
+    padding: 20px;
+    background-color: #f7f7f7;
+    background-image: none;
+    border: 1px solid #e6e6e6;
+}
+
+#main #content #addresses {
+    padding: 20px;
+    background-color: #f7f7f7;
+    background-image: none;
+    border: 1px solid #e6e6e6;
+}
+
+#main #content #addresses .gright {
+    margin: 0;
+    padding: 0 0 0 10px;
+    float: left;
+    width: 50%;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+#main #content #addresses .gleft {
+    margin: 0;
+    padding: 0 10px 0 0;
+    float: left;
+    width: 50%;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+#main #content #addresses h3 {
+    padding-bottom: 10px;
+}
+
+#main #content #buttons {
+    padding: 20px;
+    background-color: #f7f7f7;
+    background-image: none;
+    border: 1px solid #e6e6e6;
+}
+
+#wallet-highlight {
+    display: none !important;
+}
+
+.form td {
+    vertical-align: middle;
+}
+
+.form td.lbl {
+    width: 120px;
+}
+
+#footer {
+    display: none;
+}
+
+

@@ -49,7 +49,7 @@
                                 </div>
                             </td>
                             <td class="itemTable-cell itemTable-cell_qty">
-                                <input class="field field_txt field_txt_sm" type="text" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0" />
+                                <input class="field field_txt field_txt_sm" type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" pattern="[0-9]*" min="0" />
                             </td>
                             <td class="itemTable-cell itemTable-cell_total">
                                 {{ item.line_price | money }}

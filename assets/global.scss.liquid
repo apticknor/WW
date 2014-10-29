@@ -328,6 +328,12 @@ img, audio, canvas, video, picture {
     }
 }
 
+.isHiddenOnMediumScreens {
+    @media (max-width: $BREAKPOINT_MD) {
+        display: none;
+    }
+}
+
 /* ---------------------------------------------------------------------
  Landmark - Toolbar
 ------------------------------------------------------------------------ */
@@ -885,6 +891,10 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
     @include border-radius(0);
 }
 
+.field_txt_sm {
+    width: 36px;
+}
+
 .field_txt_overlap {
     padding-right: 74px;
     border: none;
@@ -1238,6 +1248,94 @@ $blocks-MAX_BLOCKS: 4;
     margin: 0 auto;
     padding: $SITE_STD_UNIT;
     background-color: $LIGHT;
+}
+
+/* ---------------------------------------------------------------------
+ Module - ItemTable
+------------------------------------------------------------------------ */
+.itemTable {
+    width: 100%;
+    margin-bottom: $SITE_STD_UNIT;
+}
+
+.itemTable-cell {
+    vertical-align: middle;
+    text-align: left;
+    border-bottom: 1px solid $LIGHT;
+    padding: 20px 8px;
+}
+
+.itemTable-cell_media {
+    // width is the remainder
+    @media (min-width: $BREAKPOINT_XS) {
+        width: 80px;
+    }
+    @media (min-width: $BREAKPOINT_XM) {
+        width: 140px;
+    }
+    @media (min-width: $BREAKPOINT_MD) {
+        width: 200px;
+    }
+}
+
+.itemTable-cell-media {
+    // constrain thumbnail size
+    max-width: 80px;
+    @media (min-width: $BREAKPOINT_XM) {
+        max-width: 100%;
+    }
+}
+
+.itemTable-cell_media img {
+    display: block;
+
+}
+
+.itemTable-cell_details {
+    @media (min-width: $BREAKPOINT_XS) {
+        padding-left: 28px;
+        padding-right: 28px;
+        // width is the remainder
+    }
+}
+
+.itemTable-cell_details > * {
+    @media (max-width: $BREAKPOINT_XS) {
+        display: none; // hide details on smaller devices
+    }
+}
+
+.itemTable-cell_qty {
+    text-align: center;
+    width: 40px;
+    @media (min-width: $BREAKPOINT_MD) {
+        width: 80px;
+    }
+}
+
+.itemTable-cell_total,
+.itemTable-cell_subtotal {
+    width: 60px;
+    text-align: left;
+}
+
+.itemTable-cell_subtotal {
+    border-bottom: 0;
+}
+
+.itemTable-cell_label {
+    text-align: right;
+    border-bottom: 0;
+}
+
+/* ---------------------------------------------------------------------
+ Module - Action Bar
+------------------------------------------------------------------------ */
+.actionBar {
+    text-align: center;
+    @media (min-width: $BREAKPOINT_SM) {
+        text-align: right;
+    }
 }
 
 /* ---------------------------------------------------------------------

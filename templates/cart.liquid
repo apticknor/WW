@@ -6,67 +6,70 @@
         {% if cart.item_count > 0 %}
 
             <form action="/cart" method="post">
-                <table>
+                <table class="itemTable" cellpadding="0" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Item</th>
-                            <th>Details</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>&nbsp;</th>
+                            <th scope="col" class="itemTable-cell itemTable-cell_media">
+                                Item
+                            </th>
+                            <th scope="col" class="itemTable-cell itemTable-cell_details">
+                                <span class="isVisuallyHidden">Details</span>
+                            </th>
+                            <th scope="col" class="itemTable-cell itemTable-cell_qty">
+                                Qty
+                            </th>
+                            <th scope="col" class="itemTable-cell itemTable-cell_total">
+                                Total
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                     {% for item in cart.items %}
                         <tr>
-                            <td>
-                                <img src="{{ item | img_url: 'compact' }}"  alt="{{ item.title | escape }}" />
-                            </td>
-                            <td>
-                                {{ item.title }}
-                                {% if item.properties.size > 0 %}
-                                <div>
-                                    {% for p in item.properties %}
-                                        {% unless p.last == blank %}
-                                            {{ p.first }}:
-                                            {% if p.last contains '/uploads/' %}
-                                                {{ p.last | split: '/' | last }}
-                                            {% else %}
-                                                {{ p.last }}
-                                            {% endif %}
-                                        {% endunless %}
-                                    {% endfor %}
+                            <td class="itemTable-cell itemTable-cell_media">
+                                <div class="itemTable-cell-media">
+                                    <a href="{{ item.url }}">
+                                        <img src="{{ item | img_url: 'medium' }}"  alt="{{ item.title | escape }}" />
+                                    </a>
                                 </div>
-                                {% endif %}
-                                <div>{{ item.vendor }}</div>
                             </td>
-                            <td>
-                                {{ item.price | money }}
+                            <td class="itemTable-cell itemTable-cell_details">
+                                <div>
+                                    <a href="{{ item.url }}">
+                                        {{ item.product.title }}
+                                        {% comment %}
+                                        {% if item.variant.title != "Default Title" %}
+                                            <br/>{{ item.variant.title }}
+                                        {% endif %}
+                                        {% endcomment %}
+                                    </a>
+                                </div>
+                                <div>
+                                    MFG. by {{ item.vendor }}
+                                </div>
                             </td>
-                            <td>
-                                <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" />
+                            <td class="itemTable-cell itemTable-cell_qty">
+                                <input class="field field_txt field_txt_sm" type="text" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0" />
                             </td>
-                            <td>
+                            <td class="itemTable-cell itemTable-cell_total">
                                 {{ item.line_price | money }}
-                            </td>
-                            <td>
-                                <a href="/cart/change?line={{ forloop.index }}&quantity=0">Remove</a>
                             </td>
                         </tr>
                     {% endfor %}
                     </tbody>
+                    <tfoot>
+                        <th class="itemTable-cell itemTable-cell_label" scope="row" colspan="3">
+                            Subtotal
+                        </th>
+                        <td class="itemTable-cell itemTable-cell_subtotal" colspan="3">
+                            {{ cart.total_price | money }}
+                        </td>
+                    </tfoot>
                 </table>
 
-                <div>
-                    <div>Subtotal {{ cart.total_price | money }}</div>
-                    <input type="submit" name="update" value="Update cart" />
-                    <input type="submit" name="checkout" value="Check out" />
-                </div>
-
-                <div>
-                    <div>Special instructions for seller</div>
-                    <textarea name="note">{{ cart.note }}</textarea>
+                <div class="actionBar">
+                    <input class="btn" type="submit" name="update" value="Update cart" />
+                    <input class="btn" type="submit" name="checkout" value="Check out" />
                 </div>
 
             </form>

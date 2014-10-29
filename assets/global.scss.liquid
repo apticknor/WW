@@ -910,6 +910,7 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
     max-width: 100%;
     @include border-radius(0px);
     -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     background-color: $WHITE;
     background-image: url("select-arrow.svg");
@@ -938,6 +939,10 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
     letter-spacing: 1px;
     background-color: $WHITE;
     cursor: pointer;
+    @include border-radius(0px);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     @media (min-width: $BREAKPOINT_LG) {
         padding: 6px 30px;
         font-size: $FONT_SIZE_LG;

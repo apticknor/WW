@@ -58,12 +58,14 @@
                     {% endfor %}
                     </tbody>
                     <tfoot>
-                        <th class="itemTable-cell itemTable-cell_label" scope="row" colspan="3">
-                            Subtotal
-                        </th>
-                        <td class="itemTable-cell itemTable-cell_subtotal" colspan="3">
-                            {{ cart.total_price | money }}
-                        </td>
+                        <tr>
+                            <th class="itemTable-cell itemTable-cell_label" scope="row" colspan="3">
+                                Subtotal
+                            </th>
+                            <td class="itemTable-cell itemTable-cell_subtotal" colspan="3">
+                                {{ cart.total_price | money }}
+                            </td>
+                        </tr>
                     </tfoot>
                 </table>
 

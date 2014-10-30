@@ -4,6 +4,117 @@
     </div>
     <div class="pageWrapper-section">
 
+        <table class="itemTable" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col" class="itemTable-cell itemTable-cell_media">
+                        Item
+                    </th>
+                    <th scope="col" class="itemTable-cell itemTable-cell_details">
+                        <span class="isVisuallyHidden">Details</span>
+                    </th>
+                    <th scope="col" class="itemTable-cell itemTable-cell_qty">
+                        Qty
+                    </th>
+                    <th scope="col" class="itemTable-cell itemTable-cell_total">
+                        Total
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in order.line_items %}
+                <tr>
+                    <td class="itemTable-cell itemTable-cell_media">
+                        <div class="itemTable-cell-media">
+                            <a href="{{ item.url }}">
+                                <img src="{{ item | img_url: 'medium' }}"  alt="{{ item.title | escape }}" />
+                            </a>
+                        </div>
+                    </td>
+                    <td class="itemTable-cell itemTable-cell_details">
+                        <div>
+                            <a href="{{ item.url }}">
+                                {{ item.product.title }}
+                                {% comment %}
+                                {% if item.variant.title != "Default Title" %}
+                                    <br/>{{ item.variant.title }}
+                                {% endif %}
+                                {% endcomment %}
+                            </a>
+                        </div>
+                        <div>
+                            MFG. by {{ item.vendor }}
+                        </div>
+                    </td>
+                    <td class="itemTable-cell itemTable-cell_qty">
+                        {{ item.quantity }}
+                    </td>
+                    <td class="itemTable-cell itemTable-cell_total">
+                        {{ item.line_price | money }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th class="itemTable-cell itemTable-cell_label" scope="row" colspan="3">
+                        Subtotal
+                    </th>
+                    <td class="itemTable-cell itemTable-cell_subtotal" colspan="3">
+                        {{ order.subtotal_price | money }}
+                    </td>
+                </tr>
+                {% for discount in order.discounts %}
+                <tr>
+                    <th class="itemTable-cell itemTable-cell_label" scope="row" colspan="3">
+                        {{ discount.code }} Discount:
+                    </th>
+                    <td class="itemTable-cell itemTable-cell_subtotal" colspan="3">
+                        {{ discount.savings | money }}
+                    </td>
+                </tr>
+                {% endfor %}
+                {% for shipping_method in order.shipping_methods %}
+                <tr>
+                    <th class="itemTable-cell itemTable-cell_label" scope="row" colspan="3">
+                        Shipping ({{ shipping_method.title }})
+                    </th>
+                    <td class="itemTable-cell itemTable-cell_subtotal" colspan="3">
+                        {{ shipping_method.price | money }}
+                    </td>
+                </tr>
+                {% endfor %}
+                {% for tax_line in order.tax_lines %}
+                <tr>
+                    <th class="itemTable-cell itemTable-cell_label" scope="row" colspan="3">
+                        Tax ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)
+                    </th>
+                    <td class="itemTable-cell itemTable-cell_subtotal" colspan="3">
+                        {{ tax_line.price | money }}
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th class="itemTable-cell itemTable-cell_label" scope="row" colspan="3">
+                        Total
+                    </th>
+                    <td class="itemTable-cell itemTable-cell_subtotal" colspan="3">
+                        {{ order.total_price | money }} {{ order.currency }}
+                    </td>
+                </tr>
+
+            </tfoot>
+        </table>
+
+
+
+
+
+
+
+
+
+
         {% if order.cancelled %}
             <div>
                 Order Cancelled on {{ order.cancelled_at | date: "%B %d, %Y %I:%M%p" }}
@@ -32,61 +143,6 @@
         <p>{{ order.shipping_address.city }}, {{ order.shipping_address.province }}</p>
         <p>{{ order.shipping_address.country }} {{ order.shipping_address.zip }}</p>
         <p>{{ order.shipping_address.phone }}</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>SKU</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for line_item in order.line_items %}
-                    <tr>
-                        <td>{{ line_item.title | link_to: line_item.product.url }}</td>
-                        <td>{{ line_item.sku }}</td>
-                        <td>{{ line_item.price | money }}</td>
-                        <td>{{ line_item.quantity }}</td>
-                        <td>{{ line_item.line_price | money }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="4">Subtotal:</td>
-                    <td>{{ order.subtotal_price | money }}</td>
-                </tr>
-
-                {% for discount in order.discounts %}
-                <tr>
-                    <td>{{ discount.code }} Discount:</td>
-                    <td>{{ discount.savings | money }}</td>
-                </tr>
-                {% endfor %}
-
-                {% for shipping_method in order.shipping_methods %}
-                <tr>
-                    <td colspan="4">Shipping ({{ shipping_method.title }}):</td>
-                    <td>{{ shipping_method.price | money }}</td>
-                </tr>
-                {% endfor %}
-
-                {% for tax_line in order.tax_lines %}
-                <tr>
-                    <td colspan="4">Tax ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%):</td>
-                    <td>{{ tax_line.price | money }}</td>
-                </tr>
-                {% endfor %}
-
-                <tr>
-                    <td colspan="4">Total:</td>
-                    <td>{{ order.total_price | money }} {{ order.currency }}</td>
-                </tr>
-            </tfoot>
-        </table>
 
     </div>
 </div>

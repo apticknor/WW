@@ -295,7 +295,7 @@ input::-webkit-inner-spin-button {
  Base - Elements
 ------------------------------------------------------------------------ */
 body {
-    background-color: $ACCENT_1; // this is the color of the footer only
+    background-color: $ACCENT_2; // this is the color of the subfooter only
     color: $TEXT_COLOR;
     font-family: $SANS_SERIF;
     font-size: $FONT_SIZE_LG;
@@ -537,13 +537,13 @@ img, audio, canvas, video, picture {
  Landmark - Footer
 ------------------------------------------------------------------------ */
 .footer {
-    padding: $SITE_STD_UNIT*1.5 0;
+    padding: $SITE_STD_UNIT 0;
     color: $WHITE;
     font-family: $SERIF;
-    font-size: $FONT_SIZE_LG;
+    font-size: $FONT_SIZE_MD;
     @media (min-width: $BREAKPOINT_MD) {
-        padding-top: $SITE_STD_UNIT*2;
-        padding-bottom: $SITE_STD_UNIT*2;
+        padding-top: $SITE_STD_UNIT*1.5;
+        padding-bottom: $SITE_STD_UNIT*1.5;
     }
 }
 
@@ -554,195 +554,79 @@ img, audio, canvas, video, picture {
 /* ---------------------------------------------------------------------
  Footer Module - footerGrid
 ------------------------------------------------------------------------ */
-$footer-BORDER: 1px solid $WHITE;
-
 .footerGrid {
-    @include clearfix();
-}
-
-.footerGrid-col_cta {
-    padding-bottom: $SITE_STD_UNIT*1.75; // slight larger than the rest because there isn't line-height causing extra space here.
-    margin-bottom: $SITE_STD_UNIT*1.5;
-    border-bottom: $footer-BORDER;
-    @media (min-width: $BREAKPOINT_MD) {
-        padding-bottom: 0;
-        margin-bottom: 0;
-        border-bottom: none;
-        float: left;
-        width: calc(100% - 420px); // 420 - 240 + 180 (column sizes)
-        position: relative;
-        left: 240px; // move into 2nd position
-    }
-    @media (min-width: $BREAKPOINT_XL) {
-        padding-top: 14px; // faux vertical alignment. YAY
-    }
-}
-
-.footerGrid-col_info {
-    padding-bottom: $SITE_STD_UNIT*1.5; // slight larger than the rest because there isn't line-height causing extra space here.
-    margin-bottom: $SITE_STD_UNIT*1.5;
-    border-bottom: $footer-BORDER;
+    max-width: 400px;
+    margin: 0 auto;
     text-align: center;
-    @media (min-width: $BREAKPOINT_SM) {
-        font-size: 0; // remove space between inline-block elements
-    }
-    @media (min-width: $BREAKPOINT_MD) {
-        padding-bottom: 0;
-        margin-bottom: 0;
-        border-bottom: none;
-        float: left;
-        width: 240px;
-        position: relative;
-        left: calc(-100% + 420px); // move into 1st col position
-    }
-    @media (min-width: $BREAKPOINT_XL) {
+    @media (min-width: $BREAKPOINT_MX) {
+        max-width: 1000px;
         text-align: left;
     }
 }
 
-.footerGrid-col_info-address {
-    margin-bottom: $SITE_STD_UNIT;
-    @media (min-width: $BREAKPOINT_SM) {
-        margin-bottom: 0;
-        display: inline-block;
-        width: 50%;
-        vertical-align: middle;
-        font-size: $FONT_SIZE_LG; // return font-size
+@media (min-width: $BREAKPOINT_MX) {
+    .footerGrid-row {
+        display: table;
+        width: 100%;
     }
-    @media (min-width: $BREAKPOINT_MD) {
-        display: block;
-        margin-bottom: $SITE_STD_UNIT;
-        width: auto;
-        font-size: $FONT_SIZE_MD;
-    }
-    @media (min-width: $BREAKPOINT_XL) {
-        font-size: $FONT_SIZE_LG;
+
+    .footerGrid-row-cell {
+        display: table-cell;
+        width: 33.3%;
     }
 }
 
-.footerGrid-col_info-hours {
-    @media (min-width: $BREAKPOINT_SM) {
-        display: inline-block;
-        width: 50%;
-        vertical-align: middle;
-        font-size: $FONT_SIZE_LG; // return font-size
+@media (min-width: $BREAKPOINT_LG) {
+    .footerGrid-row-cell {
+        width: 40%;
     }
-    @media (min-width: $BREAKPOINT_MD) {
-        display: block;
-        width: auto;
-        font-size: $FONT_SIZE_MD;
-    }
-    @media (min-width: $BREAKPOINT_XL) {
-        font-size: $FONT_SIZE_LG;
-    }
-}
 
-.footerGrid-col_nav {
-    text-align: center;
-    @media (min-width: $BREAKPOINT_MD) {
-        float: left;
-        width: 180px;
-    }
-    @media (min-width: $BREAKPOINT_XL) {
-        text-align: left;
-        width: 160px;
-        padding-left: 20px
-    }
-}
-
-.footerGrid-col_nav-list > li {
-    @media (min-width: $BREAKPOINT_SM) {
-        display: inline-block;
-        font-size: $FONT_SIZE_MD;
-    }
-    @media (min-width: $BREAKPOINT_MD) {
-        display: list-item;
-    }
-    @media (min-width: $BREAKPOINT_XL) {
-        font-size: $FONT_SIZE_LG;
-    }
-}
-
-.footerGrid-col_nav-list > li + li:before {
-    @media (min-width: $BREAKPOINT_SM) {
-        content: "\00a0\00a0\007C\00a0\00a0\00a0";
-    }
-    @media (min-width: $BREAKPOINT_MD) {
-        content: "";
+    .footerGrid-row-cell_sm {
+        width: 30%;
     }
 }
 
 /* ---------------------------------------------------------------------
- Footer Grid Outer Module - footerGridOuter
+ Footer Module - footerCTA
 ------------------------------------------------------------------------ */
-.footerGridOuter {
-    @media (min-width: $BREAKPOINT_MD) {
-        position: relative;
-        margin-left: -20px; // undo wrapper padding
-        margin-right: -20px; // undo wrapper padding
-    }
+.footerCTA {
+    padding: $SITE_STD_UNIT;
     @media (min-width: $BREAKPOINT_MX) {
-        margin-left: 0;
-        margin-right: 0;
+        padding-left: $SITE_STD_UNIT*1.5;
+        padding-right: $SITE_STD_UNIT*1.5;
     }
 }
 
-.footerGridOuter:before {
-    // horizontal divider
-    @media (min-width: $BREAKPOINT_MD) {
-        content: " ";
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 240px;
-        width: 1px;
-        background-color: $WHITE;
-    }
-    @media (min-width: $BREAKPOINT_MX) {
-        left: 260px;
-    }
-    @media (min-width: $BREAKPOINT_LG) {
-        left: 240px;
-    }
-    @media (min-width: $BREAKPOINT_XL) {
-        left: 260px;
-    }
-    @media (min-width: $BREAKPOINT_XXL) {
-        left: 280px;
-    }
-    @media (min-width: $BREAKPOINT_XXXL) {
-        left: 300px;
-    }
+.footerCTA-hd {
+    margin-bottom: $SITE_STD_UNIT*.5;
 }
 
-.footerGridOuter:after {
-    // horizontal divider
-    @media (min-width: $BREAKPOINT_MD) {
-        content: " ";
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 180px;
-        width: 1px;
-        background-color: $WHITE;
-    }
-    @media (min-width: $BREAKPOINT_MX) {
-        right: 200px;
-    }
-    @media (min-width: $BREAKPOINT_LG) {
-        right: 180px;
-    }
-    @media (min-width: $BREAKPOINT_XL) {
-        right: 200px;
-    }
-    @media (min-width: $BREAKPOINT_XXL) {
-        right: 220px;
-    }
-    @media (min-width: $BREAKPOINT_XXXL) {
-        right: 240px;
-    }
+.footerCTA-hd_loose {
+    margin-bottom: $SITE_STD_UNIT*.7; // because the input buts up too close to the heading and other sections don't
+}
+
+
+.footerCTA-bd-break {
+    margin-bottom: $SITE_STD_UNIT*.5;
+}
+
+/* ---------------------------------------------------------------------
+ Footer Module - footerLinks
+------------------------------------------------------------------------ */
+.footerLinks {
+    padding: 14px 0 12px 0;
+    background-color: $ACCENT_2;
+    color: $WHITE;
+    font-size: $FONT_SIZE_MD;
+    line-height: 2;
+    font-family: $SANS_SERIF;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.footerLinks a {
+    color: $WHITE;
+    text-decoration: none;
 }
 
 /* ---------------------------------------------------------------------
@@ -750,61 +634,12 @@ $footer-BORDER: 1px solid $WHITE;
 ------------------------------------------------------------------------ */
 .signupForm {
     position: relative;
-    max-width: 320px;
-    margin: 0 auto;
-    @media (min-width: $BREAKPOINT_SM) {
-        max-width: 420px;
-    }
-    @media (min-width: $BREAKPOINT_MD) {
-        max-width: 280px;
-    }
-    @media (min-width: $BREAKPOINT_LG) {
-        max-width: 380px;
-    }
 }
 
 .signupForm-btn {
     position: absolute;
     top: 0;
     right: 0;
-}
-
-/* ---------------------------------------------------------------------
- Footer Module - newsletterLabel
------------------------------------------------------------------------- */
-.newsletterLabel {
-    display: none;
-    @media (min-width: $BREAKPOINT_SM) {
-        display: inline;
-    }
-    @media (min-width: $BREAKPOINT_MD) {
-        display: none;
-    }
-    @media (min-width: $BREAKPOINT_LG) {
-        display: inline;
-    }
-}
-
-/* ---------------------------------------------------------------------
- Footer Module - FooterSection
------------------------------------------------------------------------- */
-.footerSection {
-    text-align: center;
-}
-
-.footerSection-hd {
-    margin-bottom: $SITE_STD_UNIT;
-}
-
-.footerSection-bd {
-    margin-bottom: $SITE_STD_UNIT;
-}
-
-.footerSection-ft {
-    font-size: $FONT_SIZE_MD;
-    @media (min-width: $BREAKPOINT_LG) {
-        font-size: $FONT_SIZE_LG;
-    }
 }
 
 /* ---------------------------------------------------------------------
@@ -851,16 +686,6 @@ $footer-BORDER: 1px solid $WHITE;
     padding: 0 $SITE_STD_UNIT;
     @media (min-width: $BREAKPOINT_XL) {
         padding: 0 $SITE_STD_UNIT*2;
-    }
-}
-
-.wrapper_constrained {
-    max-width: 400px;
-    @media (min-width: $BREAKPOINT_SM) {
-        max-width: 500px;
-    }
-    @media (min-width: $BREAKPOINT_MD) {
-        max-width: $SITE_MAX_WIDTH;
     }
 }
 
@@ -1024,6 +849,22 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
 }
 
 /* ---------------------------------------------------------------------
+ Module - Vertical List
+------------------------------------------------------------------------ */
+.linkList > * {
+    display: inline-block;
+    padding-right: $SITE_STD_UNIT*.75;
+}
+
+/* ---------------------------------------------------------------------
+ Module - Vertical List
+------------------------------------------------------------------------ */
+.iconList > * {
+    display: inline-block;
+}
+
+
+/* ---------------------------------------------------------------------
  Module - Blocks
 ------------------------------------------------------------------------ */
 $blocks-SPACING: $SITE_STD_UNIT*2;
@@ -1154,6 +995,10 @@ $blocks-MAX_BLOCKS: 4;
     font-family: $GOTHIC;
 }
 
+.mix-hdg_lower {
+    text-transform: none;
+}
+
 .hdg_xxl {
     font-size: $FONT_SIZE_XXL;
 }
@@ -1194,7 +1039,6 @@ $blocks-MAX_BLOCKS: 4;
     float: left;
     text-align: left;
 }
-
 
 .split-right {
     float: right;
@@ -1352,6 +1196,43 @@ $blocks-MAX_BLOCKS: 4;
     @media (min-width: $BREAKPOINT_SM) {
         text-align: right;
     }
+}
+
+/* ---------------------------------------------------------------------
+ Module - Icon
+------------------------------------------------------------------------ */
+.icon {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    text-indent: -9999px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.icon_spotify {
+    // background-color: #80b719;
+    background-image: url('data:image/png;base64,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');
+}
+
+.icon_twitter {
+    // background-color: #00aced;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAFSElEQVR42uzdf2hVdRzG8Xu3VpuTkNINXWUolTW0EZbNmq0oiEyKhLLI5R+6SCXWXMloUJsVSkikNCZZipnUHANxK5ZFP8wfqFmDqIysqDFY7EfbdG3l7um9PwYXtuvu3e695+w8nwde+/vLs8+9555zzz3fgOM4Rph8AerkC1AnX4A6+QLUyRegTr4AdfIFqJMvQJ18AerkC1AnX4A6+QLUyRegTr4AdfIFqJMvQJ18AerkC1AnX4A6+QLUyRegTr4AdfIFqJMvQJ18AerkC1AnX4A6+QLUyRegTr4AdfIFxCgbS7AKL6ACpXgCizDNBsB/rsAaNKETF0sr9mM5LpvgoAVtANyVgY1owXjyPYoQiMFs7ECl3wfgRgQ87HacRjzSiGsRuIg8bEMXhnKTnw8Bl6MVZQh4UBH6EM+0oACBMHPwND7FBQznHb9/BijGUEJ4FAEPKUai0otnsQXHIgxZB3L8PgBfYzj9WIqAByxDCG7mcb+fBcxGP8LTh2UIuOgatMPNvBZhbUE/DcAjGC0Dw9Pvknq4mTdGWVMBipDmpwGowMWyAYEkK4Rb6UQxAkjHrSjHcZzDYr8dAmowVmqQnsQ1NcCN9GIbylCPXxGeJ/34GeA9RJMjSToXnoMBuJEQIqXSrx8CdyPadGFNgtezFl5LtZ/PArYi1hzAvASt5wN4KTtcPw306CuuBy/F+du2IJrhlbyu8G3gHZhIzuIZZMZhLVPRCrfzL9YLfB0c19LP4DlkT2AtM9AFN9OOQrX7AXYiXmnDW1iMlBjXMR2dcDPNijeELEIi8i2qkI+MKNaRiRa4mR+RKjAASb/4chb7sA75yIpwTf0o3MwPSFEcgFz0J/mSazMOYDvKsRrH7BDAH5eUOpaj6jeF7oZyPlIagBQsR86Iq3G62aX2DnAC7ajGfWFX9jbhPNRSpTYAHyI8f+Ew3sVvUEuR2gC84ljCk682AA85luF0I0ttALLQ41iGcgpBxdPAOscylGrVH4fe7ViG8pjmAACHoJw+XKU8APPRD9V8Zc8HcJwSqKbUBgCogVoGMNcGAEjB21DKIXtEzEgVGIRCVtgAjK4QJ+Dn/IFMG4DILsFKHMEF+C0v2lPCRkqN8IOPJdiFPvghHZhhAzBSGprwHb7EFziJM+hAyL779/8hoAx+ThuutAGIbBpa4destyeFjm01/JjTSLMBGFsQDfBTQrjTnhUcvSz8DL9kqz0sOnY34HdM9jRjig3A+MzFSUzWnMfN9rj4iZmK7QjZ7d7aj4svQOMkGoTNtmFEYizEZpxCL7yY923HkOTIQR7KcA5eSAMutQFInofxC7yQjzHFNo1KjutRC6+kHhm2a1jizcSr6IZXUoNU2zYuseZhC9rglQzieds3MHFysBIH0e/B27rut40joxNEehQXfK7Dg6jEZ/gbXkwdcmzn0OgFcRf2oRF7sQe1aMI3aMEAvJw/8ZRtHTt+C1CHyZZ/8Caybe/g+LgN+zEIL2cAezDfNo9OjIXYiS54Ke2oxgLbPTw5rkYJjrv4rvAfDmMdZtr28e7JQzk+R3cSXumfYANyw9dhA+ANs7AUVTiIn9CDWDOIdjSjFuW4F1mO7Y4+qS4Fp2EWbsEDWIUSVKAKm/AyNmItVuAe5GI6gur/6EjkC1AnX4A6+QLUyRegTr4AdfIFqJMvQJ18AerkC1AnX4A6+QLUyRegTr4AdfIFqJMvQJ18AerkC1AnX4A6+QLUyRegTr4AdfIFqJMv4P9y6JAAAAAAAMj/14YIDtj1Abs+YNcH7PqAXR+w6wN2fcCuD9gBlGlqgA1GjrAAAAAASUVORK5CYII=');
+}
+
+.icon_facebook {
+    // background-color: #3b5998;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAADQ0lEQVR42uzbv0tVYRzH8QP94Kp0ube6N6LGiGgxcAgiGlqFiAin6McWrYV/QFBQQUE0tTQ1XRxsCYSUJEmppSGkEiEjxRTtNjSYcvpsd5Dg9HS9ned83l94r16f730Ncp5jkqYpGWe/APfsF+Ce/QLcs1+Ae/YLcM9+Ae7ZL8A9+wW4Z78A9+wX4J79AtyzX4B79gtwz34B7tkvwD37BbhnvwD37Bfgnv0C3LNfgHv2C3DPfgHudfoDt6mKqpLaXEVtLyKAXeqWeq8W1TdSm1tU0+qOqhQFQFlNpMzfzhu1uwgAbqdM6DyIHcAO9SllQmdOlWIGUFXLKRM6TVWPHcBSyoTOd1UDAAAAAAAAAAAAAAAAAACQw1lXa+qX2gBAsQF8VQ11XfWrPnVEHVKH1VHVq46r0+qsuqIG1QgA4p0xNfCPlzSXABDffFYDbdrHVQDENaPqgEoA4AdgRHWrBAB+AD6oqkoA4AdgQ51SCQA8ATxVCQA8AayrYwDwBfBKJQDwBTC4xfu4DIB8z4nAc/aoM+qmeqye/KHXAMjv/FD7As54Uk1zGxg/gI8B/5WzXy1xHVwMAJMB57vB+wDFATAWcL4hABQHwIuA840DoDgARgPONwEAAAAAAAAAAAAAAAAAACBiAOMB55sCQP4BrKqFDDUCzvdMLWRsXq0BoPNzUZUz1BN4C1jO2F41C4DOzzmV5KA9qgmAzs/5nADo5W8AbwD9APAGcA0A3gDuAcAbQAMA3gCmAOALoEvNAcAXwEH1EwC+D4L6uAvI/6Pg7i18FHwBAP/3Mmg+QyGXQcMZf3YTAFwHA4AXQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIgOwDIAgqep6jED2KlmABA8X1RXnABa3QVA8DxSSewAquptBABeBpxtUm3VvFO1+AG0ENxXM2pFreaw4YBzPW/z77CiZtXD1pdfBACtSqqm6jmsEgi73sZqqhS223AAlLMAQAAgABAACAAEAAIAAYAAQAAgABAACAAEgN/t0rEAAAAAwCB/6ykMoCODEAABEAABEAABEAAB+AIhqnNw+c8WPAAAAABJRU5ErkJggg==');
+}
+
+.icon_pinterest {
+    // background-color: #cb2027;
+    background-image: url('data:image/png;base64,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');
+}
+
+.icon_instagram {
+    // background-color: #3f729b;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAFSElEQVR42uzdbWiVZRzH8etkkTCHnmVbZvag9KInekI76oYuNyFoKIJRGGaE0UtfFYxeRAVBUqYZm3MVFavQokLHKsKMDNxqpGvWILFSS5quuZrmw9q/34vJTbB13ec697mvc9//3w8+e3128YWNnXNfMyJCiqk/AO3UH4B26g9AO/UHoJ36A9BO/QFop/4AtFN/ANqpPwDt1B+AduoPQDv1B6Cd+gPQTv0BaKf+ALRTfwDaqT8A7dQfgHbqD0A79QegnfoD0E79AWhXCi9iCmSVKtcawF2wAbrgKPQr9St8A5tgoYYAZkCbcBNtG8xKawA3wUHhbPsF7khbAFVwSLiwOwqz0hTAO8Llu4/SEsBc4VxXk4YANgrnutakB5CBbuFc9z1MSnIAU+CYcK4bgIokB5CF45LuHYZ1UA9LLOpgDXwt4XYSKhlA6e4YzHE4lzLoYgDJ33NgHK1kAMnfo2Ac5RhA8vcYGEcLGAADYAAMgAEwAAbAABgAA2AADIABMAAGwD8EMYDkbCMYR6sZQPJ3EuY6fjq6jwH42Z+wH9qhbcxO2AdDjhGshzWwOoQn4RDfDo53w/A2rICZkAEzjithGbwFCKV4YwDxbBSa4XqH1z4bXoYRBpDMAPqgFkyBquE7BpCsAHZFfHAV0MEAkhHA51AGJmKToYMBlHYAP8J0MEUyFXoZQGkG8A/UxPSk0zkGUHoBtICJyUsMINoAfoYD4+iF02LfKbg25nsOhsS+v6F3gu/tJwYQrB4uGkc5HBH73gUTs9fEvn6omOB7q2YAwe4GM45bYFTsW+4hgKVg38TvFcxnAMGWFPDwxDDM8BBABfwh9j3EzwO4B/C42NcDGTAedIp9TzEA9wBeEPvawXiyXexrYgDuATSLfW0eA9gq9r3JANIbQAsDKG4AL4p9Oz0GsE3sa2YA7gE0in37Pf4SuFfse5YBuAewSuz7C6rAxCwLA2LfWgbgHsA8CbcGDwHUSbgtYgDuAUyDEyX6i2BLyA+gVjIAlwACn4p9wzFfslwFg2Lfl3wyqPAA1km4vRJjAOsl3BoZQOEBzIazYt95yIEpstvgjNg3AjcwgEICCOzI42bNaUW++HKfhNtnfDg0ugDqJPw+hslgInYJfCjh18AAogsgA7sl/DogCyYi5fCBhF8nTGIAUQQQmA+jEn49sCCiD4F2S36r5f0ALgHYbZL8dg42wDUOr/0qeB7OSH5r5QURxQugHA5I/huEV+EeuBzMBKbDUtgCA5L/DkKWARQjgMCtBT65ewI64T3YOmY77C3wI+ynYR6viClmAIEGGJHS2Sis5B1BcQQQeKBEIhiFh3lJVJwBBJbBkPjbKbiPt4T5CCBwp6fn9/sgx2vifAYQmAqbJb61wGVgGECcAdgtht1SvO2BejACDMBXAHb3QjuclcJ3Hj6B5ZABwwA8BODoRngCdsGAhN8gfAGNcDOYCxiA7wDcVUINPAJPQxO8MaYJnoG1sAiuAHMBA/AQgG8MgAEwgBgDqAWTRLwtPJoAHlQYwAoGEKwbysAocSl8xQD+uy5YBdWwMKWq4X7Yo+WWsHL++3jd/z4+A98K57of4OJkBhDYLJzrXgeT9ABywrmuNtkBBN4XLt91gElLADPhiHBh9ztcl44AArfDYeFs+w1yYNITQOBq/jj43+2AOWDSGUBgMWyBHuiHQaWOQy+0+npDDF/EpwxUQKVKwU3ixhd8EfKMARADIAZADIAYADEAYgDEAIgBEAMgBkAMgBgAMYB/26VDAgAAAABB/1/7wUzgAQiAAAiAAAiAAAiAAHwBRMgx5w2xBPcAAAAASUVORK5CYII=');
 }
 
 /* ---------------------------------------------------------------------

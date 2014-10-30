@@ -1,16 +1,54 @@
 
-    <div class="tier tier_transparent">
-        <div class="wrapper wrapper_constrained">
+    <div class="tier tier_accent1">
+        <div class="wrapper">
             <div class="footer" role="contentinfo">
-                <div class="footerGridOuter">
-                    <div class="footerGrid">
-                        <div class="footerGrid-col footerGrid-col_cta">
-                            <div class="footerSection">
-                                <div class="footerSection-hd">
-                                    Join our newsletter <span class="newsletterLabel">for new releases and updates.</span>
+                <h1 class="isVisuallyHidden">Related Information</h1>
+
+                <div class="footerGrid">
+                    <div class="footerGrid-row">
+                        <div class="footerGrid-row-cell footerGrid-row-cell_sm">
+
+                            <div class="footerCTA">
+                                <div class="footerCTA-hd">
+                                    <h2 class="hdg hdg_lg mix-hdg_lower">Our Location &amp; Hours</h2>
                                 </div>
-                                <div class="footerSection-bd">
-    <form action="//wilsonandwillys.us9.list-manage.com/subscribe/post?u=7d8847d5ffe4fbbe1cd2ca15e&amp;id=ade0f7e4c5" method="post" target="_blank" novalidate>
+                                <div class="footerCTA-bd">
+
+                                    <div class="footerCTA-bd-break">
+                                        {% unless settings.maplink == blank %}
+                                            <a href="{{ settings.maplink }}">
+                                        {% endunless %}
+                                            <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                                <span class="isVisuallyHidden" itemprop="name">{{ shop.name }}<br/></span>
+                                                <span itemprop="streetAddress">{{ settings.addressStreet }}</span><br/>
+                                                <span itemprop="addressLocality">{{ settings.addressCity }}</span>, <span itemprop="addressRegion">{{ settings.addressState }}</span> <span itemprop="postalCode">{{ settings.addressZip }}</span>
+                                            </span>
+                                        {% unless settings.maplink == blank %}
+                                            </a>
+                                        {% endunless %}
+                                    </div>
+
+                                    {% unless settings.hoursline1 == blank %}
+                                        <div itemprop="openingHours">{{ settings.hoursline1 }}</div>
+                                    {% endunless %}
+                                    {% unless settings.hoursline2 == blank %}
+                                        <div itemprop="openingHours">{{ settings.hoursline2 }}</div>
+                                    {% endunless %}
+                                    {% unless settings.hoursline3 == blank %}
+                                        <div itemprop="openingHours">{{ settings.hoursline3 }}</div>
+                                    {% endunless %}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="footerGrid-row-cell">
+
+                            <div class="footerCTA">
+                                <div class="footerCTA-hd footerCTA-hd_loose">
+                                    <h2 class="hdg hdg_lg mix-hdg_lower">Join Our Newsletter</h2>
+                                </div>
+                                <div class="footerCTA-bd">
+                                    <form action="//wilsonandwillys.us9.list-manage.com/subscribe/post?u=7d8847d5ffe4fbbe1cd2ca15e&amp;id=ade0f7e4c5" method="post" target="_blank" novalidate>
                                         <div style="position: absolute; left: -5000px;">
                                             <input type="text" name="b_7d8847d5ffe4fbbe1cd2ca15e_ade0f7e4c5" tabindex="-1" value="">
                                         </div>
@@ -25,49 +63,74 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="footerSection-ft">
-                                    <span class="">Expect quality over quantity.</span>
+                            </div>
+
+                        </div>
+                        <div class="footerGrid-row-cell footerGrid-row-cell_sm">
+
+                            <div class="footerCTA">
+                                <div class="footerCTA-hd">
+                                    <h2 class="hdg hdg_lg mix-hdg_lower">Follow Us</h2>
+                                </div>
+                                <div class="footerCTA-bd">
+                                    <ul class="iconList">
+                                        <li>
+                                            <a href="http://instagram.com/wilsonandwillys">
+                                                <i class="icon icon_instagram">Instragram</i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://twitter.com/wilsonandwillys">
+                                                <i class="icon icon_twitter">Twitter</i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.facebook.com/wilsonandwillys">
+                                                <i class="icon icon_facebook">Facebook</i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.pinterest.com/wilsonandwillys/">
+                                                <i class="icon icon_pinterest">Pinterest</i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://play.spotify.com/user/wilsonandwillys">
+                                                <i class="icon icon_spotify">Spotify</i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div class="footerGrid-col footerGrid-col_info">
 
-                            <div class="footerGrid-col_info-address">
-                                {% unless settings.maplink == blank %}<a href="{{ settings.maplink }}">{% endunless %}
-                                    <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                                        <span class="isVisuallyHidden" itemprop="name">{{ shop.name }}<br/></span>
-                                        <span itemprop="streetAddress">{{ settings.addressStreet }}</span><br/>
-                                        <span itemprop="addressLocality">{{ settings.addressCity }}</span>, <span itemprop="addressRegion">{{ settings.addressState }}</span> <span itemprop="postalCode">{{ settings.addressZip }}</span>
-                                    </span>
-                                {% unless settings.maplink == blank %}</a>{% endunless %}
-                            </div>
-
-                            <div class="footerGrid-col_info-hours">
-                                {% unless settings.hoursline1 == blank %}<div itemprop="openingHours">{{ settings.hoursline1 }}</div>{% endunless %}
-                                {% unless settings.hoursline2 == blank %}<div itemprop="openingHours">{{ settings.hoursline2 }}</div>{% endunless %}
-                                {% unless settings.hoursline3 == blank %}<div itemprop="openingHours">{{ settings.hoursline3 }}</div>{% endunless %}
-                            </div>
-
-                        </div>
-                        <div class="footerGrid-col footerGrid-col_nav">
-                            <ul class="footerGrid-col_nav-list">
-                            {% if shop.customer_accounts_enabled %}
-                                <li>
-                                {% if customer  %}
-                                    <a href="/account">Account</a>
-                                {% else %}
-                                    {{ 'Account' | customer_login_link }}
-                                {% endif %}
-                                </li>
-                            {% endif %}
-                            {% for link in linklists.footer.links %}
-                                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                            {% endfor %}
-                            </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="tier tier_transparent">
+        <div class="wrapper wrapper_constrained">
+
+            <div class="footerLinks">
+                <ul class="linkList">
+                    {% if shop.customer_accounts_enabled %}
+                        <li>
+                        {% if customer  %}
+                            <a href="/account">Account</a>
+                        {% else %}
+                            {{ 'Account' | customer_login_link }}
+                        {% endif %}
+                        </li>
+                    {% endif %}
+                    {% for link in linklists.footer.links %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
         </div>
     </div>
 

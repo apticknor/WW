@@ -40,14 +40,6 @@
                     {% endif %}
                     <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
                     <meta itemprop="image" content="{{ product | img_url: '1024x1024' }}" />
-                    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
-                        {% if product.available %}
-                            <link itemprop="availability" href="http://schema.org/InStock" />
-                        {% else %}
-                            <link itemprop="availability" href="http://schema.org/OutOfStock" />
-                        {% endif %}
-                    </div>
                 </div>
                 <div class="product-content-hd" itemprop="name">
                     <h2 class="hdg hdg_xl">{{ product.title }} - {{ product.selected_or_first_available_variant.price | money }}</h2>

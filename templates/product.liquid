@@ -54,9 +54,11 @@
                 </div>
                 {% if product.vendor %}
                 <div class="product-content-subhd" itemprop="brand">
-                    <a href="/collections/{{ product.vendor | handleize }}">
-                        MFG. by {{ product.vendor }}
-                    </a>
+                    <h3 class="hdg hdg_xs mix-hdg_gothic">
+                        <a href="/collections/{{ product.vendor | handleize }}">
+                            MFG. by {{ product.vendor }}
+                        </a>
+                    </h3>
                 </div>
                 {% endif %}
                 <div class="product-content-description" itemprop="description">

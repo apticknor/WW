@@ -7,7 +7,7 @@
         {% for collection in collections %}
             {% if collection.handle == settings.featured_collection %}
                 <ul class="blocks blocks_std">
-                    {% for featuredProduct in collection.products %}
+                    {% for featuredProduct in collection.products limit:3 %}
                         <li>
                             <div class="panel">
                                 <div class="panel-media">

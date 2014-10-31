@@ -18,6 +18,17 @@
 
     {% if template == "index" and settings.enable_hero_image == true %}
     <div class="tier tier_hero" style="background-image: url({{ 'hero_image_home.jpg' | asset_url }});">
+        {% if settings.enable_hero_text == true %}
+            {% comment %}
+                Centered text in the middle of the homepage hero image
+            {% endcomment %}
+            <div class="heroTxt">
+                <div class="heroTxt-inner">
+                    <div class="heroTxt-line1">{{ settings.hero_text_line1 }}</div>
+                    <div class="heroTxt-line2">{{ settings.hero_text_line2 }}</div>
+                </div>
+            </div>
+        {% endif %}
     {% else %}
     <div class="tier">
     {% endif %}

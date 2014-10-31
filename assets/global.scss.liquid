@@ -587,6 +587,37 @@ img, audio, canvas, video, picture {
 }
 
 /* ---------------------------------------------------------------------
+ Masthead Module - heroTxt
+------------------------------------------------------------------------ */
+.heroTxt {
+    display: none; // hide on small screens
+    @media(min-width: $BREAKPOINT_MD) {
+        display: block; // start showing up
+        width: 540px;
+        position: absolute;
+        left: calc(50% - 270px); // subtrat half the width
+        top: 50%;
+        color: $WHITE;
+        text-transform: uppercase;
+        text-align: right;
+    }
+}
+
+.heroTxt-line1 {
+    font-family: $SANS_SERIF;
+    font-size: $FONT_SIZE_LG;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.heroTxt-line2 {
+    padding-right: 4px; // because it looks goofy otherwise
+    font-family: $GOTHIC;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* ---------------------------------------------------------------------
  Footer Module - footerCTA
 ------------------------------------------------------------------------ */
 .footerCTA {
@@ -664,6 +695,7 @@ img, audio, canvas, video, picture {
 
 // for the home page hero image
 .tier_hero {
+    position: relative;
     background-repeat: no-repeat;
     background-size: cover;
     @media(min-width: $BREAKPOINT_XM) {

@@ -1,9 +1,12 @@
 {
   "current": {
     "enable_hero_image": true,
+    "enable_hero_text": true,
+    "hero_text_line1": "A new adventure is coming up and I'm sure it will be a good one.",
+    "hero_text_line2": "- Sig Olson",
     "reverse_txt": true,
     "featured_collection": "featured-neighboor-goods",
-    "addressStreet": "211 Washington Ave N",
+    "addressStreet": "211 Washington Avenue North",
     "addressCity": "Minneapolis",
     "addressState": "MN",
     "addressZip": "55401",

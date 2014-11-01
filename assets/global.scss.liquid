@@ -105,7 +105,7 @@ $CONSOLE: "Lucida Console", Monaco, monospace;
 /* ---------------------------------------------------------------------
  Variables - Site
 ------------------------------------------------------------------------ */
-$SITE_MAX_WIDTH: 1386px;
+$SITE_MAX_WIDTH: 1210px;
 $SITE_STD_UNIT: 20px;
 $SITE_LINE_HEIGHT: 1.4;
 
@@ -119,8 +119,6 @@ $BREAKPOINT_MD: 50em; // 800px
 $BREAKPOINT_MX: 56em; // 896px
 $BREAKPOINT_LG: 60em; // 960px
 $BREAKPOINT_XL: 65em; // 1040px
-$BREAKPOINT_XXL: 75em; // 1200px
-$BREAKPOINT_XXXL: 82em; // 1312px
 
 /* ---------------------------------------------------------------------
  Mixin - Visually Hidden
@@ -576,7 +574,7 @@ img, audio, canvas, video, picture {
     }
 }
 
-@media (min-width: $BREAKPOINT_LG) {
+@media (min-width: $BREAKPOINT_XL) {
     .footerGrid-row-cell {
         width: 40%;
     }

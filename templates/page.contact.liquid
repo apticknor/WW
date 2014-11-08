@@ -3,13 +3,85 @@
         <h1 class="sectionTitle">{{ page.title }}</h1>
     </div>
     <div class="pageWrapper-section">
+        <h2 class="isVisuallyHidden">Google Map of Our Neighborhood</h2>
         <iframe width="100%" height="480" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/place?q=211%20Washington%20Ave%20N%2C%20Minneapolis%2C%20MN%2C%20United%20States&key=AIzaSyAwp4hUC0nBiCjhbEsonAYCzK4p0DNwgP0"></iframe>
     </div>
     <div class="pageWrapper-section pageWrapper-section_isTight">
 
-        <div class="userContent">
-            {{ page.content }}
-        </div>
+        <div class="grid">
+            <div class="grid-col grid-col1of2">
 
+                <h2 class="isVisuallyHidden">Contact Form</h2>
+
+                {% form 'contact' %}
+                    <div class="cta cta_snowflake">
+                        <div class="form">
+                            <div class="form-alert">
+                                {% if form.posted_successfully? %}
+                                    <div class="success">
+                                        <p>Thanks for contacting us! We'll get back to you as soon as possible.</p>
+                                    </div>
+                                {% endif %}
+                                {% if form.errors %}
+                                    <div class="errors">
+                                        <p>Please correct the following errors and submit again:</p>
+                                        <ul>
+                                            {% for field in form.errors %}
+                                            <li>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="form-bd">
+                                <ul class="vlist">
+                                    <li>
+                                        <label class="label" for="contactFormName">Name:</label>
+                                        <input class="field field_txt" type="text" id="contactFormName" name="contact[name]" />
+                                    </li>
+                                    <li>
+                                        <label class="label" for"contactFormEmail">Email:</label>
+                                        <input class="field field_txt" type="email" id="contactFormEmail" name="contact[email]" />
+                                    </li>
+                                    <li>
+                                        <label class="label" for="contactFormTelephone">Phone Number:</label>
+                                        <input class="field field_txt" type="telephone" id="contactFormTelephone" name="contact[phone]" />
+                                    </li>
+                                    <li>
+                                        <label class="label" for="contactFormMessage">Message:</label>
+                                        <textarea class="field field_txt" id="contactFormMessage" name="contact[body]"></textarea>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="form-action">
+                                <input class="btn btn_soft" type="submit" id="contactFormSubmit" value="Send Message" />
+                            </div>
+                        </div>
+                    </div>
+                {% endform %}
+            </div>
+            <div class="grid-col grid-col1of2">
+
+                <div>
+                    <h2 class="hdg hdg_xl">Our Location</h2>
+                    {{ settings.addressStreet }}<br/>
+                    {{ settings.addressCity }}, {{ settings.addressState }}, {{ settings.addressZip }}
+                </div>
+                <br/>
+                <div>
+                    <h2 class="hdg hdg_xl">Our Hours</h2>
+                    {% unless settings.hoursline1 == blank %}
+                        <div>{{ settings.hoursline1 }}</div>
+                    {% endunless %}
+                    {% unless settings.hoursline2 == blank %}
+                        <div>{{ settings.hoursline2 }}</div>
+                    {% endunless %}
+                    {% unless settings.hoursline3 == blank %}
+                        <div>{{ settings.hoursline3 }}</div>
+                    {% endunless %}
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>

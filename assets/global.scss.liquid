@@ -557,7 +557,7 @@ img, audio, canvas, video, picture {
     margin: 0 auto;
     text-align: center;
     @media (min-width: $BREAKPOINT_MX) {
-        max-width: 1000px;
+        max-width: 100%;
         text-align: left;
     }
 }
@@ -896,6 +896,39 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
     display: inline-block;
 }
 
+/* ---------------------------------------------------------------------
+ Module - Grid
+------------------------------------------------------------------------ */
+.grid-col {
+    margin-bottom: $SITE_STD_UNIT*2;
+}
+
+@media (min-width: $BREAKPOINT_SM) {
+    .grid {
+        @include clearfix();
+    }
+
+    .grid-col {
+        float: left;
+        @include box-sizing(border-box);
+        padding-left: $SITE_STD_UNIT;
+        padding-right: $SITE_STD_UNIT;
+        margin-bottom: 0;
+    }
+
+    .grid-col:first-child {
+        padding-left: 0;
+        width: 55%
+    }
+
+    .grid-col:last-child {
+        padding-right: 0;
+    }
+
+    .grid-col1of2 {
+        width: 45%;
+    }
+}
 
 /* ---------------------------------------------------------------------
  Module - Blocks
@@ -1141,6 +1174,11 @@ $blocks-MAX_BLOCKS: 4;
     margin: 0 auto;
     padding: $SITE_STD_UNIT;
     background-color: $LIGHT;
+}
+
+.cta_snowflake {
+    max-width: 100%;
+    margin: 0;
 }
 
 /* ---------------------------------------------------------------------

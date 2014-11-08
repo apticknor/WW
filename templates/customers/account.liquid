@@ -1,65 +1,52 @@
 <div class="pageWrapper">
     <div class="pageWrapper-section pageWrapper-section_isCentered">
-        <h1 class="sectionTitle">Account Details</h1>
-    </div>
-    <div class="pageWrapper-section">
-        <div>
-            {{ customer.name }} - {{ customer.email }}
-        </div>
-
-        {% if customer.default_address %}
-            <div>
-                {{ customer.default_address.address1 }}
-            </div>
-            {% if customer.default_address.address2 != "" %}
-                <div>
-                    {{ customer.default_address.address2 }}
-                </div>
-            {% endif %}
-            <div>
-                {{ customer.default_address.city}},
-                {% if address.province_code %}
-                    {{ customer.default_address.province_code }},
-                {% endif %}
-                {{ customer.default_address.country }}
-            </div>
-            <div>
-                {{ customer.default_address.zip }}
-            </div>
-            <div>{{ customer.default_address.phone }}</div>
-        {% endif %}
-        <a href="/account/addresses">View Addresses ({{ customer.addresses_count }})</a>
-    </div>
-    <div class="pageWrapper-section pageWrapper-section_isCentered">
         <h1 class="sectionTitle">Order History</h1>
     </div>
     <div class="pageWrapper-section">
-        {% if customer.orders.size != 0 %}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Order</th>
-                        <th>Date</th>
-                        <th>Payment Status</th>
-                        <th>Fulfillment Status</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for order in customer.orders %}
-                        <tr>
-                            <td>{{ order.name | link_to: order.customer_url }}</td>
-                            <td>{{ order.created_at | date: "%b %d, %Y" }}</td>
-                            <td>{{ order.financial_status }}</td>
-                            <td>{{ order.fulfillment_status }}</td>
-                            <td>{{ order.total_price | money }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        {% else %}
-            <p>You haven't placed any orders yet.</p>
-        {% endif %}
+
+        <div class="grid">
+            <div class="grid-col grid-col_main">
+
+                    {% if customer.orders.size != 0 %}
+                        <table class="itemTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="itemTable-cell itemTable-cell_orderDate">Date</th>
+                                    <th scope="col" class="itemTable-cell itemTable-cell_orderTotal">Total</th>
+                                    <th scope="col" class="itemTable-cell itemTable-cell_orderStatus">Status</th>
+                                    <th scope="col" class="itemTable-cell itemTable-cell_orderDetails">
+                                        <span class="isVisuallyHidden">Order Details Link</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in customer.orders %}
+                                    <tr>
+                                        <td class="itemTable-cell itemTable-cell_orderDate">
+                                            <span class="itemTable-cell_orderDate_midScreen">{{ order.created_at | date: "%B %d, %Y" }}</span>
+                                            <span class="itemTable-cell_orderDate_smallScreen">{{ order.created_at | date: "%m/%d/%Y" }}</span>
+                                        </td>
+                                        <td class="itemTable-cell itemTable-cell_orderTotal">{{ order.total_price | money }}</td>
+                                        <td class="itemTable-cell itemTable-cell_orderStatus">{{ order.fulfillment_status }}</td>
+                                        <td class="itemTable-cell itemTable-cell_orderDetails">
+                                            <a href="{{ order.customer_url }}">
+                                                <span class="isHiddenOnSmallScreens">View </span>Details &raquo;
+                                            </a>
+                                        </td>
+
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>You haven't placed any orders yet.</p>
+                    {% endif %}
+
+            </div>
+            <div class="grid-col grid-col_nav">
+                {% include 'global-accountnav' %}
+            </div>
+        </div>
 
     </div>
 </div>

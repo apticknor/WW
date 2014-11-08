@@ -903,12 +903,17 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
     margin-bottom: $SITE_STD_UNIT*2;
 }
 
+.grid-col_main {
+    margin-bottom: 0; // main col should not have margin ever!
+}
+
 @media (min-width: $BREAKPOINT_SM) {
     .grid {
         @include clearfix();
     }
 
     .grid-col {
+        position: relative;
         float: left;
         @include box-sizing(border-box);
         padding-left: $SITE_STD_UNIT;
@@ -918,15 +923,66 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
 
     .grid-col:first-child {
         padding-left: 0;
-        width: 55%
     }
 
     .grid-col:last-child {
         padding-right: 0;
     }
 
-    .grid-col1of2 {
+    .grid-col_45 {
         width: 45%;
+    }
+
+    .grid-col_55 {
+        width: 55%;
+    }
+
+    .grid-col_nav {
+        width: 100%; // keep full width until larger breakpoint
+        padding: 0;
+    }
+
+    .grid-col_main {
+        width: 100%; // keep full width until larger breakpoint
+        padding: 0;
+    }
+}
+
+@media (min-width: $BREAKPOINT_XM) {
+    .grid-col_nav {
+        padding-right: $SITE_STD_UNIT !important;
+        width: 40%;
+        left: -60%;
+        @media (min-width: $BREAKPOINT_MX) {
+            width: 35%;
+            left: -65%;
+        }
+        @media (min-width: $BREAKPOINT_LG) {
+            width: 30%;
+            left: -70%;
+        }
+        @media (min-width: $BREAKPOINT_XL) {
+            width: 27%;
+            left: -73%;
+        }
+    }
+
+    .grid-col_main {
+        width: 60%;
+        left: 40%;
+        @media (min-width: $BREAKPOINT_MX) {
+            padding-left: $SITE_STD_UNIT !important;
+            width: 65%;
+            left: 35%;
+        }
+        @media (min-width: $BREAKPOINT_LG) {
+            width: 70%;
+            left: 30%;
+        }
+        @media (min-width: $BREAKPOINT_XL) {
+            width: 73%;
+            left: 28%;
+        }
     }
 }
 
@@ -1174,6 +1230,7 @@ $blocks-MAX_BLOCKS: 4;
     margin: 0 auto;
     padding: $SITE_STD_UNIT;
     background-color: $LIGHT;
+    word-wrap: break-word;
 }
 
 .cta_snowflake {
@@ -1257,6 +1314,53 @@ $blocks-MAX_BLOCKS: 4;
 .itemTable-cell_label {
     text-align: right;
     border-bottom: 0;
+}
+
+.itemTable-cell_orderDate {
+    width: 90px;
+    @media (min-width: $BREAKPOINT_XS) {
+        width: 120px;
+    }
+    @media (min-width: $BREAKPOINT_MX) {
+        width: 150px;
+    }
+}
+
+.itemTable-cell_orderDate_smallScreen {
+    @media (min-width: $BREAKPOINT_MX) {
+        display: none;
+    }
+}
+
+.itemTable-cell_orderDate_midScreen {
+    display: none;
+    @media (min-width: $BREAKPOINT_MX) {
+        display: inline;
+    }
+}
+
+.itemTable-cell_orderTotal {
+    width: 70px;
+    @media (min-width: $BREAKPOINT_XS) {
+        width: 80px;
+    }
+    @media (min-width: $BREAKPOINT_MX) {
+        width: 120px;
+    }
+}
+
+.itemTable-cell_orderStatus {
+    display: none; // hide details on smaller devices
+    @media (min-width: $BREAKPOINT_LG) {
+        display: table-cell;
+        width: 140px;
+    }
+
+}
+
+.itemTable-cell_orderDetails {
+    // width is the remainder
+    text-align: right;
 }
 
 /* ---------------------------------------------------------------------

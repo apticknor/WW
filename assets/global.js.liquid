@@ -160,9 +160,14 @@ var WW = WW || {};
             var self = this;
 
             this.$toggleTriggers.on('click', function(e) {
-                var showTargetId = $(this).attr('data-toggle-target-show');
-                var hideTargetId = $(this).attr('data-toggle-target-hide');
+                var $this = $(this)
+                var showTargetId = $this.attr('data-toggle-target-show');
+                var hideTargetId = $this.attr('data-toggle-target-hide');
+                var isModalTrigger = $this.attr('data-is-modal-trigger');
                 self.swapTargets(showTargetId, hideTargetId);
+                if (isModalTrigger === 'true') {
+                    self.toggleModal();
+                }
                 e.preventDefault();
             });
         },
@@ -170,6 +175,10 @@ var WW = WW || {};
         swapTargets: function(showTargetId, hideTargetId) {
             $(document.getElementById(hideTargetId)).hide();
             $(document.getElementById(showTargetId)).show();
+        },
+
+        toggleModal: function() {
+            APP.$html.toggleClass('isNotScrollable');
         }
     };
 

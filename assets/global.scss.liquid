@@ -341,6 +341,14 @@ img, audio, canvas, video, picture {
     }
 }
 
+.isBold {
+    font-family: $SANS_SERIF_BOLD;
+}
+
+.alignRight {
+    text-align: right;
+}
+
 /* ---------------------------------------------------------------------
  Landmark - Toolbar
 ------------------------------------------------------------------------ */
@@ -1178,6 +1186,39 @@ $blocks-MAX_BLOCKS: 4;
 .split-right {
     float: right;
     text-align: right;
+}
+
+/* ---------------------------------------------------------------------
+ Module - Wedge
+------------------------------------------------------------------------ */
+.wedge {
+    @include clearfix();
+}
+
+.wedge-item {
+    @include box-sizing(border-box);
+}
+
+.wedge-item_details {
+    margin-bottom: $SITE_STD_UNIT;
+    @media (min-width: $BREAKPOINT_MX) {
+        float: left;
+        width: 33.333333%;
+        margin-bottom: 0;
+    }
+}
+
+.wedge-item_shipping,
+.wedge-item_billing {
+    margin-bottom: $SITE_STD_UNIT;
+    @media (min-width: $BREAKPOINT_SM) {
+        float: left;
+        width: 50%;
+        margin-bottom: 0;
+    }
+    @media (min-width: $BREAKPOINT_MX) {
+        width: 33.333333%;
+    }
 }
 
 /* ---------------------------------------------------------------------

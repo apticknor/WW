@@ -3,7 +3,42 @@
         <h1 class="sectionTitle">Order {{ order.order_number }}</h1>
     </div>
     <div class="pageWrapper-section">
+        <div class="cta cta_snowflake">
 
+            <div class="wedge">
+
+                <div class="wedge-item wedge-item_details">
+                    <h2 class="hdg hdg_xl">Order Details</h2>
+                    <div>Order Date: {{ order.created_at | date: "%B %d, %Y" }}</div>
+                    {% if order.cancelled %}
+                        <div>Order Cancelled on {{ order.cancelled_at | date: "%B %d, %Y" }}</div>
+                    {% endif %}
+                    <div>Order Number: {{ order.order_number }}</div>
+                    <div>Order Status:{{ order.fulfillment_status }}</div>
+                </div>
+
+                <div class="wedge-item wedge-item_billing">
+                    <h2 class="hdg hdg_xl">Ordered by:</h2>
+                    <div>{{ order.billing_address.name }}</div>
+                    <div>{{ order.billing_address.company }}</div>
+                    <div>{{ order.billing_address.street }}</div>
+                    <div>{{ order.billing_address.city }}, {{ order.billing_address.province_code }} {{ order.billing_address.zip }}</div>
+                    <div>{{ order.billing_address.country }}</div>
+                </div>
+
+                <div class="wedge-item wedge-item_shipping">
+                    <h2 class="hdg hdg_xl">Shipped to:</h2>
+                    <div>{{ order.shipping_address.name }}</div>
+                    <div>{{ order.shipping_address.company }}</div>
+                    <div>{{ order.shipping_address.street }}</div>
+                    <div>{{ order.shipping_address.city }}, {{ order.shipping_address.province_code }} {{ order.shipping_address.zip }}</div>
+                    <div>{{ order.shipping_address.country }}</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="pageWrapper-section">
         <table class="itemTable" cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
@@ -106,43 +141,8 @@
             </tfoot>
         </table>
 
-
-
-
-
-
-
-
-
-
-        {% if order.cancelled %}
-            <div>
-                Order Cancelled on {{ order.cancelled_at | date: "%B %d, %Y %I:%M%p" }}
-                {{ order.cancel_reason }}
-            </div>
-        {% endif %}
-
-        <div>
-            Placed on {{ order.created_at | date: "%B %d, %Y %I:%M%p" }}
+        <div class="actionBar">
+            <a class="btn" href="/account">Back to Order History</a>
         </div>
-
-        <h2>Billing Details</h2>
-        <p>Payment Status: {{ order.financial_status }}</p>
-        <p>{{ order.billing_address.name }}</p>
-        <p>{{ order.billing_address.company }}</p>
-        <p>{{ order.billing_address.street }}</p>
-        <p>{{ order.billing_address.city }}, {{ order.billing_address.province }}</p>
-        <p>{{ order.billing_address.country }} {{ order.billing_address.zip }}</p>
-        <p>{{ order.billing_address.phone }}</p>
-
-        <h2>Shipping Details</h2>
-        <p>Fulfillment Status:{{ order.fulfillment_status }}</p>
-        <p>{{ order.shipping_address.name }}</p>
-        <p>{{ order.shipping_address.company }}</p>
-        <p>{{ order.shipping_address.street }}</p>
-        <p>{{ order.shipping_address.city }}, {{ order.shipping_address.province }}</p>
-        <p>{{ order.shipping_address.country }} {{ order.shipping_address.zip }}</p>
-        <p>{{ order.shipping_address.phone }}</p>
-
     </div>
 </div>

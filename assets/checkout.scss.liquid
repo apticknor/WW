@@ -1,0 +1,37 @@
+body {
+    border-top: 36px solid {{ settings.accent_color_2 }};
+}
+
+.header {
+    padding: 0; // override shopify
+}
+
+.header > .wrap > .shop {
+    width: 100%;
+}
+
+.header > .wrap {
+    padding: 20px;
+}
+
+.header .icon--lock {
+    display: none; // hide lock
+}
+
+.shop__name {
+    display: none; // hide text of shop name
+}
+
+.shop > a {
+    // insert the store logo
+    display: block;
+    width: 115px;
+    height: 115px;
+    margin: 0 auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url({{ 'logo-dark.svg' | asset_url }});
+    @media (min-width: 480px) {
+        margin: 0;
+    }
+}

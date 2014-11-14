@@ -99,7 +99,7 @@ $FONT_SIZE_XXL: {{ settings.font_size_xxl }};
 $SANS_SERIF: 'MisoLight', Helvetica, Arial, sans-serif;
 $SANS_SERIF_BOLD: 'MisoRegular', Helvetica, Arial, sans-serif;
 $GOTHIC: 'SackersGothicW01-Light', Helvetica, Arial, sans-serif;
-$SERIF: Baskerville, "Baskerville Old Face", "Hoefler Text", Georgia, Times, "Times New Roman", serif;
+$SERIF: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", Georgia, Times, "Times New Roman", serif;
 $CONSOLE: "Lucida Console", Monaco, monospace;
 
 /* ---------------------------------------------------------------------
@@ -358,7 +358,7 @@ img, audio, canvas, video, picture {
     font-family: $SANS_SERIF_BOLD;
     font-size: $FONT_SIZE_LG;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     color: $WHITE;
     @media (min-width: $BREAKPOINT_MD) {
         font-size: $FONT_SIZE_MD;
@@ -446,7 +446,7 @@ img, audio, canvas, video, picture {
  Masthead Module - Logo
 ------------------------------------------------------------------------ */
 .logo {
-    width: 120px; // width set for inline svg
+    width: 115px; // width set for inline svg
     margin: 0 auto; // center on small screens
     @media (min-width: $BREAKPOINT_XM) {
         margin: 0;
@@ -461,6 +461,7 @@ img, audio, canvas, video, picture {
     margin-top: $SITE_STD_UNIT*0.5;
     font-size: 0;
     font-family: $SANS_SERIF_BOLD;
+    letter-spacing: 1px;
     @media(min-width: $BREAKPOINT_XM) {
         text-align: right;
     }
@@ -566,7 +567,6 @@ img, audio, canvas, video, picture {
     text-align: center;
     @media (min-width: $BREAKPOINT_MX) {
         max-width: 100%;
-        text-align: left;
     }
 }
 
@@ -599,10 +599,10 @@ img, audio, canvas, video, picture {
     display: none; // hide on small screens
     @media(min-width: $BREAKPOINT_MD) {
         display: block; // start showing up
-        width: 640px;
+        width: 740px;
         position: absolute;
-        left: calc(50% - 320px); // subtrat half the width
-        top: 50%;
+        left: calc(50% - 370px); // subtrat half the width
+        top: 45%;
         color: $WHITE;
         text-transform: uppercase;
         text-align: right;
@@ -611,7 +611,7 @@ img, audio, canvas, video, picture {
 
 .heroTxt-line1 {
     font-family: $SANS_SERIF;
-    font-size: $FONT_SIZE_XL;
+    font-size: 30px;
     margin-bottom: 6px;
     letter-spacing: 1px;
 }
@@ -638,6 +638,10 @@ img, audio, canvas, video, picture {
     margin-bottom: $SITE_STD_UNIT*.5;
 }
 
+.footerCTA-ft {
+    margin-top: $SITE_STD_UNIT;
+}
+
 .footerCTA-hd_loose {
     margin-bottom: $SITE_STD_UNIT*.7; // because the input buts up too close to the heading and other sections don't
 }
@@ -651,12 +655,13 @@ img, audio, canvas, video, picture {
  Footer Module - footerLinks
 ------------------------------------------------------------------------ */
 .footerLinks {
-    padding: 14px 0 12px 0;
+    padding: 8px 0 6px 0;
     background-color: $ACCENT_2;
     color: $WHITE;
     font-size: $FONT_SIZE_MD;
     line-height: 2;
     font-family: $SANS_SERIF;
+    letter-spacing: 1px;
     text-transform: uppercase;
     text-align: center;
 }
@@ -1514,8 +1519,8 @@ html.isNotScrollable {
 ------------------------------------------------------------------------ */
 .userContent {
     color: $TEXT_COLOR;
-    font-family: $SANS_SERIF;
-    font-size: $FONT_SIZE_LG;
+    font-family: $SERIF;
+    font-size: 18px;
     line-height: $SITE_LINE_HEIGHT;
     font-weight: normal;
     font-style: normal;

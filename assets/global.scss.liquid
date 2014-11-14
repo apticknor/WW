@@ -446,7 +446,7 @@ img, audio, canvas, video, picture {
  Masthead Module - Logo
 ------------------------------------------------------------------------ */
 .logo {
-    width: 115px; // width set for inline svg
+    width: 110px; // width set for inline svg
     margin: 0 auto; // center on small screens
     @media (min-width: $BREAKPOINT_XM) {
         margin: 0;
@@ -460,7 +460,7 @@ img, audio, canvas, video, picture {
 .nav-list {
     margin-top: $SITE_STD_UNIT*0.5;
     font-size: 0;
-    font-family: $SANS_SERIF_BOLD;
+    font-family: $SANS_SERIF;
     letter-spacing: 1px;
     @media(min-width: $BREAKPOINT_XM) {
         text-align: right;
@@ -481,11 +481,8 @@ img, audio, canvas, video, picture {
 }
 
 .nav-list a {
-    font-size: $FONT_SIZE_XL;
+    font-size: $FONT_SIZE_LG;
     text-transform: uppercase;
-    @media (min-width: $BREAKPOINT_MD) {
-        font-size: $FONT_SIZE_LG;
-    }
 }
 
 .nav-list_light a {
@@ -545,17 +542,13 @@ img, audio, canvas, video, picture {
 ------------------------------------------------------------------------ */
 .footer {
     padding: $SITE_STD_UNIT 0;
-    color: $WHITE;
+    border-top: 1px solid $TEXT_COLOR;
     font-family: $SERIF;
     font-size: $FONT_SIZE_MD;
     @media (min-width: $BREAKPOINT_MD) {
         padding-top: $SITE_STD_UNIT*1.5;
         padding-bottom: $SITE_STD_UNIT*1.5;
     }
-}
-
-.footer a {
-    color: $WHITE;
 }
 
 /* ---------------------------------------------------------------------
@@ -599,9 +592,9 @@ img, audio, canvas, video, picture {
     display: none; // hide on small screens
     @media(min-width: $BREAKPOINT_MD) {
         display: block; // start showing up
-        width: 740px;
+        width: 760px;
         position: absolute;
-        left: calc(50% - 370px); // subtrat half the width
+        left: calc(50% - 380px); // subtrat half the width
         top: 45%;
         color: $WHITE;
         text-transform: uppercase;
@@ -659,7 +652,6 @@ img, audio, canvas, video, picture {
     background-color: $ACCENT_2;
     color: $WHITE;
     font-size: $FONT_SIZE_MD;
-    line-height: 2;
     font-family: $SANS_SERIF;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -676,6 +668,7 @@ img, audio, canvas, video, picture {
 ------------------------------------------------------------------------ */
 .signupForm {
     position: relative;
+    border: 1px solid;
 }
 
 .signupForm-btn {
@@ -849,7 +842,7 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
     margin: 0;
     padding: $field-btn-PADDING_TIGHT;
     border: none;
-    border-left: 1px solid $ACCENT_1;
+    border-left: 1px solid;
     background-color: transparent;
     color: $ACCENT_1;
     font-size: $field-btn-FONT_SIZE_SM;
@@ -1064,7 +1057,7 @@ $blocks-MAX_BLOCKS: 4;
     border: 1px solid;
     padding: 6px 30px;
     font-family: $SANS_SERIF;
-    font-size: $FONT_SIZE_XL;
+    font-size: $FONT_SIZE_LG;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -1487,6 +1480,7 @@ html.isNotScrollable {
     text-indent: -9999px;
     background-size: 100%;
     background-repeat: no-repeat;
+    background-color: $ACCENT_1;
 }
 
 .icon_spotify {

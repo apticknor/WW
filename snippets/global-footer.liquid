@@ -77,31 +77,41 @@
                                 </div>
                                 <div class="footerCTA-bd">
                                     <ul class="iconList">
+                                        {% unless settings.instagram_link == blank %}
                                         <li>
-                                            <a href="http://instagram.com/wilsonandwillys">
+                                            <a href="{{ settings.instagram_link }}">
                                                 <i class="icon icon_instagram">Instragram</i>
                                             </a>
                                         </li>
+                                        {% endunless %}
+                                        {% unless settings.twitter_link == blank %}
                                         <li>
-                                            <a href="https://twitter.com/wilsonandwillys">
+                                            <a href="{{ settings.twitter_link }}">
                                                 <i class="icon icon_twitter">Twitter</i>
                                             </a>
                                         </li>
+                                        {% endunless %}
+                                        {% unless settings.facebook_link == blank %}
                                         <li>
-                                            <a href="https://www.facebook.com/wilsonandwillys">
+                                            <a href="{{ settings.facebook_link }}">
                                                 <i class="icon icon_facebook">Facebook</i>
                                             </a>
                                         </li>
+                                        {% endunless %}
+                                        {% unless settings.pinterest_link == blank %}
                                         <li>
-                                            <a href="http://www.pinterest.com/wilsonandwillys/">
+                                            <a href="{{ settings.pinterest_link }}/">
                                                 <i class="icon icon_pinterest">Pinterest</i>
                                             </a>
                                         </li>
+                                        {% endunless %}
+                                        {% unless settings.spotify_link == blank %}
                                         <li>
-                                            <a href="https://play.spotify.com/user/wilsonandwillys">
+                                            <a href="{{ settings.spotify_link }}">
                                                 <i class="icon icon_spotify">Spotify</i>
                                             </a>
                                         </li>
+                                        {% endunless %}
                                     </ul>
                                 </div>
                             </div>

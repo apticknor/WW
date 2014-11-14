@@ -611,7 +611,7 @@ img, audio, canvas, video, picture {
 
 .heroTxt-line1 {
     font-family: $SANS_SERIF;
-    font-size: 30px;
+    font-size: {{ settings.hero_text_line1_fs }};
     margin-bottom: 6px;
     letter-spacing: 1px;
 }
@@ -619,7 +619,7 @@ img, audio, canvas, video, picture {
 .heroTxt-line2 {
     padding-right: 4px; // because it looks goofy otherwise
     font-family: $GOTHIC;
-    font-size: 11px;
+    font-size: {{ settings.hero_text_line2_fs }};
     letter-spacing: 1px;
 }
 

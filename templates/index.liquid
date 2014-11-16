@@ -29,11 +29,36 @@
             {% endif %}
         {% endfor %}
     </div>
-    <div class="pageWrapper-section pageWrapper-section_isTight">
-
-        <div class="userContent">
-            {{ page.content }}
+    <div class="pageWrapper-section pageWrapper-section_isCentered">
+        <h1 class="sectionTitle">Featured Story</h1>
+    </div>
+    <div class="pageWrapper-section">
+        <div class="feature">
+            {% for article in blogs.stories.articles limit: 1 %}
+                <h2 class="isVisuallyHidden">{{ article.title }}</h2>
+                <div class="feature">
+                    <div class="feature-caption">
+                        <div class="userContent">
+                            {{ article.excerpt | strip_html }}
+                        </div>
+                    </div>
+                    <div class="feature-media">
+                        {% assign article_has_image = false %}
+                        {% assign img_tag = '<' | append: 'img' %}
+                        {% if article.excerpt contains img_tag %}
+                            {% assign src = article.excerpt | split: 'src="' %}
+                            {% assign src = src[1] | split: '"' | first %}
+                            {% if src %}
+                                {% assign article_has_image = true %}
+                                {% assign image_src = src | replace: '_small', '_1024x1024' | replace: '_compact', '_1024x1024' | replace: '_medium', '_1024x1024' | replace: '_large', '_1024x1024' | replace: '_grande', '_1024x1024' %}
+                            {% endif %}
+                        {% endif %}
+                        <a href="{{ article.url }}">
+                            <img src="{{ image_src }}" />
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-
     </div>
 </div>

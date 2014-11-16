@@ -75,7 +75,7 @@ Imaging with any questions regarding Web Fonts:  http://webfonts.fonts.com
 ------------------------------------------------------------------------ */
 $WHITE: #ffffff;
 $BLACK: #000000;
-$LIGHT: rgba($BLACK,0.06);
+$LIGHT: #e1e1e1;
 $ACCENT_1: {{ settings.accent_color_1 }};
 $ACCENT_2: {{ settings.accent_color_2 }};
 $TEXT_COLOR: {{ settings.text_color }};
@@ -377,7 +377,7 @@ img, audio, canvas, video, picture {
 
 .toolbar-hamburger {
     float: left;
-    @media (min-width: $BREAKPOINT_XS) {
+    @media (min-width: $BREAKPOINT_SM) {
         display: none;
     }
 }
@@ -419,26 +419,16 @@ img, audio, canvas, video, picture {
 
 
 .masthead-brand {
-    @media (min-width: $BREAKPOINT_XS) {
+    @media (min-width: $BREAKPOINT_SM) {
         float: left;
-        width: calc(40% - #{$SITE_STD_UNIT});
-        padding-right: $SITE_STD_UNIT;
-    }
-    @media (min-width: $BREAKPOINT_XM) {
         width: 140px;
     }
 }
 
 .masthead-nav {
     display: none;
-    @media (min-width: $BREAKPOINT_XS) {
+    @media (min-width: $BREAKPOINT_SM) {
         display: block;
-        float: left;
-        width: 60%;
-    }
-    @media (min-width: $BREAKPOINT_XM) {
-        float: none;
-        width: 100%;
     }
 }
 
@@ -448,7 +438,7 @@ img, audio, canvas, video, picture {
 .logo {
     width: 110px; // width set for inline svg
     margin: 0 auto; // center on small screens
-    @media (min-width: $BREAKPOINT_XM) {
+    @media (min-width: $BREAKPOINT_SM) {
         margin: 0;
     }
 
@@ -461,23 +451,26 @@ img, audio, canvas, video, picture {
     margin-top: $SITE_STD_UNIT*0.5;
     font-size: 0;
     font-family: $SANS_SERIF;
-    letter-spacing: 1px;
+    text-align: right;
     @media(min-width: $BREAKPOINT_XM) {
-        text-align: right;
+        letter-spacing: 1px;
     }
 }
 
 .nav-list > * {
-    display: inline-block;
-    @include box-sizing(border-box);
-    width: 50%;
-    padding-left: $SITE_STD_UNIT;
+    @media(min-width: $BREAKPOINT_SM) {
+        position: relative; // needed for .subnav positioning
+        display: inline-block;
+        @include box-sizing(border-box);
+        padding: 6px 8px;
+    }
     @media(min-width: $BREAKPOINT_XM) {
-        width: auto;
+        padding: 6px 12px;
     }
-    @media(min-width: $BREAKPOINT_MD) {
-        padding-left: $SITE_STD_UNIT*1.5;
-    }
+}
+
+.nav-list > *:last-child {
+    padding-right: 0;
 }
 
 .nav-list a {
@@ -489,6 +482,36 @@ img, audio, canvas, video, picture {
     color: $WHITE;
 }
 
+.nav-list-item_hasSubnav:hover .nav-list-item-subnav {
+    left: 0;
+}
+
+.nav-list-item_hasSubnav:hover {
+    background-color: $LIGHT;
+}
+
+.nav-list-item-subnav {
+    position: absolute;
+    top: 40px; // should be the height of the nav-list
+    left: -9999px; // hide off screeen
+    min-width: 160px;
+    background-color: $LIGHT;
+    text-align: left;
+    padding: 12px 8px 0 8px;
+    z-index: 9999999999999; //nothing ever should get over the top of an open nav that user hovered
+    @media(min-width: $BREAKPOINT_XM) {
+        padding: 12px 12px 4px 12px;
+    }
+}
+
+.nav-list-item-subnav > * {
+    margin-bottom: 8px;
+}
+
+.nav-list-item-subnav a {
+    line-height: 1;
+}
+
 /* ---------------------------------------------------------------------
  Masthead Module - MobileNav
 ------------------------------------------------------------------------ */
@@ -497,7 +520,7 @@ img, audio, canvas, video, picture {
     overflow: hidden;
     background-color: darken($ACCENT_2, 5%);
     color: $WHITE;
-    @media(min-width: $BREAKPOINT_XS) {
+    @media(min-width: $BREAKPOINT_SM) {
         height: 0 !important;
     }
 }

@@ -50,7 +50,7 @@
                             {% assign src = src[1] | split: '"' | first %}
                             {% if src %}
                                 {% assign article_has_image = true %}
-                                {% assign image_src = src | replace: '_small', '_1024x1024' | replace: '_compact', '_1024x1024' | replace: '_medium', '_1024x1024' | replace: '_large', '_1024x1024' | replace: '_grande', '_1024x1024' %}
+                                {% assign image_src = src | replace: '_small', '_1024x1024' | replace: '_compact', '_1024x1024' | replace: '_medium', '_1024x1024' | replace: '_large', '_1024x1024' | replace: '_grande', '_1024x1024' | replace: '_2048x2048', '_1024x1024' %}
                             {% endif %}
                         {% endif %}
                         <a href="{{ article.url }}">

@@ -4,15 +4,6 @@
         {% for link in linklists.main-menu.links %}
             <li {% if link.active %}class="current"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
         {% endfor %}
-        {% if shop.customer_accounts_enabled %}
-            <li class="toolbar-util-list-account">
-            {% if customer  %}
-                <a href="/account">Account</a>
-            {% else %}
-                {{ 'Account' | customer_login_link }}
-            {% endif %}
-            </li>
-        {% endif %}
         </ul>
     </div>
 
@@ -49,7 +40,22 @@
                     <div class="nav" role="navigation">
                         <ul class="nav-list{% if template == "index" and settings.reverse_txt == true %} nav-list_light{% endif %}">
                         {% for link in linklists.main-menu.links %}
-                            <li {% if link.active %}class="current"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
+                            {% capture child_list_handle %}{{ link.title | handle }}{% endcapture %}
+                            <li class="{% if link.active %}current{% endif %} {% if linklists[child_list_handle].links.size > 0 %}nav-list-item_hasSubnav{% endif %}">
+                                <a href="{{ link.url }}">{{ link.title }}{% if linklists[child_list_handle].links.size > 0 %} + {% endif %}</a>
+
+
+                                {% if linklists[child_list_handle].links.size > 0 %}
+                                    <ul class="nav-list-item-subnav">
+                                        {% for l in linklists[child_list_handle].links %}
+                                            <li>
+                                                <a href="{{ l.url }}">{{ l.title }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+
+                            </li>
                         {% endfor %}
                         </ul>
                     </div>

@@ -4,30 +4,24 @@
     </div>
     <div class="pageWrapper-section pageWrapper-section_isTight">
 
-        <form action="/search" method="get" class="search-form" role="search">
-            <input name="q" type="search" id="search-field" placeholder="Search store..." value="{{ search.terms | escape }}" />
-            <input type="submit" id="search-submit" value="Search" />
-        </form>
-
         {% if search.performed %}
 
-            {% paginate search.results by 12 %}
+            {% paginate search.results by 10 %}
 
                 {% if search.results_count == 0 %}
-                    <p>Your search for "{{ search.terms }}" did not yield any results.</p>
+                    <div class="userContent">
+                        <p>Your search for "{{ search.terms }}" did not yield any results.</p>
+                    </div>
                 {% else %}
-                    <ol>
+                    <ol class="vlist">
                         {% for item in search.results %}
                         <li>
-                            <h2>{{ item.title | link_to: item.url }}</h2>
-                            {% if item.vendor %}
-                                <div>
-                                    <a href="{{ item.url }}" title="{{ item.title | escape }}">
-                                        {{ item | img_url: 'small' | img_tag: item.featured_image.alt }}
-                                    </a>
-                                </div>
-                            {% endif %}
-                            <span>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</span>
+                            <h2 class="hdg hdg_xl">
+                                <a href="{{ item.url }}">{{ item.title }}</a>
+                            </h2>
+                            <div class="userContent">
+                                {{ item.content | strip_html | truncatewords: 40 }}
+                            </div>
                         </li>
                         {% endfor %}
                     </ol>

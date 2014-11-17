@@ -482,11 +482,18 @@ img, audio, canvas, video, picture {
     color: $WHITE;
 }
 
-.nav-list-item_hasSubnav:hover .nav-list-item-subnav {
+.nav-list-item_hasSubnav:hover a,
+.nav-list-item_hasSubnav:focus a {
+    color: $ACCENT_2 !important; // subnav hovers should never ever change colors
+}
+
+.nav-list-item_hasSubnav:hover .nav-list-item-subnav,
+.nav-list-item_hasSubnav:focus .nav-list-item-subnav {
     left: 0;
 }
 
-.nav-list-item_hasSubnav:hover {
+.nav-list-item_hasSubnav:hover,
+.nav-list-item_hasSubnav:focus {
     background-color: $LIGHT;
 }
 
@@ -494,7 +501,7 @@ img, audio, canvas, video, picture {
     position: absolute;
     top: 40px; // should be the height of the nav-list
     left: -9999px; // hide off screeen
-    min-width: 160px;
+    width: 180px;
     background-color: $LIGHT;
     text-align: left;
     padding: 12px 8px 0 8px;
@@ -518,8 +525,8 @@ img, audio, canvas, video, picture {
 .mobileNav {
     height: 0;
     overflow: hidden;
-    background-color: darken($ACCENT_2, 5%);
-    color: $WHITE;
+    background-color: darken($WHITE, 5%);
+    color: $TEXT_COLOR;
     @media(min-width: $BREAKPOINT_SM) {
         height: 0 !important;
     }
@@ -529,36 +536,46 @@ img, audio, canvas, video, picture {
     height: auto;
 }
 
-.mobileNav-list > li a {
+.mobileNav-list > li {
+    position: relative;
+}
+
+.mobileNav-list li a {
     display: block;
     padding: #{$SITE_STD_UNIT*0.35} $SITE_STD_UNIT;
-    border-top: 1px solid $ACCENT_2;
-    color: $WHITE;
+    border-top: 1px solid lighten($TEXT_COLOR, 50%);
+    color: $TEXT_COLOR;
     font-size: $FONT_SIZE_LG;
     text-transform: uppercase;
 }
 
-.mobileNav-list > li a:hover,
-.mobileNav-list > li a:focus {
-    background-color: darken($ACCENT_2, 8%);
+.mobileNav-list-item-subnav {
+    display: none;
 }
 
-// fancy style!
-.mobileNav_fancy {
-    background-color: darken($WHITE, 5%);
-    color: $TEXT_COLOR;
+.mobileNav-list-item-subnav > li a {
+    border-top: none;
+    padding-left: $SITE_STD_UNIT*1.4;
 }
 
-.mobileNav-list_fancy > li a {
-    border-top: 1px solid lighten($TEXT_COLOR, 50%);
-    color: $TEXT_COLOR;
+.mobileNav-list li a.mobileNav-list-item-toggle {
+    position: absolute;
+    z-index: 900000; // over the top of the anchor
+    top: 2px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-top: none;
+    background-image: url("plus.svg");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
-.mobileNav-list_fancy > li a:hover,
-.mobileNav-list_fancy > li a:focus {
-    background-color: darken($WHITE, 8%);
+.mobileNav-list li a.mobileNav-list-item-toggle_isExpanded {
+    background-image: url("minus.svg");
 }
-
 
 /* ---------------------------------------------------------------------
  Landmark - Footer

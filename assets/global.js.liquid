@@ -18,6 +18,7 @@ var WW = WW || {};
         APP.ShowProductImage.init();
         APP.Toggle.init();
         APP.RecoverHash.init();
+        APP.SubNavToggle.init();
     });
 
     /* ---------------------------------------------------------------------
@@ -194,6 +195,50 @@ var WW = WW || {};
                 APP.Toggle.swapTargets('js-formResetPassword','js-formLogin');
             }
         }
+    };
+
+    /* ---------------------------------------------------------------------
+    SubNavToggle
+
+    Toggle the class on the matching target for the mobile subvnav
+    ------------------------------------------------------------------------ */
+    APP.SubNavToggle = {
+        $subNavTriggers: null,
+        toggleClass: 'mobileNav-list-item-toggle_isExpanded',
+
+        init: function() {
+
+            var $subNavTriggers = $('.mobileNav-list-item-toggle');
+
+            if (!$subNavTriggers.length) {
+                return false;
+            }
+
+            this.$subNavTriggers = $subNavTriggers;
+
+            this.createEvents();
+        },
+
+        createEvents: function() {
+            var self = this;
+
+            this.$subNavTriggers.on('click', function(e) {
+                var $this = $(this);
+                self.toggleSubNav($this);
+                e.preventDefault();
+            });
+        },
+
+        toggleSubNav: function($trigger) {
+            if ($trigger.hasClass(this.toggleClass)) {
+                $trigger.removeClass(this.toggleClass);
+                $trigger.next('.mobileNav-list-item-subnav').hide();
+            } else {
+                $trigger.addClass(this.toggleClass);
+                $trigger.next('.mobileNav-list-item-subnav').show();
+            }
+        }
+
     };
 
 }(jQuery, window, WW));

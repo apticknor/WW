@@ -1,8 +1,23 @@
 
-    <div class="mobileNav{% if template == "index" and settings.reverse_txt == true %} mobileNav_fancy{% endif %}" id="js-slidePanelTarget">
+    <div class="mobileNav" id="js-slidePanelTarget">
         <ul class="mobileNav-list{% if template == "index" and settings.reverse_txt == true %} mobileNav-list_fancy{% endif %}">
         {% for link in linklists.main-menu.links %}
-            <li {% if link.active %}class="current"{% endif %}><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% capture child_list_handle %}{{ link.title | handle }}{% endcapture %}
+            <li class="{% if link.active %}current{% endif %} {% if linklists[child_list_handle].links.size > 0 %}mobileNav-list-item_hasSubnav{% endif %}">
+                <a href="{{ link.url }}">{{ link.title }}</a>
+                {% if linklists[child_list_handle].links.size > 0 %}
+                    <a href="#" class="mobileNav-list-item-toggle">
+                        <span class="isVisuallyHidden">Toggle</span>
+                    </a>
+                    <ul class="mobileNav-list-item-subnav">
+                        {% for l in linklists[child_list_handle].links %}
+                            <li>
+                                <a href="{{ l.url }}">{{ l.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
         {% endfor %}
         </ul>
     </div>
@@ -43,7 +58,6 @@
                             {% capture child_list_handle %}{{ link.title | handle }}{% endcapture %}
                             <li class="{% if link.active %}current{% endif %} {% if linklists[child_list_handle].links.size > 0 %}nav-list-item_hasSubnav{% endif %}">
                                 <a href="{{ link.url }}">{{ link.title }}{% if linklists[child_list_handle].links.size > 0 %} + {% endif %}</a>
-
 
                                 {% if linklists[child_list_handle].links.size > 0 %}
                                     <ul class="nav-list-item-subnav">

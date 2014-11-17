@@ -6,16 +6,44 @@
 
         {% if search.performed %}
 
-            {% paginate search.results by 10 %}
+            {% paginate search.results by 12 %}
 
                 {% if search.results_count == 0 %}
                     <div class="userContent">
                         <p>Your search for "{{ search.terms }}" did not yield any results.</p>
                     </div>
                 {% else %}
-                    <ol class="vlist">
-                        {% for item in search.results %}
+                    <ol class="blocks blocks_std">
+                        {% for product in search.results %}
                         <li>
+                            <div class="panel">
+                                <div class="panel-media">
+                                    <a href="{{ product.url | within: collection }}">
+                                        <img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" />
+                                    </a>
+                                </div>
+                                <div class="panel-hd">
+                                    <h2 class="hdg hdg_lg">
+                                        <a href="{{ product.url | within: collection }}">
+                                            {{ product.title }} - {{ product.price | money }}
+                                        </a>
+                                    </h2>
+                                </div>
+                                {% comment %}Don't show the vendor name / link on vendor collection page.{% endcomment %}
+                                {% if product.vendor != collection.title %}
+                                <div class="panel-meta">
+                                    <h3 class="hdg hdg_xs mix-hdg_gothic">
+                                        <a href="/collections/{{ product.vendor | handleize }}">
+                                            {{ product.vendor }}
+                                        </a>
+                                    </h3>
+                                </div>
+                                {% endif %}
+                            </div>
+
+
+
+
                             <h2 class="hdg hdg_xl">
                                 <a href="{{ item.url }}">{{ item.title }}</a>
                             </h2>

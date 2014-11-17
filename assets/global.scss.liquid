@@ -356,13 +356,10 @@ img, audio, canvas, video, picture {
     padding: 8px 0 6px 0;
     text-align: right;
     font-family: $SANS_SERIF_BOLD;
-    font-size: $FONT_SIZE_LG;
+    font-size: $FONT_SIZE_MD;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: $WHITE;
-    @media (min-width: $BREAKPOINT_MD) {
-        font-size: $FONT_SIZE_MD;
-    }
 }
 
 .toolbar a {
@@ -406,6 +403,15 @@ img, audio, canvas, video, picture {
     display: none;
     @media (min-width: $BREAKPOINT_XS) {
         display: inline-block;
+    }
+}
+
+.toolbar-search {
+    display: none;
+    @media (min-width: $BREAKPOINT_SM) {
+        position: relative;
+        display: inline-block;
+        padding-left: $SITE_STD_UNIT;
     }
 }
 
@@ -835,6 +841,18 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
     font-size: $field-btn-FONT_SIZE_SM;
 }
 
+.field_search {
+    width: 160px;
+    padding: 2px 28px 2px 8px;
+    border: 1px solid $ACCENT_1;
+    background-color: $WHITE;
+    font-family: $SERIF;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    @include border-radius(0);
+}
+
 .field_dropdown {
     display: inline-block;
     border: 1px solid $TEXT_COLOR;
@@ -889,6 +907,22 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
 
 .btn_small {
     padding: 6px 12px;
+}
+
+.btn_search {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    border-left: 1px solid $ACCENT_1;
+    padding: 0;
+    height: 24px;
+    width: 26px;
+    background-color: transparent;
+    background-image: url("search.svg");
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 /* ---------------------------------------------------------------------

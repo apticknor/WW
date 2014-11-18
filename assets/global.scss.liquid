@@ -353,13 +353,16 @@ img, audio, canvas, video, picture {
  Landmark - Toolbar
 ------------------------------------------------------------------------ */
 .toolbar {
-    padding: 8px 0 6px 0;
+    padding: 14px 0 12px 0;
     text-align: right;
     font-family: $SANS_SERIF_BOLD;
     font-size: $FONT_SIZE_MD;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: $WHITE;
+    @media (min-width: $BREAKPOINT_XM) {
+        padding: 10px 0 8px 0;
+    }
 }
 
 .toolbar a {
@@ -694,7 +697,7 @@ img, audio, canvas, video, picture {
  Footer Module - footerLinks
 ------------------------------------------------------------------------ */
 .footerLinks {
-    padding: 8px 0 6px 0;
+    padding: 10px 0 8px 0;
     background-color: $ACCENT_2;
     color: $WHITE;
     font-size: $FONT_SIZE_MD;

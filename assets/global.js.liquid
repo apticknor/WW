@@ -19,6 +19,7 @@ var WW = WW || {};
         APP.Toggle.init();
         APP.RecoverHash.init();
         APP.SubNavToggle.init();
+        APP.SearchbarToggle.init();
     });
 
     /* ---------------------------------------------------------------------
@@ -237,6 +238,44 @@ var WW = WW || {};
                 $trigger.addClass(this.toggleClass);
                 $trigger.next('.mobileNav-list-item-subnav').show();
             }
+        }
+
+    };
+
+    /* ---------------------------------------------------------------------
+    SearchBarToggle
+
+    Toggle the class on the matching target for the mobile searchbar
+    ------------------------------------------------------------------------ */
+    APP.SearchbarToggle = {
+        searchbarId: '#js-searchbar',
+        $searchbarTriggers: null,
+        toggleClass: 'searchbar_isExpanded',
+
+        init: function() {
+
+            var $searchbarTriggers = $('.toolbar-searchToggle-icon');
+
+            if (!$searchbarTriggers.length) {
+                return false;
+            }
+
+            this.$searchbarTriggers = $searchbarTriggers;
+
+            this.createEvents();
+        },
+
+        createEvents: function() {
+            var self = this;
+
+            this.$searchbarTriggers.on('click', function(e) {
+                self.toggleSearchbar();
+                e.preventDefault();
+            });
+        },
+
+        toggleSearchbar: function($trigger) {
+            $(this.searchbarId).toggleClass(this.toggleClass);
         }
 
     };

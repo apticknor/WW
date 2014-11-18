@@ -360,6 +360,7 @@ img, audio, canvas, video, picture {
     text-transform: uppercase;
     letter-spacing: 1px;
     color: $WHITE;
+    position: relative; // content for search icon
     @media (min-width: $BREAKPOINT_XM) {
         padding: 10px 0 8px 0;
     }
@@ -416,6 +417,47 @@ img, audio, canvas, video, picture {
         display: inline-block;
         padding-left: $SITE_STD_UNIT;
     }
+}
+
+.toolbar-searchToggle {
+    display: inline-block;
+    padding-left: $SITE_STD_UNIT;
+    @media (min-width: $BREAKPOINT_SM) {
+        display: none;
+    }
+}
+
+.toolbar-searchToggle-icon {
+    position: absolute;
+    top: 13px;
+    right: -12px;
+    height: 24px;
+    width: 26px;
+    background-color: transparent;
+    background-image: url("search-light.svg");
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.toolbar_fancy .toolbar-searchToggle-icon {
+    background-image: url("search.svg");
+}
+
+// always appear just below the toolbar
+.searchbar {
+    display: none; // starts hidden!
+    position: relative;
+    margin: 0 #{-$SITE_STD_UNIT}; // undo wrapper padding
+    padding: 6px $SITE_STD_UNIT 8px $SITE_STD_UNIT; // redo mimicked wrapper padding
+    background-color: darken($WHITE, 5%);
+    @media (min-width: $BREAKPOINT_SM) {
+        display: none !important;
+    }
+}
+
+.searchbar_isExpanded {
+    display: block;
 }
 
 /* ---------------------------------------------------------------------
@@ -838,6 +880,11 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
     width: 36px;
 }
 
+.field_txt_tight {
+    width: calc(100% - 40px); // 100% - padding
+    padding: 2px 32px 2px 8px;
+}
+
 .field_txt_overlap {
     padding-right: 74px;
     border: none;
@@ -926,6 +973,11 @@ $field-btn-FONT_SIZE_SM: $FONT_SIZE_MD;
     background-size: 14px;
     background-repeat: no-repeat;
     background-position: center center;
+}
+
+.btn_search_bar {
+    top: 9px;
+    right: 19px;
 }
 
 /* ---------------------------------------------------------------------

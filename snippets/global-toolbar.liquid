@@ -25,6 +25,21 @@
                         </button>
                     </form>
                 </div>
+                <div class="toolbar-searchToggle">
+                    <a href="#" class="toolbar-searchToggle-icon">
+                        <span class="isVisuallyHidden">Toggle Search</span>
+                    </a>
+                </div>
+            </div>
+            <div class="searchbar" id="js-searchbar">
+                <form action="/search" method="get" role="search">
+                    <input type="hidden" name="type" value="product" />
+                    <label for="search" class="isVisuallyHidden">Search</label>
+                    <input class="field field_txt field_txt_tight" name="q" type="search" id="search" placeholder="Search Products" value="" />
+                    <button type="submit" class="btn btn_search btn_search_bar">
+                        <span class="isVisuallyHidden">Submit Search</span>
+                    </button>
+                </form>
             </div>
         </div>
     </div>

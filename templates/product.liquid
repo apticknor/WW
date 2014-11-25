@@ -94,7 +94,7 @@
                 </div>
                 <div class="pageWrapper-section">
                     <ul class="blocks blocks_std">
-                        {% for relatedProduct in collection.products %}
+                        {% for relatedProduct in collection.products limit:4 %}
                             {% if relatedProduct.title != product.title %}
                                 <li>
                                     <div class="panel">

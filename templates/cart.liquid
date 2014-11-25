@@ -37,15 +37,14 @@
                                 <div>
                                     <a href="{{ item.url }}">
                                         {{ item.product.title }}
-                                        {% comment %}
                                         {% if item.variant.title != "Default Title" %}
                                             <br/>{{ item.variant.title }}
-                                        {% endif %}
-                                        {% endcomment %}
+                                        {% endif %} by {{ item.vendor }}
                                     </a>
-                                </div>
-                                <div>
-                                    MFG. by {{ item.vendor }}
+                                    <br/>
+                                    <a class="link link_sm" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                                        Remove
+                                    </a>
                                 </div>
                             </td>
                             <td class="itemTable-cell itemTable-cell_qty">

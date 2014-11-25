@@ -63,9 +63,15 @@
                         <div class="{% if hide_default_title %}isHidden{% endif %}">
                             <select class="field field_dropdown" name="id">
                                 {% for variant in product.variants %}
-                                    <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}">
-                                        {{ variant.title }} - {{ variant.price | money }}
-                                    </option>
+                                    {% if variant.available %}
+                                        <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}">
+                                            {{ variant.title }} - {{ variant.price | money }}
+                                        </option>
+                                    {% else %}
+                                        <option disabled="disabled">
+                                            {{ variant.title }} - Sold Out
+                                        </option>
+                                    {% endif %}
                                 {% endfor %}
                             </select>
                         </div>

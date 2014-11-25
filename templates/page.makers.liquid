@@ -8,27 +8,29 @@
 
         <ul class="blocks blocks_wide">
             {% for product_vendor in shop.vendors %}
-            <li>
                 {% assign coll_handle = product_vendor | handleize %}
-                <div class="panel">
-                    <div class="panel-media">
-                        <a href="/collections/{{ product_vendor | handleize }}">
-                            {% if collections[coll_handle].image %}
-                                <img src="{{ collections[coll_handle].image.src | collection_img_url: 'large' }}" alt="" />
-                            {% else %}
-                                <img src="{{ collections[coll_handle].products.first.featured_image.src | product_img_url: 'large' }}" alt="" />
-                            {% endif %}
-                        </a>
-                    </div>
-                    <div class="panel-hd">
-                        <h2 class="hdg hdg_lg">
-                            <a href="/collections/{{ product_vendor | handleize }}">
-                                {{ collections[coll_handle].title }}
-                            </a>
-                        </h2>
-                    </div>
-                </div>
-            </li>
+                {% if collections[coll_handle].products_count > 0 %}
+                    <li>
+                        <div class="panel">
+                            <div class="panel-media">
+                                <a href="/collections/{{ product_vendor | handleize }}">
+                                    {% if collections[coll_handle].image %}
+                                        <img src="{{ collections[coll_handle].image.src | collection_img_url: 'large' }}" alt="" />
+                                    {% else %}
+                                        <img src="{{ collections[coll_handle].products.first.featured_image.src | product_img_url: 'large' }}" alt="" />
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="panel-hd">
+                                <h2 class="hdg hdg_lg">
+                                    <a href="/collections/{{ product_vendor | handleize }}">
+                                        {{ collections[coll_handle].title }}<br/>
+                                    </a>
+                                </h2>
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
             {% endfor %}
         </ul>
 

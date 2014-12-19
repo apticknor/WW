@@ -61,6 +61,7 @@
                 <div class="product-content-fields">
                     <form action="/cart/add" method="post" enctype="multipart/form-data">
                         <div class="{% if hide_default_title %}isHidden{% endif %}">
+                            {% if product.available %}
                             <select class="field field_dropdown" name="id">
                                 {% for variant in product.variants %}
                                     {% if variant.available %}
@@ -74,8 +75,13 @@
                                     {% endif %}
                                 {% endfor %}
                             </select>
+                            {% endif %}
                         </div>
-                        <input class="btn" type="submit" name="add" value="Add to Cart">
+                        {% if product.available %}
+                            <input class="btn" type="submit" name="add" value="Add to Cart">
+                        {% else %}
+                            <span class="isError">We're sorry, but this item is out of stock.</span>
+                        {% endif %}
                     </form>
                 </div>
             </div>

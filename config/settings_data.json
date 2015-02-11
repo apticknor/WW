@@ -1,6 +1,6 @@
 {
   "current": {
-    "promo_text": "Free Shipping on All Orders",
+    "promo_text": "Free shipping on orders over $150",
     "enable_hero_image": true,
     "enable_hero_text": true,
     "hero_text_line1": "A new adventure is coming up and i'm sure it will be a good one",
@@ -14,9 +14,9 @@
     "addressState": "MN",
     "addressZip": "55401",
     "maplink": "https://www.google.com/maps/place/211+Washington+Ave+N,+Minneapolis,+MN+55401/",
-    "hoursline1": "Opening Shortly",
-    "hoursline2": "",
-    "hoursline3": "",
+    "hoursline1": "Tues - Sat 11am - 7pm",
+    "hoursline2": "Sunday 11am - 6pm",
+    "hoursline3": "Closed Mondays",
     "instagram_link": "http://instagram.com/wilsonandwillys",
     "twitter_link": "http://twitter.com/wilsonandwillys",
     "facebook_link": "http://www.facebook.com/wilsonandwillys",

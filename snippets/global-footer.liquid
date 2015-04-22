@@ -28,6 +28,12 @@
                                         {% endunless %}
                                     </div>
 
+                                    <div class="footerCTA-bd-break">
+                                        {% unless settings.phoneNumber == blank %}
+                                            <span>{{ settings.phoneNumber }}</span>
+                                        {% endunless %}
+                                    </div>
+
                                     {% unless settings.hoursline1 == blank %}
                                         <div itemprop="openingHours">{{ settings.hoursline1 }}</div>
                                     {% endunless %}

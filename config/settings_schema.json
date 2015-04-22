@@ -1,0 +1,209 @@
+[
+  {
+    "name": "Welcome",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Theme settings allow designers to provide an easy way for any user to customize the look and feel of their shop without having to delve into HTML or CSS code. Please see our [help page on theme settings](http:\/\/docs.shopify.com\/themes\/theme-templates\/settings) to learn more about how you can make your theme customizable."
+      }
+    ]
+  },
+  {
+    "name": "Homepage Settings",
+    "settings": [
+      {
+        "type": "text",
+        "id": "promo_text",
+        "label": "Toolbar Promo Text"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_hero_image",
+        "label": "Enable Hero Image"
+      },
+      {
+        "type": "image",
+        "id": "hero_image_home.jpg",
+        "label": "Hero Image (1600x840 jpg)",
+        "max-width": 1600,
+        "max-height": 840
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_hero_text",
+        "label": "Enable Hero Text"
+      },
+      {
+        "type": "text",
+        "id": "hero_text_line1",
+        "label": "Hero Text Line 1"
+      },
+      {
+        "type": "text",
+        "id": "hero_text_line2",
+        "label": "Hero Text Line 2"
+      },
+      {
+        "type": "text",
+        "id": "hero_text_line1_fs",
+        "label": "Hero Text Line 1 Font Size"
+      },
+      {
+        "type": "text",
+        "id": "hero_text_line2_fs",
+        "label": "Hero Text Line 2 Font Size"
+      },
+      {
+        "type": "checkbox",
+        "id": "reverse_txt",
+        "label": "Reverse Text Colors"
+      },
+      {
+        "type": "collection",
+        "id": "featured_collection",
+        "label": "Featured Items Collection"
+      }
+    ]
+  },
+  {
+    "name": "Company Info",
+    "settings": [
+      {
+        "type": "text",
+        "id": "addressStreet",
+        "label": "Address"
+      },
+      {
+        "type": "text",
+        "id": "addressCity",
+        "label": "City"
+      },
+      {
+        "type": "text",
+        "id": "addressState",
+        "label": "State"
+      },
+      {
+        "type": "text",
+        "id": "addressZip",
+        "label": "Zip"
+      },
+      {
+        "type": "text",
+        "id": "phoneNumber",
+        "label": "Phone Number"
+      },
+      {
+        "type": "text",
+        "id": "maplink",
+        "label": "Map Link"
+      },
+      {
+        "type": "text",
+        "id": "hoursline1",
+        "label": "M-F Hours"
+      },
+      {
+        "type": "text",
+        "id": "hoursline2",
+        "label": "Sat Hours"
+      },
+      {
+        "type": "text",
+        "id": "hoursline3",
+        "label": "Sun Hours"
+      }
+    ]
+  },
+  {
+    "name": "Social Media Links",
+    "settings": [
+      {
+        "type": "text",
+        "id": "instagram_link",
+        "label": "Instagram Link"
+      },
+      {
+        "type": "text",
+        "id": "twitter_link",
+        "label": "Twitter Link"
+      },
+      {
+        "type": "text",
+        "id": "facebook_link",
+        "label": "Facebook Link"
+      },
+      {
+        "type": "text",
+        "id": "pinterest_link",
+        "label": "Pinterest Link"
+      },
+      {
+        "type": "text",
+        "id": "spotify_link",
+        "label": "Spotify Link"
+      }
+    ]
+  },
+  {
+    "name": "Brand Settings",
+    "settings": [
+      {
+        "type": "color",
+        "id": "accent_color_1",
+        "label": "Accent Color 1"
+      },
+      {
+        "type": "color",
+        "id": "accent_color_2",
+        "label": "Accent Color 2"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color"
+      },
+      {
+        "type": "color",
+        "id": "link_color",
+        "label": "Link Color"
+      },
+      {
+        "type": "text",
+        "id": "font_size_body_copy",
+        "label": "Font Size - Body Copy"
+      },
+      {
+        "type": "text",
+        "id": "font_size_xs",
+        "label": "Font Size - Extra Small"
+      },
+      {
+        "type": "text",
+        "id": "font_size_sm",
+        "label": "Font Size - Small"
+      },
+      {
+        "type": "text",
+        "id": "font_size_md",
+        "label": "Font Size - Medium"
+      },
+      {
+        "type": "text",
+        "id": "font_size_lg",
+        "label": "Font Size - Large"
+      },
+      {
+        "type": "text",
+        "id": "font_size_xl",
+        "label": "Font Size - Extra Large"
+      },
+      {
+        "type": "text",
+        "id": "font_size_xxl",
+        "label": "Font Size - Huge"
+      }
+    ],
+    "overrides-section": "checkout"
+  }
+]

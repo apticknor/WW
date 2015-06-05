@@ -11,14 +11,14 @@
                         <li>
                             <div class="panel">
                                 <div class="panel-media">
-                                    <a href="{{ featuredProduct.url | within: collection }}">
+                                    <a href="{{ featuredProduct.url | within: collection }}" {% if featuredProduct.compare_at_price %} class="badge badge_sale"{% endif %}>
                                         <img src="{{ featuredProduct.featured_image.src | product_img_url: 'large' }}" alt="{{ featuredProduct.featured_image.alt | escape }}" />
                                     </a>
                                 </div>
                                 <div class="panel-hd">
                                     <h2 class="hdg hdg_lg">
                                         <a href="{{ featuredProduct.url | within: collection }}">
-                                            {{ featuredProduct.title }} - {{ featuredProduct.price | money }}
+                                            {{ featuredProduct.title }} - {% if featuredProduct.compare_at_price %}<s>{{ featuredProduct.compare_at_price | money }}</s>{% endif %} {{ featuredProduct.price | money }}
                                         </a>
                                     </h2>
                                 </div>

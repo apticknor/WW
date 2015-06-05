@@ -80,6 +80,7 @@ $ACCENT_1: {{ settings.accent_color_1 }};
 $ACCENT_2: {{ settings.accent_color_2 }};
 $TEXT_COLOR: {{ settings.text_color }};
 $LINK_COLOR: {{ settings.link_color }};
+$SALE_COLOR: #ff0000;
 $STATUS_ERROR: #ff0000;
 $STATUS_SUCCESS: #009900;
 
@@ -1677,6 +1678,32 @@ html.isNotScrollable {
 .icon_instagram {
     // background-color: #3f729b;
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6M0EwMDhEMUE2NzcxMTFFNEE0OTJBN0MyNDQ2RDExMTMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6M0EwMDhEMUI2NzcxMTFFNEE0OTJBN0MyNDQ2RDExMTMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyQ0UzMEI4OTY3NzExMUU0QTQ5MkE3QzI0NDZEMTExMyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyQ0UzMEI4QTY3NzExMUU0QTQ5MkE3QzI0NDZEMTExMyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv8Aa34AAAbgSURBVHja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');
+}
+
+/* ---------------------------------------------------------------------
+ Module - Badge
+------------------------------------------------------------------------ */
+.badge {
+    position: relative; // positioning context for badges
+    display: block; // require for positioning when used on an anchor
+}
+
+.badge_sale::after {
+    content: "Sale";
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 5px 7px 4px 7px;
+    border: 1px solid $SALE_COLOR;
+    border-radius: 2px;
+    background-color: $WHITE; // in case the badge is over an image
+    color: $SALE_COLOR;
+    font-size: 12px;
+    line-height: 1.2;
+    font-family: $GOTHIC;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 99999; // make sure it's over the image.
 }
 
 /* ---------------------------------------------------------------------

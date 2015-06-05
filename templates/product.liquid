@@ -42,7 +42,7 @@
                     <meta itemprop="image" content="{{ product | img_url: '1024x1024' }}" />
                 </div>
                 <div class="product-content-hd" itemprop="name">
-                    <h2 class="hdg hdg_lg">{{ product.title }} - {{ product.selected_or_first_available_variant.price | money }}</h2>
+                    <h2 class="hdg hdg_lg">{{ product.title }} - {% if product.compare_at_price %}<s>{{ product.selected_or_first_available_variant.compare_at_price | money }}</s>{% endif %} {{ product.selected_or_first_available_variant.price | money }}</h2>
                 </div>
                 {% if product.vendor %}
                 <div class="product-content-subhd" itemprop="brand">
@@ -111,14 +111,14 @@
                                 <li>
                                     <div class="panel">
                                         <div class="panel-media">
-                                            <a href="{{ relatedProduct.url | within: collection }}">
+                                            <a href="{{ relatedProduct.url | within: collection }}" {% if relatedProduct.compare_at_price %} class="badge badge_sale"{% endif %}>
                                                 <img src="{{ relatedProduct.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" />
                                             </a>
                                         </div>
                                         <div class="panel-hd">
                                             <h2 class="hdg hdg_lg">
                                                 <a href="{{ relatedProduct.url | within: collection }}">
-                                                    {{ relatedProduct.title }} - {{ relatedProduct.price | money }}
+                                                    {{ relatedProduct.title }} - {% if relatedProduct.compare_at_price %}<s>{{ relatedProduct.compare_at_price | money }}</s>{% endif %} {{ relatedProduct.price | money }}
                                                 </a>
                                             </h2>
                                         </div>
